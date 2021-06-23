@@ -21,6 +21,15 @@ spec:
             enabled: true
             existingClaim: mealie
             mountPath: /app/data/
+        ingress:
+          main:
+            enabled: true
+            annotations:
+            hosts:
+            - host: recipes.w00t.cloud
+              paths:
+              - path: /
+                pathType: Prefix
   syncPolicy:
     automated:
       prune: true
