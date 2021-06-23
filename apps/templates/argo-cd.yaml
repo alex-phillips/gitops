@@ -1,3 +1,4 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -14,19 +15,23 @@ spec:
     path: charts/argo-cd
     repoURL: https://git.w00t.cloud/alexphillips/k8s.git
     targetRevision: HEAD
-    helm:
-      values: |
-        ingress:
-          main:
-            enabled: true
-            annotations:
-            hosts:
-              - host: argo.w00t.cloud
-                paths:
-                  - path: /
-                    backend:
-                      serviceName: argo-cd-argocd-server
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argo-cd-ingress
+  namespace: default
+spec:
+  rules:
+    - host: argo.w00t.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argo-cd-argocd-server
