@@ -35,3 +35,5 @@ spec:
             backend:
               service:
                 name: argo-cd-argocd-server
+                port:
+                  number: 8080
