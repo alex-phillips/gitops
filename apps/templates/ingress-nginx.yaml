@@ -13,6 +13,11 @@ spec:
     chart: ingress-nginx
     repoURL: https://kubernetes.github.io/ingress-nginx
     targetRevision: 3.34.0
+    helm:
+      values: |
+        controller:
+          service:
+            loadBalancerIp: 192.168.1.132
   syncPolicy:
     automated:
       prune: true
