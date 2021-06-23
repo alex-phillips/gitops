@@ -10,7 +10,7 @@ spec:
     namespace: longhorn-system
   project: default
   source:
-    path: longhorn/chart
+    path: chart
     repoURL: https://github.com/longhorn/longhorn
     targetRevision: HEAD
   syncPolicy:
