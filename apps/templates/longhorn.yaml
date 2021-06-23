@@ -16,7 +16,7 @@ spec:
     helm:
       values: |
         persistence:
-          defaultClass: true
+          defaultClass: false
   syncPolicy:
     automated:
       prune: true
