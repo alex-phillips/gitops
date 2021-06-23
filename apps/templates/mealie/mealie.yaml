@@ -19,6 +19,7 @@ spec:
         persistence:
           config:
             existingClaim: mealie
+            mountPath: /app/data/
   syncPolicy:
     automated:
       prune: true
