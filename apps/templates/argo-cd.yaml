@@ -24,7 +24,8 @@ spec:
               - host: argo.w00t.cloud
                 paths:
                   - path: /
-                    pathType: Prefix
+                    backend:
+                      serviceName: argo-cd-argocd-server
   syncPolicy:
     automated:
       prune: true
