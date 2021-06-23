@@ -4,7 +4,7 @@ metadata:
   name: argo-cd
   namespace: default
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
@@ -14,6 +14,17 @@ spec:
     path: charts/argo-cd
     repoURL: https://git.w00t.cloud/alexphillips/k8s.git
     targetRevision: HEAD
+    helm:
+      values: |
+        ingress:
+          main:
+            enabled: true
+            annotations:
+            hosts:
+              - host: argo.w00t.cloud
+                paths:
+                  - path: /
+                    pathType: Prefix
   syncPolicy:
     automated:
       prune: true
