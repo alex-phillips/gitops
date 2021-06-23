@@ -12,6 +12,7 @@ spec:
   source:
     chart: ingress-nginx
     repoURL: https://kubernetes.github.io/ingress-nginx
+    targetRevision: 3.34.0
   syncPolicy:
     automated:
       prune: true
