@@ -1,14 +1,14 @@
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: test-volume
-spec:
-  accessModes:
-    - ReadWriteOnce
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: test-volume
+# spec:
+#   accessModes:
+#     - ReadWriteOnce
 
-  resources:
-    requests:
-      storage: 2Gi
+#   resources:
+#     requests:
+#       storage: 2Gi
 
-  storageClassName: longhorn
+#   storageClassName: longhorn
