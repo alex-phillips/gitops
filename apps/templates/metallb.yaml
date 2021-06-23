@@ -12,6 +12,7 @@ spec:
   source:
     chart: metallb
     repoURL: https://metallb.github.io/metallb
+    targetRevision: 0.10.2
     helm:
       values: |
         configInline:
