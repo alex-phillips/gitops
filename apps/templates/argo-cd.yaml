@@ -27,7 +27,7 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: argo.w00t.cloud
+    - host: k8s.w00t.cloud
       http:
         paths:
           - path: /
