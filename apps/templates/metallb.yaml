@@ -20,7 +20,7 @@ spec:
             - name: default
               protocol: layer2
               addresses:
-                - 192.168.1.132/24
+                - 192.168.1.133/24
   syncPolicy:
     automated:
       prune: true
