@@ -15,9 +15,8 @@ spec:
     namespace: data
   project: default
   source:
-    path: mariadb
+    path: bitnami/mariadb
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: HEAD
     helm:
       values: |
         persistence:
