@@ -29,8 +29,8 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: argo-cd-ingress
-  namespace: default
+  name: mariadb-ingress
+  namespace: mariadb
 spec:
   rules:
     - host: db-test.w00t.cloud
@@ -40,6 +40,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: argo-cd-argocd-server
+                name: mariadb
                 port:
                   number: 3306
