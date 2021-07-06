@@ -14,10 +14,10 @@ spec:
     path: chart
     repoURL: https://github.com/longhorn/longhorn
     targetRevision: HEAD
-    helm:
-      values: |
-        persistence:
-          defaultClassReplicaCount: 1
+    # helm:
+    #   values: |
+    #     persistence:
+    #       defaultClassReplicaCount: 1
   syncPolicy:
     automated:
       prune: true
