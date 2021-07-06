@@ -19,13 +19,11 @@ spec:
           enabled: false
         server:
           persistentVolume:
-            enabled: true
-            storageClassName: longhorn
+            existingClaim: prometheus-server
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 13.0.2
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+---
