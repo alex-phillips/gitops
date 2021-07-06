@@ -17,6 +17,7 @@ spec:
           enabled: false
         server:
           persistentVolume:
+            enabled: true
             storageClassName: longhorn
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 13.0.2
