@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mariadb
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mariadb
+  project: default
+  source:
+    path: charts/bitnami/mariadb
+    repoURL: https://github.com/bitnami/charts
+    targetRevision: HEAD
+    helm:
+      values: |
+        persistence:
+          config:
+            enabled: true
+            existingClaim: mariadb
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argo-cd-ingress
+  namespace: default
+spec:
+  rules:
+    - host: db-test.w00t.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argo-cd-argocd-server
+                port:
+                  number: 3306
