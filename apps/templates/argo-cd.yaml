@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: argo-cd
+    namespace: default
   project: default
   source:
     path: charts/argo-cd
@@ -18,8 +18,6 @@ spec:
     automated:
       prune: true
       selfHeal: true
-  syncOptions:
-    - CreateNamespace=true
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
