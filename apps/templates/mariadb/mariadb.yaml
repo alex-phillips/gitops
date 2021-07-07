@@ -15,8 +15,8 @@ spec:
     targetRevision: 9.3.14
     helm:
       values: |
-        persistence:
-          config:
+        primary:
+          persistence:
             enabled: true
             existingClaim: mariadb
   syncPolicy:
