@@ -18,6 +18,7 @@ spec:
         alertmanager:
           enabled: false
         server:
+          replicaCount: 0
           persistentVolume:
             existingClaim: prometheus-server
     repoURL: https://prometheus-community.github.io/helm-charts
