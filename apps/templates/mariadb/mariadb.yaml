@@ -12,6 +12,7 @@ spec:
   source:
     path: mariadb
     repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 10.5
     # helm:
     #   values: |
     #     persistence:
