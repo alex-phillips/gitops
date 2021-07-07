@@ -12,12 +12,12 @@ spec:
   source:
     path: mariadb
     repoURL: https://charts.bitnami.com/bitnami
-    helm:
-      values: |
-        persistence:
-          config:
-            enabled: true
-            existingClaim: mariadb
+    # helm:
+    #   values: |
+    #     persistence:
+    #       config:
+    #         enabled: true
+    #         existingClaim: mariadb
   syncPolicy:
     automated:
       prune: true
