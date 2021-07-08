@@ -21,6 +21,8 @@ spec:
             existingClaim: airsonic-config
           music:
             enabled: true
+            type: custom
+            readOnly: true
             volumeSpec:
               accessModes:
                 - ReadOnlyMany
