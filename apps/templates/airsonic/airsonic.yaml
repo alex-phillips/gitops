@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: airsonic
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: media
+  project: default
+  source:
+    path: charts/stable/airsonic
+    repoURL: https://github.com/k8s-at-home/charts
+    targetRevision: HEAD
+    helm:
+      values: |
+        persistence:
+          config:
+            enabled: true
+            existingClaim: airsonic-config
+          music:
+            enabled: true
+            volumeSpec:
+              accessModes:
+                - ReadOnlyMany
+              nfs:
+                server: 192.168.1.91
+                path: /mnt/storage/music/beets/Music
+        ingress:
+          main:
+            enabled: true
+            annotations:
+            hosts:
+            - host: as2.w00t.cloud
+              paths:
+              - path: /
+                pathType: Prefix
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
