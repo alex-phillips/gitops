@@ -24,8 +24,6 @@ spec:
             type: custom
             readOnly: true
             volumeSpec:
-              accessModes:
-                - ReadOnlyMany
               nfs:
                 server: 192.168.1.91
                 path: /mnt/storage/music/beets/Music
