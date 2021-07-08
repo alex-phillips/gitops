@@ -16,7 +16,7 @@ spec:
     helm:
       values: |
         env:
-          JAVA_OPTS: -Dserver.use-forward-headers=true
+          JAVA_OPTS: -Dserver.forward-headers-strategy=native
         persistence:
           config:
             enabled: true
