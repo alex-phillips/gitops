@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bookstack
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: utilities
+  project: default
+  source:
+    path: charts/stable/bookstack
+    repoURL: https://github.com/k8s-at-home/charts
+    targetRevision: HEAD
+    helm:
+      values: |
+        env:
+          TZ: America/New_York
+        persistence:
+          config:
+            enabled: true
+            existingClaim: bookstack-config
+        ingress:
+          main:
+            enabled: true
+            annotations:
+            hosts:
+            - host: wiki.w00t.cloud
+              paths:
+              - path: /
+                pathType: Prefix
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
