@@ -22,7 +22,7 @@ spec:
           APP_URL: https://wiki.w00t.cloud
           DB_HOST: mariadb.data
           DB_USER: root
-          DB_PASS: VUXZjDaz4y
+          DB_PASS: [[DB_PASS]]
           DB_DATABASE: bookstack
         persistence:
           config:
