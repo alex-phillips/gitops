@@ -16,18 +16,17 @@ spec:
     helm:
       values: |
         env:
-          PUID: [[PUID]]
-          PGID: [[PGID]]
+          PUID: 1000
+          PGID: 1000
           TZ: America/New_York
-          APP_URL: https://wiki.w00t.cloud
-          DB_HOST: mariadb.data
-          DB_USER: root
-          DB_PASS: VUXZjDaz4y
-          DB_DATABASE: bookstack
         persistence:
           config:
             enabled: true
-            existingClaim: bookstack-config
+            type: custom
+            volumeSpec:
+              nfs:
+                server: 192.168.1.91
+                path: /mnt/storage/docker/bookstack
         ingress:
           main:
             enabled: true
