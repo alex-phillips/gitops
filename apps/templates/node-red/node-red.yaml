@@ -20,7 +20,7 @@ spec:
         env:
           TZ: America/New_York
         persistence:
-          config:
+          data:
             enabled: true
             existingClaim: node-red
         ingress:
@@ -32,6 +32,11 @@ spec:
               paths:
               - path: /
                 pathType: Prefix
+        # required per: https://github.com/k8s-at-home/charts/issues/537
+        podSecurityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+          fsGroup: 1000
   syncPolicy:
     automated:
       prune: true
