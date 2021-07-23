@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: snipe-it
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apps
+  project: default
+  source:
+    path: charts/stable/snipe-it
+    repoURL: https://github.com/k8s-at-home/charts
+    targetRevision: HEAD
+    helm:
+      values: |
+        image:
+          tag: latest
+        env:
+          TZ: America/New_York
+        persistence:
+          config:
+            enabled: true
+            existingClaim: snipe-it
+        ingress:
+          main:
+            enabled: true
+            annotations:
+            hosts:
+            - host: it.w00t.cloud
+              paths:
+              - path: /
+                pathType: Prefix
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
