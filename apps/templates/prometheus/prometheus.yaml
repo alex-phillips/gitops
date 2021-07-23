@@ -18,7 +18,7 @@ spec:
         alertmanager:
           enabled: false
         server:
-          retention: 7d
+          retention: 14d
           persistentVolume:
             existingClaim: prometheus-server
     repoURL: https://prometheus-community.github.io/helm-charts
