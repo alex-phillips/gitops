@@ -10,8 +10,8 @@ spec:
     namespace: apps
   project: default
   source:
-    path: charts/stable/snipe-it
-    repoURL: https://github.com/k8s-at-home/charts
+    path: charts/snipe-it
+    repoURL: https://github.com/alex-phillips/helm-charts
     targetRevision: HEAD
     helm:
       values: |
