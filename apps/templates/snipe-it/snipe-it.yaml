@@ -19,6 +19,12 @@ spec:
           tag: latest
         env:
           TZ: America/New_York
+          APP_URL: https://it.w00t.cloud
+          MYSQL_PORT_3306_TCP_ADDR: 192.168.1.91
+          MYSQL_PORT_3306_TCP_PORT: 3306
+          MYSQL_DATABASE: snipeit
+          MYSQL_USER: snipeit
+          MYSQL_PASSWORD: ztdrvqAdQYDfxbUd
         persistence:
           config:
             enabled: true

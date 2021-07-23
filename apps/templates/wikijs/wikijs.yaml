@@ -1,0 +1,43 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: wikijs
+#   finalizers:
+#     - resources-finalizer.argocd.argoproj.io
+# spec:
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: apps
+#   project: default
+#   source:
+#     path: charts/stable/wikijs
+#     repoURL: https://github.com/k8s-at-home/charts
+#     targetRevision: HEAD
+#     helm:
+#       values: |
+#         image:
+#           tag: latest
+#         env:
+#           TZ: America/New_York
+#         persistence:
+#           data:
+#             enabled: true
+#             existingClaim: wikijs
+#         ingress:
+#           main:
+#             enabled: true
+#             annotations:
+#             hosts:
+#             - host: node.w00t.cloud
+#               paths:
+#               - path: /
+#                 pathType: Prefix
+#         # required per: https://github.com/k8s-at-home/charts/issues/537
+#         podSecurityContext:
+#           runAsUser: 1000
+#           runAsGroup: 1000
+#           fsGroup: 1000
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true

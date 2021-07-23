@@ -2,12 +2,12 @@
 # apiVersion: v1
 # kind: PersistentVolumeClaim
 # metadata:
-#   name: mariadb
-#   namespace: data
+#   name: wikijs
+#   namespace: apps
 # spec:
 #   accessModes:
 #     - ReadWriteOnce
 #   resources:
 #     requests:
-#       storage: 5Gi
+#       storage: 50Mi
 #   storageClassName: longhorn
