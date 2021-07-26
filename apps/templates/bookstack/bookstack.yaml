@@ -25,11 +25,7 @@ spec:
         persistence:
           config:
             enabled: true
-            type: custom
-            volumeSpec:
-              nfs:
-                server: 192.168.1.91
-                path: /mnt/storage/docker/bookstack
+            existingClaim: bookstack
         ingress:
           main:
             enabled: true
