@@ -4,6 +4,7 @@ metadata:
   name: mealie
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  namespace: argo-cd
 spec:
   destination:
     server: https://kubernetes.default.svc
