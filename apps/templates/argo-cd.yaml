@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: argo-cd
   project: default
   source:
     path: charts/argo-cd
@@ -23,7 +23,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: argo-cd-ingress
-  namespace: default
+  namespace: argo-cd
 spec:
   rules:
     - host: k8s.w00t.cloud
