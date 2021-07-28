@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: radarr
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: media
+  project: default
+  source:
+    path: charts/radarr
+    repoURL: https://github.com/alex-phillips/helm-charts
+    targetRevision: HEAD
+    helm:
+      values: |
+        persistence:
+          config:
+            enabled: true
+            existingClaim: radarr-config
+          media:
+            enabled: true
+            type: custom
+            volumeSpec:
+              nfs:
+                server: 192.168.1.91
+                path: /mnt/storage
+            mountPath: /mnt/storage
+        ingress:
+          main:
+            enabled: true
+            annotations:
+            hosts:
+            - host: rdr.w00t.cloud
+              paths:
+              - path: /
+                pathType: Prefix
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

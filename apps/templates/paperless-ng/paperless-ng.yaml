@@ -1,0 +1,46 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: paperless-ng
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apps
+  project: default
+  source:
+    path: charts/paperless-ng
+    repoURL: https://github.com/alex-phillips/helm-charts
+    targetRevision: HEAD
+    helm:
+      values: |
+        image:
+          tag: latest
+        env:
+          PAPERLESS_CONSUMER_RECURSIVE: 'true'
+          PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS: 'true'
+        persistence:
+          config:
+            enabled: true
+            existingClaim: paperless-ng
+          data:
+            enabled: true
+            type: custom
+            volumeSpec:
+              nfs:
+                server: 192.168.1.91
+                path: /mnt/storage/documents
+        ingress:
+          main:
+            enabled: true
+            annotations:
+            hosts:
+            - host: docs.w00t.cloud
+              paths:
+              - path: /
+                pathType: Prefix
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

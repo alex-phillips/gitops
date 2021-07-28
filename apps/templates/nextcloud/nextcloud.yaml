@@ -1,0 +1,55 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nextcloud
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apps
+  project: default
+  source:
+    path: charts/nextcloud
+    repoURL: https://github.com/alex-phillips/helm-charts
+    targetRevision: HEAD
+    helm:
+      values: |
+        image:
+          tag: latest
+        persistence:
+          config:
+            enabled: true
+            existingClaim: nextcloud-config
+          data:
+            enabled: true
+            type: custom
+            volumeSpec:
+              nfs:
+                server: 192.168.1.91
+                path: /mnt/storage/docker/nextcloud/data
+        service:
+          main:
+            ports:
+              http:
+                protocol: HTTPS
+        ingress:
+          main:
+            enabled: true
+            annotations:
+              nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+              ingress.kubernetes.io/protocol: https
+            hosts:
+            - host: nc.w00t.cloud
+              paths:
+              - path: /
+                pathType: Prefix
+        additionalContainers:
+          - name: redis
+            image: redis:alpine
+            ports:
+              - containerPort: 6379
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
