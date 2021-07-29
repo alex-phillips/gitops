@@ -20,6 +20,8 @@ spec:
         persistence:
           defaultClass: false
           defaultClassReplicaCount: 1
+        defaultSettings:
+          defaultLonghornStaticStorageClass: longhorn
   syncPolicy:
     automated:
       prune: true
