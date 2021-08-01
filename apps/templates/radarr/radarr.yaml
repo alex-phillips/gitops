@@ -16,6 +16,9 @@ spec:
     targetRevision: HEAD
     helm:
       values: |
+        controller:
+          labels:
+            nfs: "true"
         persistence:
           config:
             enabled: true
