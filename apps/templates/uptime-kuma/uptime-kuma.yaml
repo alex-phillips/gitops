@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: uptime-kuma
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  namespace: argo-cd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apps
+  project: default
+  source:
+    path: charts/uptime-kuma
+    repoURL: https://github.com/alex-phillips/helm-charts
+    targetRevision: HEAD
+    helm:
+      values: |
+        persistence:
+          data:
+            enabled: true
+            existingClaim: uptime-kuma
+        ingress:
+          main:
+            enabled: true
+            hosts:
+            - host: status.w00t.cloud
+              paths:
+              - path: /
+                pathType: Prefix
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
