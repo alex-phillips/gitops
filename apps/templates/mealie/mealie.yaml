@@ -28,7 +28,6 @@ spec:
         ingress:
           main:
             enabled: true
-            annotations:
             hosts:
             - host: recipes.w00t.cloud
               paths:
@@ -38,5 +37,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
