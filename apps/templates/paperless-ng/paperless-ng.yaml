@@ -21,6 +21,7 @@ spec:
         env:
           PAPERLESS_CONSUMER_RECURSIVE: 'true'
           PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS: 'true'
+          REDIS_URL: redis://localhost:6379
         persistence:
           config:
             enabled: true
@@ -35,12 +36,16 @@ spec:
         ingress:
           main:
             enabled: true
-            annotations:
             hosts:
             - host: docs.w00t.cloud
               paths:
               - path: /
                 pathType: Prefix
+        additionalContainers:
+          - name: redis
+            image: redis:alpine
+            ports:
+              - containerPort: 6379
   syncPolicy:
     automated:
       prune: true
