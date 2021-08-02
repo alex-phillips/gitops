@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: haste-server
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  namespace: argo-cd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apps
+  project: default
+  source:
+    path: charts/stable/haste-server
+    repoURL: https://github.com/k8s-at-home/charts
+    targetRevision: HEAD
+    helm:
+      values: |
+        image:
+          tag: latest
+        env:
+          TZ: America/New_York
+        ingress:
+          main:
+            enabled: true
+            hosts:
+            - host: haste.w00t.cloud
+              paths:
+              - path: /
+                pathType: Prefix
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
