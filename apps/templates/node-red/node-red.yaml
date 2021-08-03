@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: home-assistant
+  name: node-red
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   namespace: argo-cd
@@ -11,28 +11,33 @@ spec:
     namespace: apps
   project: default
   source:
-    path: charts/stable/home-assistant
+    path: charts/stable/node-red
     repoURL: https://github.com/k8s-at-home/charts
     targetRevision: HEAD
     helm:
       values: |
         image:
-          repository: ghcr.io/home-assistant/home-assistant
           tag: latest
         env:
           TZ: America/New_York
         persistence:
-          config:
+          data:
             enabled: true
-            existingClaim: home-assistant
+            existingClaim: node-red
         ingress:
           main:
             enabled: true
+            annotations:
             hosts:
-            - host: ha.w00t.cloud
+            - host: node.w00t.cloud
               paths:
               - path: /
                 pathType: Prefix
+        # required per: https://github.com/k8s-at-home/charts/issues/537
+        podSecurityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+          fsGroup: 1000
   syncPolicy:
     automated:
       prune: true
