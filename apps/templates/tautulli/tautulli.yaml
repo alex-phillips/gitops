@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tautulli
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  namespace: argo-cd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: media
+  project: default
+  source:
+    path: charts/tautulli
+    repoURL: https://github.com/alex-phillips/helm-charts
+    targetRevision: HEAD
+    helm:
+      values: |
+        persistence:
+          config:
+            enabled: true
+            existingClaim: tautulli
+        ingress:
+          main:
+            enabled: true
+            annotations:
+            hosts:
+            - host: ttl.w00t.cloud
+              paths:
+              - path: /
+                pathType: Prefix
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

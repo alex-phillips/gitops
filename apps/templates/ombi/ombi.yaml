@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ombi
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  namespace: argo-cd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: media
+  project: default
+  source:
+    path: charts/stable/ombi
+    repoURL: https://github.com/k8s-at-home/charts
+    targetRevision: HEAD
+    helm:
+      values: |
+        image:
+          tag: latest
+        env:
+          PUID: 1000
+          PGID: 1000
+          TZ: America/New_York
+        persistence:
+          config:
+            enabled: true
+            existingClaim: ombi
+        ingress:
+          main:
+            enabled: true
+            hosts:
+            - host: request.w00t.cloud
+              paths:
+              - path: /
+                pathType: Prefix
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
