@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: media
+    namespace: apps
   project: default
   source:
     path: charts/stable/home-assistant
@@ -25,6 +25,10 @@ spec:
           config:
             enabled: true
             existingClaim: home-assistant
+          node-red:
+            enabled: true
+            existingClaim: node-red
+            mountPath: '-'
         ingress:
           main:
             enabled: true
@@ -33,6 +37,36 @@ spec:
               paths:
               - path: /
                 pathType: Prefix
+          node-red:
+            enabled: true
+            primary: false
+            hosts:
+            - host: node.w00t.cloud
+              paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  name: home-assistant-node-red
+                  port: 1880
+        service:
+          node-red:
+            enabled: true
+            ports:
+              node-red-http:
+                enabled: true
+                port: 1880
+                protocol: HTTP
+        additionalContainers:
+          - name: node-red
+            image: nodered/node-red
+            env:
+              - name: TZ
+                value: America/New_York
+            ports:
+              - containerPort: 1880
+            volumeMounts:
+              - mountPath: /data
+                name: node-red
   syncPolicy:
     automated:
       prune: true
