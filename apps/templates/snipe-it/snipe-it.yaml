@@ -39,6 +39,35 @@ spec:
               paths:
               - path: /
                 pathType: Prefix
+        additionalContainers:
+          - name: duplicacy
+            image: alexphillips/duplicacy
+            env:
+              - name: TZ
+                value: America/New_York
+              - name: SCHEDULE
+                value: "15 3 * * *"
+              - name: BACKUP_NAME
+                value: gcd-snipe-it
+              - name: BACKUP_LOCATION
+                value: gcd://duplicacy_backup/snipe-it
+              - name: HC_API_URL
+                value: https://hc.w00t.cloud/ping
+              - name: CHECK_UUID
+                value: 0ee715f6-f491-41a6-a2f6-a57421e34dde
+              - name: DUPLICACY_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: duplicacy
+                    key: password
+              - name: GCD_TOKEN
+                valueFrom:
+                  secretKeyRef:
+                    name: duplicacy
+                    key: gcd_token
+            volumeMounts:
+              - mountPath: /data
+                name: config
   syncPolicy:
     automated:
       prune: true

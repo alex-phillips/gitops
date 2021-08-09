@@ -33,6 +33,35 @@ spec:
               paths:
               - path: /
                 pathType: Prefix
+        additionalContainers:
+          - name: duplicacy
+            image: alexphillips/duplicacy
+            env:
+              - name: TZ
+                value: America/New_York
+              - name: SCHEDULE
+                value: "30 22 * * *"
+              - name: BACKUP_NAME
+                value: gcd-mealie
+              - name: BACKUP_LOCATION
+                value: gcd://duplicacy_backup/mealie
+              - name: HC_API_URL
+                value: https://hc.w00t.cloud/ping
+              - name: CHECK_UUID
+                value: c6d457e5-08c3-4b87-b502-839771eb5183
+              - name: DUPLICACY_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: duplicacy
+                    key: password
+              - name: GCD_TOKEN
+                valueFrom:
+                  secretKeyRef:
+                    name: duplicacy
+                    key: gcd_token
+            volumeMounts:
+              - mountPath: /data
+                name: config
   syncPolicy:
     automated:
       prune: true

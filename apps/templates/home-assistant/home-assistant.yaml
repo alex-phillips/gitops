@@ -33,6 +33,35 @@ spec:
               paths:
               - path: /
                 pathType: Prefix
+        additionalContainers:
+          - name: duplicacy
+            image: alexphillips/duplicacy
+            env:
+              - name: TZ
+                value: America/New_York
+              - name: SCHEDULE
+                value: "30 0 * * *"
+              - name: BACKUP_NAME
+                value: gcd-homeassistant
+              - name: BACKUP_LOCATION
+                value: gcd://duplicacy_backup/homeassistant
+              - name: HC_API_URL
+                value: https://hc.w00t.cloud/ping
+              - name: CHECK_UUID
+                value: 7213e9b6-c993-4a58-a747-57022c45ce92
+              - name: DUPLICACY_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: duplicacy
+                    key: password
+              - name: GCD_TOKEN
+                valueFrom:
+                  secretKeyRef:
+                    name: duplicacy
+                    key: gcd_token
+            volumeMounts:
+              - mountPath: /data
+                name: config
   syncPolicy:
     automated:
       prune: true

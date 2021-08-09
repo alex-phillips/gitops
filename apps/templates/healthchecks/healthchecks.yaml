@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vaultwarden
+  name: healthchecks
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   namespace: argo-cd
@@ -11,31 +11,32 @@ spec:
     namespace: apps
   project: default
   source:
-    path: charts/stable/vaultwarden
+    path: charts/stable/healthchecks
     repoURL: https://github.com/k8s-at-home/charts
     targetRevision: HEAD
     helm:
       values: |
         image:
+          repository: ghcr.io/linuxserver/healthchecks
           tag: latest
         env:
+          PGID: 1000
+          PUID: 1000
           TZ: America/New_York
-          DATA_FOLDER: config
-          SIGNUPS_ALLOWED: "false"
+          SITE_ROOT: /
+          SITE_NAME: w00t.cloud
         persistence:
           config:
             enabled: true
-            existingClaim: vaultwarden
+            existingClaim: healthchecks
         ingress:
           main:
             enabled: true
             hosts:
-            - host: bw.w00t.cloud
+            - host: hc.w00t.cloud
               paths:
               - path: /
                 pathType: Prefix
-                service:
-                  port: 80
         additionalContainers:
           - name: duplicacy
             image: alexphillips/duplicacy
@@ -43,15 +44,15 @@ spec:
               - name: TZ
                 value: America/New_York
               - name: SCHEDULE
-                value: "00 11 * * *"
+                value: "30 01 * * *"
               - name: BACKUP_NAME
-                value: gcd-vaultwarden
+                value: gcd-healthchecks
               - name: BACKUP_LOCATION
-                value: gcd://duplicacy_backup/vaultwarden
+                value: gcd://duplicacy_backup/healthchecks
               - name: HC_API_URL
                 value: https://hc.w00t.cloud/ping
               - name: CHECK_UUID
-                value: f7a54103-fbeb-4747-be31-c1e1ef3b83a1
+                value: 233b56e0-a601-41ab-b8c7-54d6694ba973
               - name: DUPLICACY_PASSWORD
                 valueFrom:
                   secretKeyRef:
