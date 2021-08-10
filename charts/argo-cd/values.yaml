@@ -2,7 +2,7 @@ argo-cd:
   installCRDs: false
   global:
     image:
-      tag: v3.10.2
+      tag: v2.0.5
   dex:
     enabled: false
   server:
