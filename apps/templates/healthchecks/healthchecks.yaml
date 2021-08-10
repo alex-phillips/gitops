@@ -23,8 +23,8 @@ spec:
           PGID: 1000
           PUID: 1000
           TZ: America/New_York
-          SITE_ROOT: /
           SITE_NAME: w00t.cloud
+          SITE_ROOT: https://hc.w00t.cloud
         persistence:
           config:
             enabled: true
