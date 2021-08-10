@@ -33,6 +33,12 @@ spec:
               paths:
               - path: /
                 pathType: Prefix
+        addons:
+          codeserver:
+            enabled: true
+            volumeMounts:
+              - mountPath: /data
+                name: config
         additionalContainers:
           - name: duplicacy
             image: alexphillips/duplicacy
