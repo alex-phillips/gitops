@@ -16,6 +16,9 @@ spec:
     targetRevision: HEAD
     helm:
       values: |
+        controller:
+          labels:
+            pvc: "true"
         image:
           tag: latest
         env:

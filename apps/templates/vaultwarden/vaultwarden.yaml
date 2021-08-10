@@ -16,6 +16,9 @@ spec:
     targetRevision: HEAD
     helm:
       values: |
+        controller:
+          labels:
+            pvc: "true"
         image:
           tag: latest
         env:
@@ -65,7 +68,3 @@ spec:
             volumeMounts:
               - mountPath: /data
                 name: config
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true

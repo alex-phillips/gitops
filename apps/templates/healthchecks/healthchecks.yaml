@@ -16,6 +16,9 @@ spec:
     targetRevision: HEAD
     helm:
       values: |
+        controller:
+          labels:
+            pvc: "true"
         image:
           repository: ghcr.io/linuxserver/healthchecks
           tag: latest
@@ -66,7 +69,3 @@ spec:
             volumeMounts:
               - mountPath: /data
                 name: config
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true

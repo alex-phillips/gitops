@@ -18,7 +18,7 @@ spec:
       values: |
         controller:
           labels:
-            nfs: "true"
+            pvc: "true"
         persistence:
           config:
             enabled: true

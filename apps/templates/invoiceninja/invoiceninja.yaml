@@ -1,66 +1,65 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: invoiceninja
-#   finalizers:
-#     - resources-finalizer.argocd.argoproj.io
-#   namespace: argo-cd
-# spec:
-#   destination:
-#     server: https://kubernetes.default.svc
-#     namespace: apps
-#   project: default
-#   source:
-#     path: charts/invoiceninja
-#     repoURL: https://github.com/alex-phillips/helm-charts
-#     targetRevision: HEAD
-#     helm:
-#       values: |
-#         persistence:
-#           config:
-#             enabled: true
-#             existingClaim: invoiceninja
-#         ingress:
-#           main:
-#             enabled: true
-#             annotations:
-#               nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-#               ingress.kubernetes.io/protocol: https
-#             hosts:
-#             - host: invoice.w00t.cloud
-#               paths:
-#               - path: /
-#                 pathType: Prefix
-#         additionalContainers:
-#           - name: duplicacy
-#             image: alexphillips/duplicacy
-#             env:
-#               - name: TZ
-#                 value: America/New_York
-#               - name: SCHEDULE
-#                 value: "45 23 * * *"
-#               - name: BACKUP_NAME
-#                 value: gcd-invoiceninja
-#               - name: BACKUP_LOCATION
-#                 value: gcd://duplicacy_backup/invoiceninja
-#               - name: HC_API_URL
-#                 value: https://hc.w00t.cloud/ping
-#               - name: CHECK_UUID
-#                 value: e28d1ffa-e0a5-4fb5-afa9-f3e3d3fb6a34
-#               - name: DUPLICACY_PASSWORD
-#                 valueFrom:
-#                   secretKeyRef:
-#                     name: duplicacy
-#                     key: password
-#               - name: GCD_TOKEN
-#                 valueFrom:
-#                   secretKeyRef:
-#                     name: duplicacy
-#                     key: gcd_token
-#             volumeMounts:
-#               - mountPath: /data
-#                 name: config
-#   syncPolicy:
-#     automated:
-#       prune: true
-#       selfHeal: true
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: invoiceninja
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  namespace: argo-cd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apps
+  project: default
+  source:
+    path: charts/invoiceninja
+    repoURL: https://github.com/alex-phillips/helm-charts
+    targetRevision: HEAD
+    helm:
+      values: |
+        controller:
+          labels:
+            pvc: "true"
+        persistence:
+          config:
+            enabled: true
+            existingClaim: invoiceninja
+        ingress:
+          main:
+            enabled: true
+            annotations:
+              nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+              ingress.kubernetes.io/protocol: https
+            hosts:
+            - host: invoice.w00t.cloud
+              paths:
+              - path: /
+                pathType: Prefix
+        additionalContainers:
+          - name: duplicacy
+            image: alexphillips/duplicacy
+            env:
+              - name: TZ
+                value: America/New_York
+              - name: SCHEDULE
+                value: "45 23 * * *"
+              - name: BACKUP_NAME
+                value: gcd-invoiceninja
+              - name: BACKUP_LOCATION
+                value: gcd://duplicacy_backup/invoiceninja
+              - name: HC_API_URL
+                value: https://hc.w00t.cloud/ping
+              - name: CHECK_UUID
+                value: e28d1ffa-e0a5-4fb5-afa9-f3e3d3fb6a34
+              - name: DUPLICACY_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: duplicacy
+                    key: password
+              - name: GCD_TOKEN
+                valueFrom:
+                  secretKeyRef:
+                    name: duplicacy
+                    key: gcd_token
+            volumeMounts:
+              - mountPath: /data
+                name: config

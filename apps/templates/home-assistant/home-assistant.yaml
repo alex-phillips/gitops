@@ -16,6 +16,9 @@ spec:
     targetRevision: HEAD
     helm:
       values: |
+        controller:
+          labels:
+            pvc: "true"
         image:
           repository: ghcr.io/home-assistant/home-assistant
           tag: latest
@@ -68,7 +71,3 @@ spec:
             volumeMounts:
               - mountPath: /data
                 name: config
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
