@@ -1,0 +1,9 @@
+[
+  {
+    "name": "haste-server",
+    "cluster": "in-cluster",
+    "namespace": "apps",
+    "path": "cluster-apps/haste-server",
+    "valueFile": ""
+  }
+]
