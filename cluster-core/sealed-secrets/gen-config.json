@@ -3,7 +3,7 @@
     "name": "sealed-secrets",
     "cluster": "in-cluster",
     "namespace": "sealed-secrets",
-    "path": "cluster-apps/sealed-secrets",
+    "path": "cluster-core/sealed-secrets",
     "valueFile": ""
   }
 ]
