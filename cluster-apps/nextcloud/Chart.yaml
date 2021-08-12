@@ -1,0 +1,11 @@
+
+name: nextcloud
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: nextcloud
+    version: 1.0.0
+    repository: https://alex-phillips.github.io/helm-charts
+  - name: onlyoffice-documentserver
+    version: 1.0.0
+    repository: https://alex-phillips.github.io/helm-charts

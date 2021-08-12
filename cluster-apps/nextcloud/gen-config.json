@@ -1,0 +1,9 @@
+[
+  {
+    "name": "nextcloud",
+    "cluster": "in-cluster",
+    "namespace": "apps",
+    "path": "cluster-apps/nextcloud",
+    "valueFile": ""
+  }
+]
