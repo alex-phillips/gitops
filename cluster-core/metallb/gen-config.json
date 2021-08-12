@@ -1,0 +1,9 @@
+[
+  {
+    "name": "metallb",
+    "cluster": "in-cluster",
+    "namespace": "metallb-system",
+    "path": "cluster-core/metallb",
+    "valueFile": ""
+  }
+]
