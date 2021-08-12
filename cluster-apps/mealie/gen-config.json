@@ -1,0 +1,9 @@
+[
+  {
+    "name": "mealie",
+    "cluster": "in-cluster",
+    "namespace": "apps",
+    "path": "cluster-apps/mealie",
+    "valueFile": ""
+  }
+]
