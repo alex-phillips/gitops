@@ -1,0 +1,9 @@
+[
+  {
+    "name": "ingress-nginx",
+    "cluster": "in-cluster",
+    "namespace": "ingress-nginx",
+    "path": "cluster-core/ingress-nginx",
+    "valueFile": ""
+  }
+]
