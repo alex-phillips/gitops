@@ -1,0 +1,9 @@
+[
+  {
+    "name": "healthchecks",
+    "cluster": "in-cluster",
+    "namespace": "apps",
+    "path": "cluster-apps/healthchecks",
+    "valueFile": ""
+  }
+]

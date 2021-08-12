@@ -1,0 +1,9 @@
+[
+  {
+    "name": "thelounge",
+    "cluster": "in-cluster",
+    "namespace": "apps",
+    "path": "cluster-apps/thelounge",
+    "valueFile": ""
+  }
+]

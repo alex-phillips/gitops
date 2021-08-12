@@ -1,0 +1,9 @@
+[
+  {
+    "name": "snipe-it",
+    "cluster": "in-cluster",
+    "namespace": "apps",
+    "path": "cluster-apps/snipe-it",
+    "valueFile": ""
+  }
+]

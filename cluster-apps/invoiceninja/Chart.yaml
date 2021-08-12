@@ -1,0 +1,8 @@
+
+name: invoiceninja
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: invoiceninja
+    version: 1.0.0
+    repository: https://alex-phillips.github.io/helm-charts

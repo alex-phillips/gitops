@@ -1,0 +1,9 @@
+[
+  {
+    "name": "invoiceninja",
+    "cluster": "in-cluster",
+    "namespace": "apps",
+    "path": "cluster-apps/invoiceninja",
+    "valueFile": ""
+  }
+]

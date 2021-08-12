@@ -1,0 +1,9 @@
+[
+  {
+    "name": "home-assistant",
+    "cluster": "in-cluster",
+    "namespace": "apps",
+    "path": "cluster-apps/home-assistant",
+    "valueFile": ""
+  }
+]
