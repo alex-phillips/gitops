@@ -1,0 +1,9 @@
+[
+  {
+    "name": "sealed-secrets",
+    "cluster": "in-cluster",
+    "namespace": "sealed-secrets",
+    "path": "cluster-apps/sealed-secrets",
+    "valueFile": ""
+  }
+]
