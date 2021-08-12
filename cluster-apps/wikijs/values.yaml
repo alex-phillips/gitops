@@ -1,0 +1,29 @@
+wikijs:
+  controller:
+    labels:
+      pvc: "true"
+  image:
+    tag: latest
+  env:
+    TZ: America/New_York
+    PUID: 1000
+    PGID: 1000
+  persistence:
+    config:
+      enabled: true
+      type: custom
+      volumeSpec:
+        secret:
+          secretName: wikijs-config
+          items:
+            - key: config
+              path: config.yml
+  ingress:
+    main:
+      enabled: true
+      annotations:
+      hosts:
+      - host: wikijs.w00t.cloud
+        paths:
+        - path: /
+          pathType: Prefix

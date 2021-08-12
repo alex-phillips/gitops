@@ -1,0 +1,9 @@
+[
+  {
+    "name": "photoprism",
+    "cluster": "in-cluster",
+    "namespace": "media",
+    "path": "cluster-apps/photoprism",
+    "valueFile": ""
+  }
+]

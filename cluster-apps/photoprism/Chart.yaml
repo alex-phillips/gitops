@@ -1,0 +1,8 @@
+
+name: photoprism
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: photoprism
+    version: 3.0.0
+    repository: https://k8s-at-home.com/charts

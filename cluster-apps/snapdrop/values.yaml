@@ -1,0 +1,10 @@
+snapdrop:
+  ingress:
+    main:
+      enabled: true
+      annotations:
+      hosts:
+      - host: drop.w00t.cloud
+        paths:
+        - path: /
+          pathType: Prefix
