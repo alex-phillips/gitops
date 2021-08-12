@@ -20,7 +20,7 @@ snipe-it:
         - path: /
           pathType: Prefix
   additionalContainers:
-    - name: duplicacy
+    duplicacy:
       image: alexphillips/duplicacy
       env:
         - name: TZ

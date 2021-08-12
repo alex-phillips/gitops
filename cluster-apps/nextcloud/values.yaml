@@ -33,7 +33,7 @@ nextcloud:
         - path: /
           pathType: Prefix
   additionalContainers:
-    - name: redis
+    redis:
       image: redis:alpine
       ports:
         - containerPort: 6379

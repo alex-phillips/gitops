@@ -26,7 +26,7 @@ home-assistant:
         - mountPath: /data
           name: config
   additionalContainers:
-    - name: duplicacy
+    duplicacy:
       image: alexphillips/duplicacy
       env:
         - name: TZ
