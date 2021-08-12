@@ -1,0 +1,9 @@
+[
+  {
+    "name": "longhorn",
+    "cluster": "in-cluster",
+    "namespace": "longhorn-system",
+    "path": "cluster-core/longhorn",
+    "valueFile": ""
+  }
+]
