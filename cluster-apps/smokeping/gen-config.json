@@ -1,0 +1,9 @@
+[
+  {
+    "name": "smokeping",
+    "cluster": "in-cluster",
+    "namespace": "apps",
+    "path": "cluster-apps/smokeping",
+    "valueFile": ""
+  }
+]

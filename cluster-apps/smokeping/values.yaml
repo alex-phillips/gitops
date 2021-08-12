@@ -1,0 +1,51 @@
+smokeping:
+  image:
+    tag: latest
+  env:
+    PUID: 1000
+    PGID: 1000
+    TZ: America/New_York
+  persistence:
+    config:
+      enabled: true
+      existingClaim: smokeping-config
+    data:
+      enabled: true
+      existingClaim: smokeping-data
+  ingress:
+    main:
+      enabled: true
+      hosts:
+      - host: ping.w00t.cloud
+        paths:
+        - path: /
+          pathType: Prefix
+  additionalContainers:
+    - name: duplicacy
+      image: alexphillips/duplicacy
+      env:
+        - name: TZ
+          value: America/New_York
+        - name: SCHEDULE
+          value: "45 0 * * *"
+        - name: BACKUP_NAME
+          value: gcd-smokeping
+        - name: BACKUP_LOCATION
+          value: gcd://duplicacy_backup/smokeping
+        - name: HC_API_URL
+          value: https://hc.w00t.cloud/ping
+        - name: CHECK_UUID
+          value: 1b4c1bb1-5172-4a3a-ab66-c1c15a76cb5b
+        - name: DUPLICACY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: password
+        - name: GCD_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: gcd_token
+      volumeMounts:
+        - mountPath: /data
+          name: config
