@@ -4,6 +4,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: mealie
   namespace: apps
+  labels:
+    argocd.argoproj.io/instance: mealie
 spec:
   accessModes:
     - ReadWriteOnce
