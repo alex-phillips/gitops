@@ -1,0 +1,9 @@
+[
+  {
+    "name": "ombi",
+    "cluster": "in-cluster",
+    "namespace": "media",
+    "path": "cluster-apps/ombi",
+    "valueFile": ""
+  }
+]

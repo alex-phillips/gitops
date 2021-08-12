@@ -1,0 +1,9 @@
+[
+  {
+    "name": "vaultwarden",
+    "cluster": "in-cluster",
+    "namespace": "apps",
+    "path": "cluster-apps/vaultwarden",
+    "valueFile": ""
+  }
+]

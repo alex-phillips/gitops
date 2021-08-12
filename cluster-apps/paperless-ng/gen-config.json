@@ -1,0 +1,9 @@
+[
+  {
+    "name": "paperless-ng",
+    "cluster": "in-cluster",
+    "namespace": "apps",
+    "path": "cluster-apps/paperless-ng",
+    "valueFile": ""
+  }
+]
