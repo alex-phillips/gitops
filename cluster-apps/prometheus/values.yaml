@@ -1,0 +1,9 @@
+prometheus:
+  pushgateway:
+    enabled: false
+  alertmanager:
+    enabled: false
+  server:
+    retention: 14d
+    persistentVolume:
+      existingClaim: prometheus-server
