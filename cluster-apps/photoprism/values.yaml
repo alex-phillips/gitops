@@ -46,7 +46,6 @@ photoprism:
       enabled: true
       type: custom
       readOnly: true
-      accessMode: ReadOnlyMany
       volumeSpec:
         nfs:
           server: 192.168.1.91
