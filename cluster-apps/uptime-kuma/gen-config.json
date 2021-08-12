@@ -1,0 +1,9 @@
+[
+  {
+    "name": "uptime-kuma",
+    "cluster": "in-cluster",
+    "namespace": "apps",
+    "path": "cluster-apps/uptime-kuma",
+    "valueFile": ""
+  }
+]
