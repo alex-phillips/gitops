@@ -42,7 +42,7 @@ spec:
         #   runAsGroup: 1000
         #   fsGroup: 1000
         additionalContainers:
-          - name: duplicacy
+          duplicacy
             image: alexphillips/duplicacy
             env:
               - name: TZ
