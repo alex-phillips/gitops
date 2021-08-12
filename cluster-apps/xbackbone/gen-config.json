@@ -1,0 +1,9 @@
+[
+  {
+    "name": "xbackbone",
+    "cluster": "in-cluster",
+    "namespace": "apps",
+    "path": "cluster-apps/xbackbone",
+    "valueFile": ""
+  }
+]

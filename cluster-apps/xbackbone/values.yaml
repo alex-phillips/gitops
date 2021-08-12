@@ -1,0 +1,16 @@
+xbackbone:
+  controller:
+    labels:
+      pvc: "true"
+  persistence:
+    config:
+      enabled: true
+      existingClaim: xbackbone
+  ingress:
+    main:
+      enabled: true
+      hosts:
+      - host: share.w00t.cloud
+        paths:
+        - path: /
+          pathType: Prefix
