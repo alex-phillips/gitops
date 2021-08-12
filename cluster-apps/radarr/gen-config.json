@@ -1,0 +1,9 @@
+[
+  {
+    "name": "radarr",
+    "cluster": "in-cluster",
+    "namespace": "media",
+    "path": "cluster-apps/radarr",
+    "valueFile": ""
+  }
+]

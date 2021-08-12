@@ -1,0 +1,55 @@
+radarr:
+  controller:
+    labels:
+      nfs: "true"
+      pvc: "true"
+  persistence:
+    config:
+      enabled: true
+      existingClaim: radarr-config
+    media:
+      enabled: true
+      type: custom
+      volumeSpec:
+        nfs:
+          server: 192.168.1.91
+          path: /mnt/storage
+      mountPath: /mnt/storage
+  ingress:
+    main:
+      enabled: true
+      annotations:
+      hosts:
+      - host: rdr.w00t.cloud
+        paths:
+        - path: /
+          pathType: Prefix
+  additionalContainers:
+    - name: duplicacy
+      image: alexphillips/duplicacy
+      env:
+        - name: TZ
+          value: America/New_York
+        - name: SCHEDULE
+          value: "45 0 * * *"
+        - name: BACKUP_NAME
+          value: gcd-radarr
+        - name: BACKUP_LOCATION
+          value: gcd://duplicacy_backup/radarr
+        - name: HC_API_URL
+          value: https://hc.w00t.cloud/ping
+        - name: CHECK_UUID
+          value: f3888abb-4149-416a-a066-4b451e27eb25
+        - name: DUPLICACY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: password
+        - name: GCD_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: gcd_token
+      volumeMounts:
+        - mountPath: /data
+          name: config

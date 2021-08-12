@@ -1,0 +1,9 @@
+[
+  {
+    "name": "sonarr",
+    "cluster": "in-cluster",
+    "namespace": "media",
+    "path": "cluster-apps/sonarr",
+    "valueFile": ""
+  }
+]
