@@ -3,10 +3,14 @@ kind: Service
 metadata:
   name: frigate-rtmp
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app.kubernetes.io/instance: frigate
   ports:
-      # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
-    - port: 1935
+    - protocol: TCP
+      port: 1935
       targetPort: 1935
+status:
+  loadBalancer:
+    ingress:
+    - ip: 192.168.1.133
