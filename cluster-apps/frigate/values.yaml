@@ -26,11 +26,23 @@ frigate:
           inputs:
             - path: rtsp://root:phillips15@192.168.1.71/live
               roles:
+                - rtmp
                 - detect
+      lucys_room:
+        ffmpeg:
+          inputs:
+            - path: rtsp://root:phillips15@192.168.1.72/live
+              roles:
+                - rtmp
+      aris_room:
+        ffmpeg:
+          inputs:
+            - path: rtsp://root:phillips15@192.168.1.73/live
+              roles:
                 - rtmp
         width: 1920
         height: 1080
-        fps: 10
+        fps: 25
 
     detectors:
     #   # coral:
