@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frigate
+  namespace: apps
+spec:
+  rules:
+    - host: frigate-rtmp.w00t.cloud
+      http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: frigate
+                port:
+                  name: rtmp
