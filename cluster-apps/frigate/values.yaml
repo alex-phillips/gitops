@@ -28,12 +28,18 @@ frigate:
               roles:
                 - rtmp
                 - detect
+        width: 1920
+        height: 1080
+        fps: 25
       lucys_room:
         ffmpeg:
           inputs:
             - path: rtsp://root:phillips15@192.168.1.72/live
               roles:
                 - rtmp
+        width: 1920
+        height: 1080
+        fps: 25
       aris_room:
         ffmpeg:
           inputs:
