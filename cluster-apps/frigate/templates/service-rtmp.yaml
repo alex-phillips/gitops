@@ -6,7 +6,8 @@ metadata:
   name: frigate-rtmp
   namespace: apps
 spec:
-  loadBalancerIP: 192.168.1.133
+  externalIPs:
+    - 192.168.1.133
   externalTrafficPolicy: Local
   ports:
   - name: rtmp
