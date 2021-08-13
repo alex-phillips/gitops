@@ -1,16 +1,18 @@
 apiVersion: v1
 kind: Service
 metadata:
+  labels:
+    app.kubernetes.io/instance: frigate
   name: frigate-rtmp
+  namespace: apps
 spec:
-  type: LoadBalancer
+  loadBalancerIP: 192.168.1.133
+  externalTrafficPolicy: Local
+  ports:
+  - name: rtmp
+    port: 1935
+    protocol: TCP
+    targetPort: rtmp
   selector:
     app.kubernetes.io/instance: frigate
-  ports:
-    - protocol: TCP
-      port: 1935
-      targetPort: 1935
-status:
-  loadBalancer:
-    ingress:
-    - ip: 192.168.1.133
+  type: LoadBalancer
