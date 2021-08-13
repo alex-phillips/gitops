@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: frigate-rtmp
 spec:
+  type: NodePort
   selector:
     app: frigate
-  type: LoadBalancer
   ports:
-    - protocol: TCP
-      port: 1935
+      # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
+    - port: 1935
       targetPort: 1935
