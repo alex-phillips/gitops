@@ -1,0 +1,10 @@
+frigate:
+  config:
+    valueFrom:
+      secretKeyRef:
+        name: frigate
+        key: config
+  ingress:
+    enabled: true
+    hosts:
+      - frigate.w00t.cloud

@@ -1,0 +1,7 @@
+name: frigate
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: frigate
+    version: 5.0.2
+    repository: https://blakeblackshearm/.github.io/blakeshome-charts
