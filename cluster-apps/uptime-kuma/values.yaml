@@ -39,4 +39,4 @@ uptime-kuma:
               key: gcd_token
       volumeMounts:
         - mountPath: /data
-          name: config
+          name: data
