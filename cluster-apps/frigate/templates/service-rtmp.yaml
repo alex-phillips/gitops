@@ -8,6 +8,7 @@ metadata:
 spec:
   externalIPs:
     - 192.168.1.133
+  LoadBalancerIP: 192.168.1.133
   externalTrafficPolicy: Local
   ports:
   - name: rtmp
