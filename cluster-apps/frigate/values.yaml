@@ -1,9 +1,56 @@
 frigate:
-  config:
-    valueFrom:
-      secretKeyRef:
-        name: frigate
-        key: config
+  config: |
+    mqtt:
+      # Required: host name
+      host: 192.168.1.91
+      # Optional: port (default: shown below)
+      port: 1883
+      # Optional: topic prefix (default: shown below)
+      # WARNING: must be unique if you are running multiple instances
+      topic_prefix: frigate
+      # Optional: client id (default: shown below)
+      # WARNING: must be unique if you are running multiple instances
+      client_id: frigate
+      # Optional: user
+      user: homeassistant
+      # Optional: password
+      # NOTE: Environment variables that begin with 'FRIGATE_' may be referenced in {}.
+      # eg. password: '{FRIGATE_MQTT_PASSWORD}'
+      password: HdFZZ8pomFNx67YKjQC8vcjtRdna6Yr
+      # Optional: interval in seconds for publishing stats (default: shown below)
+      stats_interval: 60
+
+    cameras:
+      living_room:
+        ffmpeg:
+          inputs:
+            - path: rtsp://root:phillips15@192.168.1.71/live
+              roles:
+                - detect
+                - rtmp
+        width: 1920
+        height: 1080
+        fps: 10
+
+    # detectors:
+    #   # coral:
+    #   # type: edgetpu
+    #   # device: usb
+    #   cpu1:
+    #   type: cpu
+    # cameras:
+    # # Name of your camera
+    # front_door:
+    # ffmpeg:
+    # inputs:
+    # - path: rtsp://{FRIGATE_RSTP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@10.0.10.10:554/cam/realmonitor?channel=1&subtype=2
+    # roles:
+    # - detect
+    # - rtmp
+    # width: 1280
+    # height: 720
+    # fps: 5
+
   ingress:
     enabled: true
     hosts:
