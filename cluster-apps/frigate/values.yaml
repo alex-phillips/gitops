@@ -32,12 +32,12 @@ frigate:
         height: 1080
         fps: 10
 
-    # detectors:
+    detectors:
     #   # coral:
     #   # type: edgetpu
     #   # device: usb
-    #   cpu1:
-    #   type: cpu
+      cpu1:
+        type: cpu
     # cameras:
     # # Name of your camera
     # front_door:
