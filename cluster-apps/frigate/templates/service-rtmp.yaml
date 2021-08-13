@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frigate-rtmp
+spec:
+  selector:
+    app: frigate
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 1935
+      targetPort: 1935
