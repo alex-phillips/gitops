@@ -30,7 +30,7 @@ spec:
         name: '{{ cluster }}'
       syncPolicy:
         automated:
-          prune: true
+          # prune: true
           selfHeal: true
         syncOptions:
           - ApplyOutOfSyncOnly=true
