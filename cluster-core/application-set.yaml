@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-core
+spec:
+  generators:
+    - git:
+        repoURL: https://git.w00t.cloud/alexphillips/k8s.git
+        revision: HEAD
+        files:
+          - path: "cluster-core/**/gen-config.json"
+  template:
+    metadata:
+      name: '{{ name }}'
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: '/{{ path }}'
+        argocd.argoproj.io/sync-options: Prune=false
+    spec:
+      project: default
+      source:
+        path: '{{ path }}'
+        targetRevision: HEAD
+        repoURL: https://git.w00t.cloud/alexphillips/k8s.git
+        helm:
+          valueFiles:
+            - values.yaml
+            - '{{ valueFile }}'
+      destination:
+        namespace: '{{ namespace }}'
+        name: '{{ cluster }}'
+      syncPolicy:
+        automated:
+          prune: false
+          selfHeal: true
+        syncOptions:
+          - ApplyOutOfSyncOnly=true
+          - PrunePropagationPolicy=orphan
+          - CreateNamespace=true
