@@ -18,6 +18,10 @@ invoiceninja:
         - path: /
           pathType: Prefix
   additionalContainers:
+    redis:
+      image: redis:alpine
+      ports:
+        - containerPort: 6379
     duplicacy:
       image: alexphillips/duplicacy
       env:
