@@ -37,6 +37,13 @@ nextcloud:
       image: redis:alpine
       ports:
         - containerPort: 6379
+  initContainers:
+    config-link:
+      image: busybox
+      command: ["sh", "-c", "mkdir -p /config/www/nextcloud/config; ln -sf /data/config.php /config/www/nextcloud/config/config.php"]
+      volumeMounts:
+      - name: config
+        mountPath: /config
 onlyoffice-documentserver:
   env:
     JWT_ENABLED: 'true'
