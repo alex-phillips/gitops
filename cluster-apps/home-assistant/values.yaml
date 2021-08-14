@@ -25,6 +25,13 @@ home-assistant:
       volumeMounts:
         - mountPath: /data
           name: config
+      ingress:
+        enabled: true
+        hosts:
+        - host: ha-code.w00t.cloud
+          paths:
+          - path: /
+            pathType: Prefix
   additionalContainers:
     duplicacy:
       image: alexphillips/duplicacy
