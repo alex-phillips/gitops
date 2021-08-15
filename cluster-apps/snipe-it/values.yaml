@@ -5,11 +5,17 @@ snipe-it:
     MYSQL_PORT_3306_TCP_PORT: 3306
     MYSQL_DATABASE: snipeit
     MYSQL_USER: snipeit
-    MYSQL_PASSWORD: ztdrvqAdQYDfxbUd
+    MYSQL_PASSWORD:
+      valueFrom:
+        secretKeyRef:
+          name: snipe-it
+          key: mysql_password
   persistence:
     config:
       enabled: true
-      existingClaim: snipe-it
+      retain: true
+      size: 1Gi
+      storageClass: longhorn
   ingress:
     main:
       enabled: true

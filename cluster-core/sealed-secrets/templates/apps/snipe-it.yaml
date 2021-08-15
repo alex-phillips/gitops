@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: snipe-it
+  namespace: apps
+spec:
+  encryptedData:
+    mysql_password: AgAo3kAzhgU50Q95z0r3FuCx4jaSTuZJXZ03EMhQ5gGW7o+wg+c+HvJg00yEUfejftMgVgXGHb+3wrRBGA4iB/+JA0R78WxEXKFOE7KpA5ylumNtt2NxDogXk1IgVc31FCce9BR1T8oZYI0OPAvEtGbLuh3GebTmpnHmGpXr4/6d4NeNfVjsgYrIofrSHmsCyTrs886rlrhLrvkUl9bIFtuZE271SfRenOjHTa5gwKdt46ohmS7Hwi37hJ1DA+BJuvdi9ZZ7fQ1y3c5Rdw/4/v5f6zYDSkz9mG0wUXAMfhuGEeqQeDvAGDH+ZLyLxS+xuXQm7VPB5PHceHtDKOwDXqeC/kHebuiLCjF1XOEtjKiIVDsl5lkPaefR0CynUqe9jsj0f564bFcgyGDRTyadIIM1mRlPtpH4dfUPUwJKUjzhV9ke0iM1QbD4uHApbmo32OXynjwx2r99O60VwgeJ89YppNH11Z1xFC7jfvvurbp8+50H2fvmOf7mVeO4S64mwMnF/geX6wtNNxFHYC2sTJBGqbErBCg167Kw+XNN4ocBrpBFRJUETl3s+kayVHAQLzqnhS6GYTha03AUwZYW5HM1LQ/5e6UXKHpCv2FPWxI7wAXHTultE5xom9OmhBj70yr3vU9gPj7PDZ6O7ggf5ri2P4PI94o+uK080uVNHttKacTcBOILS8+OGTQ+s8aGBFsdHKSLOPhS15tXJsz419N/
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: snipe-it
+      namespace: apps
+
