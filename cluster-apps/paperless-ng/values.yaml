@@ -12,7 +12,9 @@ paperless-ng:
   persistence:
     config:
       enabled: true
-      existingClaim: paperless-ng
+      retain: true
+      size: 1Gi
+      storageClass: longhorn
     data:
       enabled: true
       type: custom
