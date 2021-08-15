@@ -5,7 +5,9 @@ tautulli:
   persistence:
     config:
       enabled: true
-      existingClaim: tautulli
+      retain: true
+      size: 5Gi
+      storageClass: longhorn
   ingress:
     main:
       enabled: true
