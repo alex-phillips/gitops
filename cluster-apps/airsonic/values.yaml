@@ -13,6 +13,7 @@ airsonic:
     config:
       enabled: true
       retain: true
+      storageClass: longhorn
     music:
       enabled: true
       readOnly: true
