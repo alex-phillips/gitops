@@ -8,6 +8,7 @@ radarr:
       enabled: true
       retain: true
       size: 5Gi
+      accessMode: ReadWriteOnce
       storageClass: longhorn
     media:
       enabled: true

@@ -7,6 +7,7 @@ xbackbone:
       enabled: true
       retain: true
       size: 10Gi
+      accessMode: ReadWriteOnce
       storageClass: longhorn
   ingress:
     main:

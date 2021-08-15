@@ -8,6 +8,7 @@ sonarr:
       enabled: true
       retain: true
       size: 2Gi
+      accessMode: ReadWriteOnce
       storageClass: longhorn
     media:
       enabled: true

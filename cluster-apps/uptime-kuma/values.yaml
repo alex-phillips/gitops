@@ -4,8 +4,8 @@ uptime-kuma:
       enabled: true
       retain: true
       size: 512Mi
-      storageClass: longhorn
       accessMode: ReadWriteOnce
+      storageClass: longhorn
   ingress:
     main:
       enabled: true

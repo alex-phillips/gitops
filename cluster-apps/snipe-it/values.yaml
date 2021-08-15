@@ -15,6 +15,7 @@ snipe-it:
       enabled: true
       retain: true
       size: 1Gi
+      accessMode: ReadWriteOnce
       storageClass: longhorn
   ingress:
     main:

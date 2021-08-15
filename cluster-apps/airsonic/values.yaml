@@ -12,8 +12,9 @@ airsonic:
     config:
       enabled: true
       retain: true
-      storageClass: longhorn
       size: 256Mi
+      accessMode: ReadWriteOnce
+      storageClass: longhorn
     music:
       enabled: true
       readOnly: true
