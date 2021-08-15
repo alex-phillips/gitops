@@ -16,6 +16,7 @@ smokeping:
       retain: true
       size: 1Gi
       storageClass: longhorn
+      accessMode: ReadWriteOnce
   ingress:
     main:
       enabled: true
