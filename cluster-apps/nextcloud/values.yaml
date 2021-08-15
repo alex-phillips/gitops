@@ -9,7 +9,7 @@ nextcloud:
     config:
       enabled: true
       retain: true
-      size: 5Gi
+      size: 1Gi
       storageClass: longhorn
     data:
       enabled: true
