@@ -15,7 +15,6 @@ node-red:
   ingress:
     main:
       enabled: true
-      annotations:
       hosts:
       - host: node.w00t.cloud
         paths:
