@@ -9,7 +9,9 @@ node-red:
   persistence:
     data:
       enabled: true
-      existingClaim: node-red
+      retain: true
+      size: 50Mi
+      storageClass: longhorn
   ingress:
     main:
       enabled: true
