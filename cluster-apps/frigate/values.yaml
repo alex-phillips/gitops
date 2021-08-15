@@ -30,7 +30,7 @@ frigate:
                 - detect
         width: 1920
         height: 1080
-        fps: 25
+        fps: 15
       lucys_room:
         ffmpeg:
           inputs:
@@ -40,7 +40,7 @@ frigate:
                 - detect
         width: 1920
         height: 1080
-        fps: 25
+        fps: 15
       aris_room:
         ffmpeg:
           inputs:
@@ -50,7 +50,7 @@ frigate:
                 - detect
         width: 1920
         height: 1080
-        fps: 25
+        fps: 15
 
     detectors:
     #   # coral:
