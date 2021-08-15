@@ -6,7 +6,9 @@ sonarr:
   persistence:
     config:
       enabled: true
-      existingClaim: sonarr-config
+      retain: true
+      size: 2Gi
+      storageClass: longhorn
     media:
       enabled: true
       type: custom
