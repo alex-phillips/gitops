@@ -1,0 +1,10 @@
+longhorn:
+  persistence:
+    defaultClass: false
+    defaultClassReplicaCount: 3
+  defaultSettings:
+    defaultLonghornStaticStorageClass: longhorn
+  ingress:
+    ## Set to true to enable ingress record generation
+    enabled: true
+    host: lh.w00t.cloud
