@@ -1,0 +1,9 @@
+[
+  {
+    "name": "airsonic",
+    "cluster": "in-cluster",
+    "namespace": "media",
+    "path": "cluster-apps/airsonic",
+    "valueFile": ""
+  }
+]

@@ -1,0 +1,48 @@
+airsonic:
+  controller:
+    labels:
+      pvc: "true"
+      nfs: "true"
+  image:
+    tag: latest
+  env:
+    TZ: America/New_York
+    PUID: 1000
+    PGID: 1000
+  persistence:
+    config:
+      enabled: true
+      retain: true
+    music:
+      enabled: true
+      readOnly: true
+      type: custom
+      volumeSpec:
+        nfs:
+          server: 192.168.1.91
+          path: /mnt/storage/music/beets/Music
+    playlists:
+      enabled: true
+      readOnly: true
+      type: custom
+      volumeSpec:
+        nfs:
+          server: 192.168.1.91
+          path: /mnt/storage/music/beets/Music/playlists
+    podcasts:
+      enabled: true
+      readOnly: true
+      type: custom
+      volumeSpec:
+        nfs:
+          server: 192.168.1.91
+          path: /mnt/storage/podcasts
+  ingress:
+    main:
+      enabled: true
+      annotations:
+      hosts:
+      - host: as.w00t.cloud
+        paths:
+        - path: /
+          pathType: Prefix
