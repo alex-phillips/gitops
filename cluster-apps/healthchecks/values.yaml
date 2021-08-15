@@ -14,7 +14,9 @@ healthchecks:
   persistence:
     config:
       enabled: true
-      existingClaim: healthchecks
+      retain: true
+      size: 50Mi
+      storageClass: longhorn
   ingress:
     main:
       enabled: true
