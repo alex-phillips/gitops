@@ -8,7 +8,9 @@ nextcloud:
   persistence:
     config:
       enabled: true
-      existingClaim: nextcloud-config
+      retain: true
+      size: 5Gi
+      storageClass: longhorn
     data:
       enabled: true
       type: custom
