@@ -12,7 +12,9 @@ bookstack:
   persistence:
     config:
       enabled: true
-      existingClaim: bookstack
+      retain: true
+      size: 5Gi
+      storageClassName: longhorn
   ingress:
     main:
       enabled: true
