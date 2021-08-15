@@ -11,7 +11,9 @@ vaultwarden:
   persistence:
     config:
       enabled: true
-      existingClaim: vaultwarden
+      retain: true
+      size: 100Mi
+      storageClass: longhorn
   ingress:
     main:
       enabled: true
