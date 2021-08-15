@@ -8,10 +8,14 @@ smokeping:
   persistence:
     config:
       enabled: true
-      existingClaim: smokeping-config
+      retain: true
+      size: 10Mi
+      storageClass: longhorn
     data:
       enabled: true
-      existingClaim: smokeping-data
+      retain: true
+      size: 1Gi
+      storageClass: longhorn
   ingress:
     main:
       enabled: true
