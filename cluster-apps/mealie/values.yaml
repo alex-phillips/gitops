@@ -9,7 +9,9 @@ mealie:
   persistence:
     config:
       enabled: true
+      retain: true
       size: 1Gi
+      storageClass: longhorn
   ingress:
     main:
       enabled: true
