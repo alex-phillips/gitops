@@ -5,7 +5,9 @@ invoiceninja:
   persistence:
     config:
       enabled: true
-      existingClaim: invoiceninja
+      retain: true
+      size: 1Gi
+      storageClass: longhorn
   ingress:
     main:
       enabled: true
