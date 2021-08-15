@@ -14,6 +14,7 @@ airsonic:
       enabled: true
       retain: true
       storageClass: longhorn
+      size: 256Mi
     music:
       enabled: true
       readOnly: true
