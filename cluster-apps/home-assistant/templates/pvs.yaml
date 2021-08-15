@@ -4,6 +4,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: home-assistant
   namespace: apps
+  annotations:
+    "helm.sh/resource-policy": keep
 spec:
   accessModes:
     - ReadWriteOnce

@@ -4,6 +4,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: tautulli
   namespace: media
+  annotations:
+    "helm.sh/resource-policy": keep
 spec:
   accessModes:
     - ReadWriteOnce

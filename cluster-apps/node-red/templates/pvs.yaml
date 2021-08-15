@@ -4,6 +4,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: node-red
   namespace: apps
+  annotations:
+    "helm.sh/resource-policy": keep
 spec:
   accessModes:
     - ReadWriteOnce

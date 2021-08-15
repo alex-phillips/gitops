@@ -4,6 +4,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: smokeping-config
   namespace: apps
+  annotations:
+    "helm.sh/resource-policy": keep
 spec:
   accessModes:
     - ReadWriteOnce
@@ -17,6 +19,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: smokeping-data
   namespace: apps
+  annotations:
+    "helm.sh/resource-policy": keep
 spec:
   accessModes:
     - ReadWriteOnce

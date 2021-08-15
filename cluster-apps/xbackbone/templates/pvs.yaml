@@ -4,6 +4,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: xbackbone
   namespace: apps
+  annotations:
+    "helm.sh/resource-policy": keep
 spec:
   accessModes:
     - ReadWriteOnce
