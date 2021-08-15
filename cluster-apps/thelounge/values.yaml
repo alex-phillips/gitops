@@ -9,7 +9,9 @@ thelounge:
   persistence:
     config:
       enabled: true
-      existingClaim: thelounge
+      retain: true
+      size: 512Mi
+      storageClass: longhorn
   ingress:
     main:
       enabled: true
