@@ -7,8 +7,6 @@ airsonic:
     tag: latest
   env:
     TZ: America/New_York
-    PUID: 1000
-    PGID: 1000
   persistence:
     config:
       enabled: true
