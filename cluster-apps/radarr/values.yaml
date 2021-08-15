@@ -6,7 +6,9 @@ radarr:
   persistence:
     config:
       enabled: true
-      existingClaim: radarr-config
+      retain: true
+      size: 5Gi
+      storageClass: longhorn
     media:
       enabled: true
       type: custom
