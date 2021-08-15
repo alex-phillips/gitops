@@ -6,4 +6,5 @@ prometheus:
   server:
     retention: 14d
     persistentVolume:
-      existingClaim: prometheus-server
+      size: 8Gi
+      storageClass: longhorn
