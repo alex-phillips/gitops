@@ -10,7 +10,9 @@ home-assistant:
   persistence:
     config:
       enabled: true
-      existingClaim: home-assistant
+      retain: true
+      size: 50Mi
+      storageClassName: longhorn
   ingress:
     main:
       enabled: true
