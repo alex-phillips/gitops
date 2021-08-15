@@ -5,7 +5,9 @@ xbackbone:
   persistence:
     config:
       enabled: true
-      existingClaim: xbackbone
+      retain: true
+      size: 10Gi
+      storageClass: longhorn
   ingress:
     main:
       enabled: true
