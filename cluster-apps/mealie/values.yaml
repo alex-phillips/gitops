@@ -9,8 +9,7 @@ mealie:
   persistence:
     config:
       enabled: true
-      existingClaim: mealie
-      mountPath: /app/data/
+      size: 1Gi
   ingress:
     main:
       enabled: true
