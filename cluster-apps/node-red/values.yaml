@@ -12,6 +12,7 @@ node-red:
       retain: true
       size: 50Mi
       storageClass: longhorn
+      accessMode: ReadWriteOnce
   ingress:
     main:
       enabled: true
