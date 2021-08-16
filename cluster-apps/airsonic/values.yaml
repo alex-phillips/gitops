@@ -7,12 +7,15 @@ airsonic:
     tag: latest
   env:
     TZ: America/New_York
+    PUID: 1000
+    PGID: 1000
     JAVA_OPTS: -Dserver.forward-headers-strategy=native
   persistence:
     config:
       enabled: true
       retain: true
       size: 256Mi
+      mountPath: /var/airsonic
       accessMode: ReadWriteOnce
       storageClass: longhorn
     music:
