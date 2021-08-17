@@ -9,6 +9,8 @@ drone:
     enabled: true
     size: 5Gi
     storageClass: longhorn
+  env:
+    DRONE_SERVER_HOST: ci.w00t.cloud
   extraSecretNamesForEnvFrom:
     - drone
 drone-runner-kube:
