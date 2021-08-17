@@ -1,0 +1,10 @@
+name: frigate
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: drone
+    version: 0.1.7
+    repository: https://charts.drone.io
+  - name: drone-runner-kube
+    version: 0.1.5
+    repository: https://charts.drone.io
