@@ -1,0 +1,9 @@
+[
+  {
+    "name": "tdarr",
+    "cluster": "in-cluster",
+    "namespace": "media",
+    "path": "cluster-apps/tdarr",
+    "valueFile": ""
+  }
+]
