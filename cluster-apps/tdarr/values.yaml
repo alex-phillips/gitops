@@ -1,4 +1,4 @@
-airsonic:
+tdarr:
   controller:
     labels:
       pvc: "true"
@@ -30,7 +30,6 @@ airsonic:
   ingress:
     main:
       enabled: true
-      annotations:
       hosts:
       - host: tdr.w00t.cloud
         paths:
