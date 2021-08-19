@@ -1,0 +1,13 @@
+haste-server:
+  image:
+    tag: latest
+  env:
+    TZ: America/New_York
+  ingress:
+    main:
+      enabled: true
+      hosts:
+      - host: sharry.w00t.cloud
+        paths:
+        - path: /
+          pathType: Prefix

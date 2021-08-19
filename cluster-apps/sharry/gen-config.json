@@ -1,0 +1,9 @@
+[
+  {
+    "name": "sharry",
+    "cluster": "in-cluster",
+    "namespace": "apps",
+    "path": "cluster-apps/sharry",
+    "valueFile": ""
+  }
+]
