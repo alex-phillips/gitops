@@ -33,7 +33,7 @@ overseerr:
         - name: HC_API_URL
           value: https://hc.w00t.cloud/ping
         - name: CHECK_UUID
-          value: b419dd11-68f1-444b-bdea-6c6496f6e897
+          value: 5cf3fd58-255d-4079-acbf-34eea2719a7b
         - name: DUPLICACY_PASSWORD
           valueFrom:
             secretKeyRef:
