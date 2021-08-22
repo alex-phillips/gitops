@@ -13,7 +13,7 @@ home-assistant:
       retain: true
       size: 50Mi
       accessMode: ReadWriteOnce
-      storageClassName: longhorn
+      storageClass: longhorn
   ingress:
     main:
       enabled: true

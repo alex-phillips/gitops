@@ -15,7 +15,7 @@ bookstack:
       retain: true
       size: 5Gi
       accessMode: ReadWriteOnce
-      storageClassName: longhorn
+      storageClass: longhorn
   ingress:
     main:
       enabled: true
