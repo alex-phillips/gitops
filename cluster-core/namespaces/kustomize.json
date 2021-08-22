@@ -1,0 +1,9 @@
+[
+  {
+    "name": "namespaces",
+    "cluster": "in-cluster",
+    "namespace": "default",
+    "path": "cluster-core/namespaces",
+    "valueFile": ""
+  }
+]
