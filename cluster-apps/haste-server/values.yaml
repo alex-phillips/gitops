@@ -3,6 +3,12 @@ haste-server:
     tag: latest
   env:
     TZ: America/New_York
+  persistence:
+    config:
+      enabled: true
+      storageClass: longhorn
+      size: 128Mi
+      retain: true
   ingress:
     main:
       enabled: true
