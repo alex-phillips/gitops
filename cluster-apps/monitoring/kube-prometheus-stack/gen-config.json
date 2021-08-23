@@ -1,0 +1,9 @@
+[
+  {
+    "name": "kube-prometheus-stack",
+    "cluster": "in-cluster",
+    "namespace": "monitoring",
+    "path": "cluster-apps/monitoring/kube-prometheus-stack",
+    "valueFile": ""
+  }
+]
