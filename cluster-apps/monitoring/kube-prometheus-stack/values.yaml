@@ -85,7 +85,7 @@ kube-prometheus-stack:
   prometheus-node-exporter:
     fullnameOverride: node-exporter
   grafana:
-    enabled: false
+    enabled: true
     forceDeployDashboards: true
     ingress:
       enabled: true
