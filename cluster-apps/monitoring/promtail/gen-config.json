@@ -1,0 +1,9 @@
+[
+  {
+    "name": "promtail",
+    "cluster": "in-cluster",
+    "namespace": "monitoring",
+    "path": "cluster-apps/monitoring/promtail",
+    "valueFile": ""
+  }
+]
