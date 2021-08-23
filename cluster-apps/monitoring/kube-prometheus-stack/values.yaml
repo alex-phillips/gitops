@@ -71,6 +71,7 @@ kube-prometheus-stack:
   #             requests:
   #               storage: 1Gi
   nodeExporter:
+    enabled: true
     # serviceMonitor:
     #   relabelings:
     #     - action: replace
