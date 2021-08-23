@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: thanos-objstore
+  namespace: monitoring
+spec:
+  encryptedData:
+    objstore.yml: AgAB9nFrOTHM+xsyx1vuY8qW9H4WAy0tlX9YiHQhh8VXeR0ot7jTHZYU4x19+4S1iDtyZCxaxJqF34Ez/7sI8O7sFpKahdNUqIR7UA5Q4blG26JS7vScgxm0PhmrfNBGtSvDMsgfEN+XYy8zuLuepPGYSPUiEUFgu7qOcfvpJDcEVU+2Gp1gOl8Zrh1iHX8ycG62xM/21NSxAonJJeWg6BjRuK2iKJ1Vk2KT+DX8az0B9avrsY5GyLbIKg7yMtF2ybkSnpOPxjl1grmpaw6ACfLwgchd/+7v9hIQTsBsMJ2xTeNytkzcCQjkfcj0tO50+tWRSw42kGRDwUqPOz24ouBy6flcV6uc5yAttHFc097oIc5ZRjgLo9hyDhpNBp3jfYpza8o0cacM4an7iajemTgsQiJuNE8mPPIc4kUO7Rq0o+g2hs0BrWJA03r2IfdFEBKJFkFLLjW7Tc6AD3kXptZRsQEJgo72cxH1htSCzDO2/qVqCSBYRUEebRMJ+WV2fxb2x4r7wbn5aY7o5nil74tQSf+h9oJ3qTVRRTbJRZAhsj42jC9G625POolKBtJYl8j8g6fj7FivaxGiUdX97paxDDkJ1IoQFjqGuwVgALZOdphusBm0K9T48SERqxruqNU+YM7m9wEvRes48luEPjxwVDISRWkRdWJQMPKD5GeIJKlpskCMsOQk+LYMEoXGKo+fK9xLLvefSn3C9VX/koDiajHZOgUI+p3WMiHPG39aPvYLvIECAmvy9gj5gLD8gr7zWxdcAyvzcu1aZBfA+QrNVDpLOa6w4qYg+y2SY+d+w0TgQlAyd5hH5N7VsTh0RT/IipsTlFQZY+FiJ6AH2XeSCpL4tjQ=
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: thanos-objstore
+      namespace: monitoring
+
