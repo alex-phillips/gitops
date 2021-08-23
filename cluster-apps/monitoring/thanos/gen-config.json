@@ -1,0 +1,9 @@
+[
+  {
+    "name": "thanos",
+    "cluster": "in-cluster",
+    "namespace": "monitoring",
+    "path": "cluster-apps/monitoring/thanos",
+    "valueFile": ""
+  }
+]

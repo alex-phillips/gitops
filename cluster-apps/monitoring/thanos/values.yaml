@@ -1,0 +1,38 @@
+thanos:
+  image:
+    registry: public.ecr.aws
+    repository: bitnami/thanos
+  query:
+    enabled: true
+    replicaLabels:
+      - replica
+    dnsDiscovery:
+      sidecarsService: prometheus-thanos-discovery
+      sidecarsNamespace: monitoring
+    ingress:
+      enabled: true
+      hostname: thanos.w00t.cloud
+      # ingressClassName: "traefik"
+      # annotations:
+      #   traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+      # tls: true
+  # existingObjstoreSecret: thanos-objstore
+  queryFrontend:
+    enabled: false
+  bucketweb:
+    enabled: true
+  compactor:
+    enabled: true
+    persistence:
+      enabled: false
+  storegateway:
+    enabled: true
+    persistence:
+      enabled: true
+      size: 5Gi
+  ruler:
+    enabled: false
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
