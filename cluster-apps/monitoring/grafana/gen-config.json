@@ -1,0 +1,9 @@
+[
+  {
+    "name": "grafana",
+    "cluster": "in-cluster",
+    "namespace": "monitoring",
+    "path": "cluster-apps/monitoring/grafana",
+    "valueFile": ""
+  }
+]

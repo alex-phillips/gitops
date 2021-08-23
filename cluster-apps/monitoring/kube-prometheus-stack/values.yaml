@@ -85,12 +85,8 @@ kube-prometheus-stack:
   prometheus-node-exporter:
     fullnameOverride: node-exporter
   grafana:
-    enabled: true
+    enabled: false
     forceDeployDashboards: true
-    ingress:
-      enabled: true
-      hosts:
-        - grafana.w00t.cloud
     sidecar:
       dashboards:
         multicluster:
