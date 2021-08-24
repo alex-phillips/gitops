@@ -18,6 +18,23 @@ smokeping:
       size: 1Gi
       storageClass: longhorn
       accessMode: ReadWriteOnce
+    telegraf-conf:
+      enabled: true
+      mountPath: "-"
+      type: custom
+      volumeSpec:
+        configMap:
+          name: telegraf
+          items:
+            - key: config
+              path: telegraf.conf
+  service:
+    telegraf:
+      enabled: true
+      ports:
+        telegraf:
+          enabled: true
+          port: 9283
   ingress:
     main:
       enabled: true
@@ -27,6 +44,12 @@ smokeping:
         - path: /
           pathType: Prefix
   additionalContainers:
+    # telegraf ping / dns metrics for custom smokeping-like grafana dashboard
+    telegraf:
+      image: telegraf
+      volumeMounts:
+      - name: telegraf-conf
+        mountPath: /etc/telegraf
     duplicacy:
       image: alexphillips/duplicacy
       env:
