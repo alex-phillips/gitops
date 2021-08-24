@@ -132,6 +132,18 @@ grafana:
       sonarr:
         url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/sonarr.json
         datasource: Prometheus
+      linux-host:
+        url: https://git.w00t.cloud/alexphillips/grafana-dashboards/raw/branch/main/linux-host.json
+        datasource: Prometheus
+      snapraid:
+        url: https://git.w00t.cloud/alexphillips/grafana-dashboards/raw/branch/main/snapraid.json
+        datasource: Prometheus
+      smokeping:
+        url: https://git.w00t.cloud/alexphillips/grafana-dashboards/raw/branch/main/smokeping.json
+        datasource: Prometheus
+      cyberpower:
+        url: https://git.w00t.cloud/alexphillips/grafana-dashboards/raw/branch/main/cyberpower-ups.json
+        datasource: Prometheus
   sidecar:
     dashboards:
       enabled: true
