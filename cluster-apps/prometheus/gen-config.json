@@ -1,9 +1,0 @@
-[
-  {
-    "name": "prometheus",
-    "cluster": "in-cluster",
-    "namespace": "prometheus",
-    "path": "cluster-apps/prometheus",
-    "valueFile": ""
-  }
-]
