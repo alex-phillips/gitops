@@ -2,6 +2,8 @@ invoiceninja:
   controller:
     labels:
       pvc: "true"
+  env:
+    PDF_GENERATOR: snappdf
   persistence:
     config:
       enabled: true
