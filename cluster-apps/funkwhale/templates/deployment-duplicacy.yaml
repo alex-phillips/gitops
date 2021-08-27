@@ -50,9 +50,5 @@ spec:
               name: config
       volumes:
         - name: config
-      {{- if .Values.persistence.enabled }}
           persistentVolumeClaim:
-            claimName: {{ .Values.persistence.existingClaim | default (include "funkwhale.fullname" .) }}
-      {{- else }}
-          emptyDir: {}
-      {{- end }}
+            claimName: funkwhale-data
