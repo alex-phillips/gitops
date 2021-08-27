@@ -17,8 +17,6 @@ funkwhale:
   djangoSecret: d408036f4009de055a1eaf3a9b28a3540862ef365c29abd281f7d490c2b07b016f396293805d2bd9e9aafbd590
 
   extraEnv:
-    PUID: 1000
-    PGID: 1000
     MUSIC_DIRECTORY_PATH: /music
     MUSIC_DIRECTORY_SERVE_PATH: /music
     # LDAP_ENABLED: "True"
