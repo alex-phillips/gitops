@@ -1,98 +1,51 @@
-# Default values for funkwhale.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
----
-image:
-  tag: 1.1.3
-
-ingress:
-  enabled: true
-  host: fw.w00t.cloud
-
-database:
-  host: 192.168.1.91
-  user: funkwhale
-  password: dp@*4W@qT71z@lqx4mMnz85b2FO8w3
-
-djangoSecret: d408036f4009de055a1eaf3a9b28a3540862ef365c29abd281f7d490c2b07b016f396293805d2bd9e9aafbd590
-
-extraEnv:
-  PUID: 1000
-  PGID: 1000
-  MUSIC_DIRECTORY_PATH: /music
-  # LDAP_ENABLED: "True"
-  # LDAP_ROOT_DN: dc=example,dc=com
-  # LDAP_SEARCH_FILTER: (|(uid={0})(mail={0}))
-  # LDAP_SERVER_URI: ldaps://ldap.example.com
-  # LDAP_START_TLS: "True"
-  # MEDIA_ROOT: /srv/funkwhale/data/media
-
-extraSecret: {}
-  # EMAIL_CONFIG: smtp://
-  # DEFAULT_FROM_EMAIL: funkwhale@example.com
-
-persistence:
-  enabled: true
-  # existingClaim: netbox-data
-  storageClass: longhorn
-
-  # Note; Using ReadWriteOnce for persistence will require the addition of
-  # a required affinity for the celery worker, as well as the use of only a
-  # single api replica.
-  #
-  # An example is provided for the worker affinity
-  accessMode: ReadWriteMany
-  size: 10Gi
-
-api:
-  # Additional mounts to add to the API container
-  extraVolumeMounts:
-    - name: music
-      mountPath: /music
-      readOnly: true
-      nfs:
-        server: 192.168.1.91
-        path: /mnt/storage/music/beets/Music
-
-  extraVolumes:
-    - name: music
-      persistentVolumeClaim:
-        claimName: music
-
-front:
+  # Default values for funkwhale.
+  # This is a YAML-formatted file.
+  # Declare variables to be passed into your templates.
+funkwhale:
   image:
-    repository: nginx
-    tag: stable
-    pullPolicy: IfNotPresent
+    tag: 1.1.3
 
-  # Additional mounts to add to the frontend container
-  extraVolumeMounts:
-    - name: music
-      mountPath: /music
-      readOnly: true
-      nfs:
-        server: 192.168.1.91
-        path: /mnt/storage/music/beets/Music
+  ingress:
+    enabled: true
+    host: fw.w00t.cloud
 
-  extraVolumes:
-    - name: music
-      persistentVolumeClaim:
-        claimName: music
+  database:
+    host: 192.168.1.91
+    user: funkwhale
+    password: dp@*4W@qT71z@lqx4mMnz85b2FO8w3
 
-celery:
-  beat:
-    resources:
-      limits:
-        cpu: 100m
-        memory: 128Mi
-      requests:
-        cpu: 10m
-        memory: 75Mi
+  djangoSecret: d408036f4009de055a1eaf3a9b28a3540862ef365c29abd281f7d490c2b07b016f396293805d2bd9e9aafbd590
 
-  worker:
-    replicaCount: 2
+  extraEnv:
+    PUID: 1000
+    PGID: 1000
+    MUSIC_DIRECTORY_PATH: /music
+    # LDAP_ENABLED: "True"
+    # LDAP_ROOT_DN: dc=example,dc=com
+    # LDAP_SEARCH_FILTER: (|(uid={0})(mail={0}))
+    # LDAP_SERVER_URI: ldaps://ldap.example.com
+    # LDAP_START_TLS: "True"
+    # MEDIA_ROOT: /srv/funkwhale/data/media
 
-    # Additional mounts to add to the worker pod
+  extraSecret: {}
+    # EMAIL_CONFIG: smtp://
+    # DEFAULT_FROM_EMAIL: funkwhale@example.com
+
+  persistence:
+    enabled: true
+    # existingClaim: netbox-data
+    storageClass: longhorn
+
+    # Note; Using ReadWriteOnce for persistence will require the addition of
+    # a required affinity for the celery worker, as well as the use of only a
+    # single api replica.
+    #
+    # An example is provided for the worker affinity
+    accessMode: ReadWriteMany
+    size: 10Gi
+
+  api:
+    # Additional mounts to add to the API container
     extraVolumeMounts:
       - name: music
         mountPath: /music
@@ -105,3 +58,50 @@ celery:
       - name: music
         persistentVolumeClaim:
           claimName: music
+
+  front:
+    image:
+      repository: nginx
+      tag: stable
+      pullPolicy: IfNotPresent
+
+    # Additional mounts to add to the frontend container
+    extraVolumeMounts:
+      - name: music
+        mountPath: /music
+        readOnly: true
+        nfs:
+          server: 192.168.1.91
+          path: /mnt/storage/music/beets/Music
+
+    extraVolumes:
+      - name: music
+        persistentVolumeClaim:
+          claimName: music
+
+  celery:
+    beat:
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 10m
+          memory: 75Mi
+
+    worker:
+      replicaCount: 2
+
+      # Additional mounts to add to the worker pod
+      extraVolumeMounts:
+        - name: music
+          mountPath: /music
+          readOnly: true
+          nfs:
+            server: 192.168.1.91
+            path: /mnt/storage/music/beets/Music
+
+      extraVolumes:
+        - name: music
+          persistentVolumeClaim:
+            claimName: music
