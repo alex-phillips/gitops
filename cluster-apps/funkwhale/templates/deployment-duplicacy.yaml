@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "funkwhale.fullname" . }}-duplicacy
+  labels:
+    app.kubernetes.io/name: {{ include "funkwhale.name" . }}
+    helm.sh/chart: {{ include "funkwhale.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "funkwhale.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "funkwhale.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: worker
+          image: alexphillips/duplicacy:latest
+          env:
+            - name: TZ
+              value: America/New_York
+            - name: SCHEDULE
+              value: "30 20 * * *"
+            - name: BACKUP_NAME
+              value: gcd-funkwhale
+            - name: BACKUP_LOCATION
+              value: gcd://duplicacy_backup/funkwhale
+            - name: HC_API_URL
+              value: https://hc.w00t.cloud/ping
+            - name: CHECK_UUID
+              value: 15b27693-4e79-42be-9c89-eb9e7a172562
+            - name: DUPLICACY_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: duplicacy
+                  key: password
+            - name: GCD_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: duplicacy
+                  key: gcd_token
+          volumeMounts:
+            - mountPath: /data
+              name: config
+      volumes:
+        - name: config
+      {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.existingClaim | default (include "funkwhale.fullname" .) }}
+      {{- else }}
+          emptyDir: {}
+      {{- end }}
