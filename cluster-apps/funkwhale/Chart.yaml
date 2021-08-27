@@ -1,0 +1,7 @@
+name: funkwhale
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: funkwhale
+    version: 0.3.10
+    repository: https://ananace.gitlab.io/charts

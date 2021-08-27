@@ -1,0 +1,9 @@
+[
+  {
+    "name": "funkwhale",
+    "cluster": "in-cluster",
+    "namespace": "media",
+    "path": "cluster-apps/funkwhale",
+    "valueFile": ""
+  }
+]
