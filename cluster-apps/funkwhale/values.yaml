@@ -50,14 +50,12 @@ funkwhale:
       - name: music
         mountPath: /music
         readOnly: true
-        nfs:
-          server: 192.168.1.91
-          path: /mnt/storage/music/beets/Music
 
     extraVolumes:
       - name: music
-        persistentVolumeClaim:
-          claimName: music
+        nfs:
+          server: 192.168.1.91
+          path: /mnt/storage/music/beets/Music
 
   front:
     image:
@@ -70,14 +68,12 @@ funkwhale:
       - name: music
         mountPath: /music
         readOnly: true
-        nfs:
-          server: 192.168.1.91
-          path: /mnt/storage/music/beets/Music
 
     extraVolumes:
       - name: music
-        persistentVolumeClaim:
-          claimName: music
+        nfs:
+          server: 192.168.1.91
+          path: /mnt/storage/music/beets/Music
 
   celery:
     beat:
@@ -97,11 +93,9 @@ funkwhale:
         - name: music
           mountPath: /music
           readOnly: true
-          nfs:
-            server: 192.168.1.91
-            path: /mnt/storage/music/beets/Music
 
       extraVolumes:
         - name: music
-          persistentVolumeClaim:
-            claimName: music
+          nfs:
+            server: 192.168.1.91
+            path: /mnt/storage/music/beets/Music
