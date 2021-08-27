@@ -32,16 +32,7 @@ funkwhale:
 
   persistence:
     enabled: true
-    # existingClaim: netbox-data
-    storageClass: longhorn
-
-    # Note; Using ReadWriteOnce for persistence will require the addition of
-    # a required affinity for the celery worker, as well as the use of only a
-    # single api replica.
-    #
-    # An example is provided for the worker affinity
-    accessMode: ReadWriteMany
-    size: 10Gi
+    existingClaim: funkwhale-data
 
   api:
     # Additional mounts to add to the API container
