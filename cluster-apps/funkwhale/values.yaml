@@ -20,7 +20,7 @@ funkwhale:
     PUID: 1000
     PGID: 1000
     MUSIC_DIRECTORY_PATH: /music
-    MUSIC_DIRECTORY_SERVE_PATH: /srv/funkwhale/data/music
+    MUSIC_DIRECTORY_SERVE_PATH: /music
     # LDAP_ENABLED: "True"
     # LDAP_ROOT_DN: dc=example,dc=com
     # LDAP_SEARCH_FILTER: (|(uid={0})(mail={0}))
