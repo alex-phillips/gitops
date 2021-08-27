@@ -1,4 +1,6 @@
 invoiceninja:
+  image:
+    tag: 5.3.1
   controller:
     labels:
       pvc: "true"
