@@ -3,7 +3,7 @@ mealie:
     labels:
       pvc: "true"
   image:
-    tag: latest
+    tag: v0.5.1
   env:
     TZ: America/New_York
   persistence:

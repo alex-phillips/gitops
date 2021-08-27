@@ -1,6 +1,4 @@
 haste-server:
-  image:
-    tag: latest
   env:
     TZ: America/New_York
   ingress:
