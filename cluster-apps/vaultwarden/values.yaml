@@ -3,7 +3,7 @@ vaultwarden:
     labels:
       pvc: "true"
   image:
-    tag: latest
+    tag: 1.22.2
   env:
     TZ: America/New_York
     DATA_FOLDER: config
