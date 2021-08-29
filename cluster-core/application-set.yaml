@@ -5,7 +5,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://git.w00t.cloud/alexphillips/k8s.git
+        repoURL: https://git.w00t.cloud/alexphillips/gitops.git
         revision: HEAD
         files:
           - path: "cluster-core/**/gen-config.json"
@@ -20,7 +20,7 @@ spec:
       source:
         path: '{{ path }}'
         targetRevision: HEAD
-        repoURL: https://git.w00t.cloud/alexphillips/k8s.git
+        repoURL: https://git.w00t.cloud/alexphillips/gitops.git
         helm:
           valueFiles:
             - values.yaml
