@@ -31,6 +31,10 @@ grafana:
       url: https://grafana.net
     auth.basic:
       disable_login_form: false
+  admin:
+    existingSecret: grafana
+    userKey: adminUser
+    passwordKey: adminPassword
   dashboardProviders:
     dashboardproviders.yaml:
       apiVersion: 1
