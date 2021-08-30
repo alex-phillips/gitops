@@ -2,7 +2,7 @@
   {
     "name": "system-upgrade",
     "cluster": "in-cluster",
-    "namespace": "default",
+    "namespace": "system-upgrade",
     "path": "cluster-core/system-upgrade",
     "valueFile": ""
   }
