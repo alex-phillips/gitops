@@ -1,0 +1,9 @@
+[
+  {
+    "name": "system-upgrade",
+    "cluster": "in-cluster",
+    "namespace": "system-upgrade",
+    "path": "cluster-apps/system-upgrade",
+    "valueFile": ""
+  }
+]
