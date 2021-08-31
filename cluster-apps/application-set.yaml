@@ -9,6 +9,25 @@ spec:
         revision: HEAD
         files:
           - path: "cluster-apps/**/gen-config.json"
+        template:
+          metadata: {}
+          spec:
+            destination: {}
+            project: default
+            syncPolicy: {}
+            source:
+              path: '{{ path }}'
+              targetRevision: HEAD
+              repoURL: https://git.w00t.cloud/alexphillips/gitops.git
+              helm:
+                valueFiles:
+                  - values.yaml
+                  - '{{ valueFile }}'
+    - git:
+        repoURL: https://git.w00t.cloud/alexphillips/gitops.git
+        revision: HEAD
+        files:
+          - path: "cluster-core/**/kustomize.json"
   template:
     metadata:
       name: '{{ name }}'
@@ -21,17 +40,13 @@ spec:
         path: '{{ path }}'
         targetRevision: HEAD
         repoURL: https://git.w00t.cloud/alexphillips/gitops.git
-        helm:
-          valueFiles:
-            - values.yaml
-            - '{{ valueFile }}'
       destination:
         namespace: '{{ namespace }}'
         name: '{{ cluster }}'
       syncPolicy:
-        automated:
-          # prune: true
-          selfHeal: true
+        automated: {}
+        #   prune: false
+        #   selfHeal: true
         syncOptions:
           - ApplyOutOfSyncOnly=true
           - PrunePropagationPolicy=orphan
