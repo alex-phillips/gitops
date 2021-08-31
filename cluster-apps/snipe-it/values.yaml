@@ -35,9 +35,9 @@ snipe-it:
         - name: SCHEDULE
           value: "15 3 * * *"
         - name: BACKUP_NAME
-          value: gcd-snipe-it
+          value: gcd-snipeit
         - name: BACKUP_LOCATION
-          value: gcd://duplicacy_backup/snipe-it
+          value: gcd://duplicacy_backup/snipeit
         - name: HC_API_URL
           value: https://hc.w00t.cloud/ping
         - name: CHECK_UUID
