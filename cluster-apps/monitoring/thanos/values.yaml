@@ -25,6 +25,7 @@ thanos:
     enabled: true
     persistence:
       enabled: false
+      storageClassName: longhorn
   storegateway:
     enabled: true
     persistence:
