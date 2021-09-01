@@ -22,10 +22,10 @@ node-red:
         - path: /
           pathType: Prefix
   # required for initial volume / data creation per: https://github.com/k8s-at-home/charts/issues/537
-  podSecurityContext:
-    runAsUser: 1000
-    runAsGroup: 1000
-    fsGroup: 1000
+  # podSecurityContext:
+  #   runAsUser: 1000
+  #   runAsGroup: 1000
+  #   fsGroup: 1000
   additionalContainers:
     duplicacy:
       image: alexphillips/duplicacy
