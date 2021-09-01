@@ -1,0 +1,58 @@
+lidarr:
+  controller:
+    labels:
+      nfs: "true"
+      pvc: "true"
+  persistence:
+    config:
+      enabled: true
+      retain: true
+      size: 20Gi
+      accessMode: ReadWriteOnce
+      storageClass: longhorn
+    music:
+      enabled: true
+      type: custom
+      readOnly: true
+      volumeSpec:
+        nfs:
+          server: 192.168.1.91
+          path: /mnt/storage/music/beets/Music
+  ingress:
+    main:
+      enabled: true
+      annotations:
+      hosts:
+      - host: ldr.w00t.cloud
+        paths:
+        - path: /
+          pathType: Prefix
+  # additionalContainers:
+  #   duplicacy:
+  #     image: alexphillips/duplicacy
+  #     env:
+  #       - name: TZ
+  #         value: America/New_York
+  #       - name: SCHEDULE
+  #         value: "45 0 * * *"
+  #       - name: BACKUP_NAME
+  #         value: gcd-sonarr
+  #       - name: BACKUP_LOCATION
+  #         value: gcd://duplicacy_backup/sonarr
+  #       - name: HC_API_URL
+  #         value: https://hc.w00t.cloud/ping
+  #       - name: CHECK_UUID
+  #         value: b419dd11-68f1-444b-bdea-6c6496f6e897
+  #       - name: DUPLICACY_PASSWORD
+  #         valueFrom:
+  #           secretKeyRef:
+  #             name: duplicacy
+  #             key: password
+  #       - name: GCD_TOKEN
+  #         valueFrom:
+  #           secretKeyRef:
+  #             name: duplicacy
+  #             key: gcd_token
+  #     volumeMounts:
+  #       - mountPath: /data
+  #         name: config
