@@ -19,7 +19,7 @@ overseerr:
         - path: /
           pathType: Prefix
   initContainers:
-    duplicacy:
+    duplicacy-init:
       image: alexphillips/duplicacy-init
       env:
         - name: BACKUP_NAME
@@ -40,7 +40,7 @@ overseerr:
         - mountPath: /data
           name: config
   additionalContainers:
-    duplicacy:
+    duplicacy-backup:
       image: alexphillips/duplicacy-backup
       env:
         - name: SCHEDULE
