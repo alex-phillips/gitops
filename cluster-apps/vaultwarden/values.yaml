@@ -1,7 +1,4 @@
 vaultwarden:
-  controller:
-    labels:
-      pvc: "true"
   image:
     tag: 1.22.2
   env:

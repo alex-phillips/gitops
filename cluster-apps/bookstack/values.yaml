@@ -1,7 +1,4 @@
 bookstack:
-  controller:
-    labels:
-      pvc: "true"
   image:
     tag: latest
   env:

@@ -1,7 +1,4 @@
 home-assistant:
-  controller:
-    labels:
-      pvc: "true"
   image:
     repository: ghcr.io/home-assistant/home-assistant
     tag: latest

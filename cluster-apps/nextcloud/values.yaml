@@ -2,7 +2,6 @@ nextcloud:
   controller:
     labels:
       nfs: "true"
-      pvc: "true"
   image:
     tag: latest
   persistence:

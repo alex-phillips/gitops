@@ -1,7 +1,4 @@
 xbackbone:
-  controller:
-    labels:
-      pvc: "true"
   persistence:
     config:
       enabled: true

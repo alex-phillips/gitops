@@ -1,7 +1,4 @@
 healthchecks:
-  controller:
-    labels:
-      pvc: "true"
   image:
     repository: ghcr.io/linuxserver/healthchecks
     tag: latest

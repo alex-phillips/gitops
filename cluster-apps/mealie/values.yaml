@@ -1,7 +1,4 @@
 mealie:
-  controller:
-    labels:
-      pvc: "true"
   image:
     tag: v0.5.1
   env:

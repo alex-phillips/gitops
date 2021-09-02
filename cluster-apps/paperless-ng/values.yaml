@@ -2,7 +2,6 @@ paperless-ng:
   controller:
     labels:
       nfs: "true"
-      pvc: "true"
   image:
     tag: latest
   env:

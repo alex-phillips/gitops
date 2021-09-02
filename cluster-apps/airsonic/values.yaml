@@ -1,7 +1,6 @@
 airsonic:
   controller:
     labels:
-      pvc: "true"
       nfs: "true"
   image:
     tag: latest
