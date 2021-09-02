@@ -18,18 +18,33 @@ overseerr:
         paths:
         - path: /
           pathType: Prefix
-  additionalContainers:
+  initContainers:
     duplicacy:
-      image: alexphillips/duplicacy
+      image: alexphillips/duplicacy-init
       env:
-        - name: TZ
-          value: America/New_York
-        - name: SCHEDULE
-          value: "45 9 * * *"
         - name: BACKUP_NAME
           value: gcd-overseerr
         - name: BACKUP_LOCATION
           value: gcd://duplicacy_backup/overseerr
+        - name: DUPLICACY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: password
+        - name: GCD_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: gcd_token
+      volumeMounts:
+        - mountPath: /data
+          name: config
+  additionalContainers:
+    duplicacy:
+      image: alexphillips/duplicacy-backup
+      env:
+        - name: SCHEDULE
+          value: "45 9 * * *"
         - name: HC_API_URL
           value: https://hc.w00t.cloud/ping
         - name: CHECK_UUID
