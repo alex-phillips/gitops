@@ -26,18 +26,33 @@ snipe-it:
         paths:
         - path: /
           pathType: Prefix
-  additionalContainers:
-    duplicacy:
-      image: alexphillips/duplicacy
+  initContainers:
+    duplicacy-init:
+      image: alexphillips/duplicacy-init
       env:
-        - name: TZ
-          value: America/New_York
-        - name: SCHEDULE
-          value: "15 3 * * *"
         - name: BACKUP_NAME
           value: gcd-snipeit
         - name: BACKUP_LOCATION
           value: gcd://duplicacy_backup/snipeit
+        - name: DUPLICACY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: password
+        - name: GCD_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: gcd_token
+      volumeMounts:
+        - mountPath: /data
+          name: config
+  additionalContainers:
+    duplicacy-backup:
+      image: alexphillips/duplicacy-backup
+      env:
+        - name: SCHEDULE
+          value: "15 3 * * *"
         - name: HC_API_URL
           value: https://hc.w00t.cloud/ping
         - name: CHECK_UUID

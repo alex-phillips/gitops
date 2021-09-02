@@ -51,18 +51,33 @@ airsonic:
         paths:
         - path: /
           pathType: Prefix
-  additionalContainers:
-    duplicacy:
-      image: alexphillips/duplicacy
+  initContainers:
+    duplicacy-init:
+      image: alexphillips/duplicacy-init
       env:
-        - name: TZ
-          value: America/New_York
-        - name: SCHEDULE
-          value: "0 20 * * *"
         - name: BACKUP_NAME
           value: gcd-airsonic
         - name: BACKUP_LOCATION
           value: gcd://duplicacy_backup/airsonic
+        - name: DUPLICACY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: password
+        - name: GCD_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: gcd_token
+      volumeMounts:
+        - mountPath: /data
+          name: config
+  additionalContainers:
+    duplicacy-backup:
+      image: alexphillips/duplicacy-backup
+      env:
+        - name: SCHEDULE
+          value: "0 20 * * *"
         - name: HC_API_URL
           value: https://hc.w00t.cloud/ping
         - name: CHECK_UUID

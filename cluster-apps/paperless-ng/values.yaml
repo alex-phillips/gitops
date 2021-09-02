@@ -31,22 +31,37 @@ paperless-ng:
         paths:
         - path: /
           pathType: Prefix
+  initContainers:
+    duplicacy-init:
+      image: alexphillips/duplicacy-init
+      env:
+        - name: BACKUP_NAME
+          value: gcd-paperless-ng
+        - name: BACKUP_LOCATION
+          value: gcd://duplicacy_backup/paperless-ng
+        - name: DUPLICACY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: password
+        - name: GCD_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: gcd_token
+      volumeMounts:
+        - mountPath: /data
+          name: config
   additionalContainers:
     redis:
       image: redis:alpine
       ports:
         - containerPort: 6379
-    duplicacy:
-      image: alexphillips/duplicacy
+    duplicacy-backup:
+      image: alexphillips/duplicacy-backup
       env:
-        - name: TZ
-          value: America/New_York
         - name: SCHEDULE
           value: "15 0 * * *"
-        - name: BACKUP_NAME
-          value: gcd-paperless-ng
-        - name: BACKUP_LOCATION
-          value: gcd://duplicacy_backup/paperless-ng
         - name: HC_API_URL
           value: https://hc.w00t.cloud/ping
         - name: CHECK_UUID
