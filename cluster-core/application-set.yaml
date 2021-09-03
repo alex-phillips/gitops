@@ -5,10 +5,29 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://git.w00t.cloud/alexphillips/gitops.git
+        repoURL: https://github.com/alex-phillips/gitops.git
         revision: HEAD
         files:
           - path: "cluster-core/**/gen-config.json"
+        template:
+          metadata: {}
+          spec:
+            destination: {}
+            project: default
+            syncPolicy: {}
+            source:
+              path: '{{ path }}'
+              targetRevision: HEAD
+              repoURL: https://github.com/alex-phillips/gitops.git
+              helm:
+                valueFiles:
+                  - values.yaml
+                  - '{{ valueFile }}'
+    - git:
+        repoURL: https://github.com/alex-phillips/gitops.git
+        revision: HEAD
+        files:
+          - path: "cluster-core/**/kustomize.json"
   template:
     metadata:
       name: '{{ name }}'
@@ -20,11 +39,7 @@ spec:
       source:
         path: '{{ path }}'
         targetRevision: HEAD
-        repoURL: https://git.w00t.cloud/alexphillips/gitops.git
-        helm:
-          valueFiles:
-            - values.yaml
-            - '{{ valueFile }}'
+        repoURL: https://github.com/alex-phillips/gitops.git
       destination:
         namespace: '{{ namespace }}'
         name: '{{ cluster }}'
