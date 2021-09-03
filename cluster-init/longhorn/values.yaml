@@ -2,6 +2,7 @@ longhorn:
   persistence:
     defaultClass: true
     defaultClassReplicaCount: 3
+    reclaimPolicy: Retain
   defaultSettings:
     defaultLonghornStaticStorageClass: longhorn
   ingress:
