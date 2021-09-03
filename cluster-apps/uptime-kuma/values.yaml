@@ -14,6 +14,7 @@ uptime-kuma:
         paths:
         - path: /
           pathType: Prefix
+  dnsPolicy: None
   dnsConfig:
     nameservers:
       - 1.1.1.1
