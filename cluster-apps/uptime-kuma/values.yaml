@@ -14,6 +14,10 @@ uptime-kuma:
         paths:
         - path: /
           pathType: Prefix
+  dnsConfig:
+    nameservers:
+      - 1.1.1.1
+      - 1.0.0.1
   initContainers:
     duplicacy-init:
       image: alexphillips/duplicacy-init
