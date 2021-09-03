@@ -14,13 +14,12 @@ applicationset:
     tag: v0.2.0
 
   args:
-    namespace: argo-cd
+    namespace: argocd
     policy: create-update
     debug: false
     dryRun: false
 
   installCRDs: false
-
 
   podSecurityContext: {}
     # fsGroup: 2000
