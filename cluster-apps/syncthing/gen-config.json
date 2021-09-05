@@ -1,0 +1,9 @@
+[
+  {
+    "name": "syncthing",
+    "cluster": "in-cluster",
+    "namespace": "media",
+    "path": "cluster-apps/syncthing",
+    "valueFile": ""
+  }
+]
