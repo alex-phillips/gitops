@@ -2,7 +2,7 @@
   {
     "name": "syncthing",
     "cluster": "in-cluster",
-    "namespace": "media",
+    "namespace": "apps",
     "path": "cluster-apps/syncthing",
     "valueFile": ""
   }
