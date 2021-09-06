@@ -19,6 +19,16 @@ spec:
         app.kubernetes.io/name: {{ include "funkwhale.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
+      affinity:
+        podAntiAffinzity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: audio.funkwhale/component
+                    operator: In
+                    values:
+                      - app
+              topologyKey: "kubernetes.io/hostname"
       containers:
         - name: worker
           image: alexphillips/duplicacy:latest

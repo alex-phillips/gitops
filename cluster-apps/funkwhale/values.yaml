@@ -1,6 +1,6 @@
-  # Default values for funkwhale.
-  # This is a YAML-formatted file.
-  # Declare variables to be passed into your templates.
+# Default values for funkwhale.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
 funkwhale:
   image:
     tag: 1.1.4
@@ -27,7 +27,8 @@ funkwhale:
     # LDAP_START_TLS: "True"
     # MEDIA_ROOT: /srv/funkwhale/data/media
 
-  extraSecret: {}
+  extraSecret:
+    {}
     # EMAIL_CONFIG: smtp://
     # DEFAULT_FROM_EMAIL: funkwhale@example.com
 
@@ -90,3 +91,14 @@ funkwhale:
           nfs:
             server: 192.168.1.91
             path: /mnt/storage/music/beets/Music
+
+      affinity:
+        podAntiAffinzity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: audio.funkwhale/component
+                    operator: In
+                    values:
+                      - app
+              topologyKey: "kubernetes.io/hostname"
