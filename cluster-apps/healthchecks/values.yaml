@@ -12,7 +12,7 @@ healthchecks:
     config:
       enabled: true
       retain: true
-      size: 50Mi
+      size: 1Gi
       accessMode: ReadWriteOnce
       storageClass: longhorn
   ingress:
