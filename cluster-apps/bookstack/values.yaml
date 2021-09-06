@@ -2,8 +2,8 @@ bookstack:
   image:
     tag: latest
   env:
-    PUID: 1000
-    PGID: 1000
+    PUID: 0
+    PGID: 0
     TZ: America/New_York
     APP_URL: https://wiki.w00t.cloud
   persistence:
