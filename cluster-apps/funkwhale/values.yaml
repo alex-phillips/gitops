@@ -93,7 +93,7 @@ funkwhale:
             path: /mnt/storage/music/beets/Music
 
       affinity:
-        podAntiAffinzity:
+        podAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             - labelSelector:
                 matchExpressions:
