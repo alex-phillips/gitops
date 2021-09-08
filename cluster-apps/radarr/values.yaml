@@ -2,6 +2,8 @@ radarr:
   controller:
     labels:
       nfs: "true"
+  env:
+    TZ: America/New_York
   persistence:
     config:
       enabled: true
