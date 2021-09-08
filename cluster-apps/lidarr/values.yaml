@@ -29,32 +29,47 @@ lidarr:
         paths:
         - path: /
           pathType: Prefix
-  # additionalContainers:
-  #   duplicacy:
-  #     image: alexphillips/duplicacy
-  #     env:
-  #       - name: TZ
-  #         value: America/New_York
-  #       - name: SCHEDULE
-  #         value: "45 0 * * *"
-  #       - name: BACKUP_NAME
-  #         value: gcd-sonarr
-  #       - name: BACKUP_LOCATION
-  #         value: gcd://duplicacy_backup/sonarr
-  #       - name: HC_API_URL
-  #         value: https://hc.w00t.cloud/ping
-  #       - name: CHECK_UUID
-  #         value: b419dd11-68f1-444b-bdea-6c6496f6e897
-  #       - name: DUPLICACY_PASSWORD
-  #         valueFrom:
-  #           secretKeyRef:
-  #             name: duplicacy
-  #             key: password
-  #       - name: GCD_TOKEN
-  #         valueFrom:
-  #           secretKeyRef:
-  #             name: duplicacy
-  #             key: gcd_token
-  #     volumeMounts:
-  #       - mountPath: /data
-  #         name: config
+  initContainers:
+    duplicacy-init:
+      image: alexphillips/duplicacy-init
+      env:
+        - name: BACKUP_NAME
+          value: gcd-lidarr
+        - name: BACKUP_LOCATION
+          value: gcd://duplicacy_backup/lidarr
+        - name: DUPLICACY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: password
+        - name: GCD_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: gcd_token
+      volumeMounts:
+        - mountPath: /data
+          name: config
+  additionalContainers:
+    duplicacy-backup:
+      image: alexphillips/duplicacy-backup
+      env:
+        - name: SCHEDULE
+          value: "45 09 * * *"
+        - name: HC_API_URL
+          value: https://hc.w00t.cloud/ping
+        - name: CHECK_UUID
+          value: afd42e78-4b68-43c6-be5f-081fca7c0f3a
+        - name: DUPLICACY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: password
+        - name: GCD_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: gcd_token
+      volumeMounts:
+        - mountPath: /data
+          name: config
