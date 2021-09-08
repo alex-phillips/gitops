@@ -1,4 +1,7 @@
 overseerr:
+  image:
+    repository: ghcr.io/sct/overseerr
+    tag: 1.25.0
   persistence:
     config:
       enabled: true
