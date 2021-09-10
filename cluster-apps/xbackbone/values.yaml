@@ -22,7 +22,7 @@ xbackbone:
     db:
       enabled: true
       nameOverride: "-"
-      storageClass: do-block-storage
+      storageClass: longhorn
       size: 1Gi
       accessMode: ReadWriteOnce
       retain: true
