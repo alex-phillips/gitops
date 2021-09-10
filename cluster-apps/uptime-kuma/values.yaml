@@ -1,4 +1,7 @@
 uptime-kuma:
+  image:
+    repository: louislam/uptime-kuma
+    tag: 1.5.3
   persistence:
     data:
       enabled: true

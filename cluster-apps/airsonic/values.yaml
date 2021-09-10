@@ -3,7 +3,8 @@ airsonic:
     labels:
       nfs: "true"
   image:
-    tag: latest
+    repository: airsonicadvanced/airsonic-advanced
+    tag: latest@sha256:f7cbafac28063dce99b443037547b4fe40ae270b7bc5e47efea9bb5d6751ca9d
   env:
     TZ: America/New_York
     PUID: 1000

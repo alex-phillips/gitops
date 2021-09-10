@@ -3,7 +3,8 @@ photoprism:
     labels:
       nfs: "true"
   image:
-    tag: latest
+    repository: photoprism/photoprism
+    tag: "20210523"
   env:
     TZ: America/New_York
     PHOTOPRISM_SPONSOR: "true"

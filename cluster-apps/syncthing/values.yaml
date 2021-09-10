@@ -1,23 +1,17 @@
 syncthing:
+  image:
+    repository: syncthing/syncthing
+    tag: 1.17.0
   controller:
     labels:
       nfs: "true"
   persistence:
-    config:
+    data:
       enabled: true
       retain: true
       size: 10Mi
-      mountPath: /config
       accessMode: ReadWriteOnce
       storageClass: longhorn
-    data:
-      enabled: true
-      type: custom
-      mountPath: /mnt/storage
-      volumeSpec:
-        nfs:
-          server: 192.168.1.91
-          path: /mnt/storage
   ingress:
     main:
       enabled: true
@@ -47,17 +41,17 @@ syncthing:
               key: gcd_token
       volumeMounts:
         - mountPath: /data
-          name: config
+          name: data
   # additionalContainers:
   #   duplicacy-backup:
   #     image: alexphillips/duplicacy-backup
   #     env:
   #       - name: SCHEDULE
-  #         value: "0 20 * * *"
+  #         value: "30 03 * * *"
   #       - name: HC_API_URL
   #         value: https://hc.w00t.cloud/ping
   #       - name: CHECK_UUID
-  #         value: 52150d16-2eb3-44e8-bc41-80274a5cfb86
+  #         value: dc718e37-926f-4f73-846d-0b918b051fe4
   #       - name: DUPLICACY_PASSWORD
   #         valueFrom:
   #           secretKeyRef:
@@ -70,4 +64,4 @@ syncthing:
   #             key: gcd_token
   #     volumeMounts:
   #       - mountPath: /data
-  #         name: config
+  #         name: data

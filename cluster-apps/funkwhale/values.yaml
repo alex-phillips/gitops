@@ -3,6 +3,7 @@
 # Declare variables to be passed into your templates.
 funkwhale:
   image:
+    repository: funkwhale/funkwhale
     tag: 1.1.4
 
   ingress:
