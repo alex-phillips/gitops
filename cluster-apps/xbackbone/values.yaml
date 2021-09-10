@@ -1,65 +1,60 @@
 xbackbone:
   image:
-    repository: pe46dro/xbackbone-docker
-    tag: 3.3.3
+    repository: ghcr.io/itscontained/xbackbone
+    tag: v3.3.5
+
   env:
     TZ: America/New_York
-  persistence:
-    config:
-      enabled: true
-      retain: true
-      size: 10Gi
-      accessMode: ReadWriteOnce
-      storageClass: longhorn
+    APP_NAME: share.w00t.cloud
+    URL: https://share.w00t.cloud
+    PHP_UPLOAD_MAX_FILESIZE: 25G
+
   ingress:
     main:
       enabled: true
       hosts:
-      - host: share.w00t.cloud
-        paths:
-        - path: /
-          pathType: Prefix
-  initContainers:
-    duplicacy-init:
-      image: alexphillips/duplicacy-init
-      env:
-        - name: BACKUP_NAME
-          value: gcd-xbackbone
-        - name: BACKUP_LOCATION
-          value: gcd://duplicacy_backup/xbackbone
-        - name: DUPLICACY_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: duplicacy
-              key: password
-        - name: GCD_TOKEN
-          valueFrom:
-            secretKeyRef:
-              name: duplicacy
-              key: gcd_token
-      volumeMounts:
-        - mountPath: /data
-          name: config
-  additionalContainers:
-    duplicacy-backup:
-      image: alexphillips/duplicacy-backup
-      env:
-        - name: SCHEDULE
-          value: "00 03 * * *"
-        - name: HC_API_URL
-          value: https://hc.w00t.cloud/ping
-        - name: CHECK_UUID
-          value: 8c0919c9-6db3-46e2-b532-dab567177f16
-        - name: DUPLICACY_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: duplicacy
-              key: password
-        - name: GCD_TOKEN
-          valueFrom:
-            secretKeyRef:
-              name: duplicacy
-              key: gcd_token
-      volumeMounts:
-        - mountPath: /data
-          name: config
+        - host: share.w00t.cloud
+          paths:
+            - path: /
+              pathType: Prefix
+
+  persistence:
+    db:
+      enabled: true
+      nameOverride: "-"
+      storageClass: do-block-storage
+      size: 1Gi
+      accessMode: ReadWriteOnce
+      retain: true
+      mountPath: /app/resources/database
+    config:
+      enabled: true
+      type: emptyDir
+      mountPath: /app/config
+    # secret:
+    #   enabled: true
+    #   mountPath: "-"
+    #   type: custom
+    #   volumeSpec:
+    #     secret:
+    #       secretName: xbackbone
+    #       items:
+    #         - key: config
+    #           path: config.php
+
+  # initContainers:
+  #   cp:
+  #     name: cp
+  #     image: busybox:1.28
+  #     imagePullPolicy: IfNotPresent
+  #     command:
+  #       - /bin/sh
+  #       - "-c"
+  #       - "cp /tmp/config.php /app/config/ && chown 1000:1000 /app/config/config.php"
+  #     volumeMounts:
+  #       - name: secret
+  #         mountPath: /tmp/config.php
+  #         subPath: config.php
+  #         readOnly: true
+  #       - mountPath: /app/config
+  #         name: config
