@@ -1,7 +1,7 @@
 node-red:
   image:
-    repository: nodered/node-red
-    tag: 2.0.6
+    repository: ghcr.io/k8s-at-home/node-red
+    tag: v2.0.6
   env:
     TZ: America/New_York
   persistence:
