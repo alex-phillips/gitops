@@ -4,7 +4,7 @@ airsonic:
       nfs: "true"
   image:
     repository: airsonicadvanced/airsonic-advanced
-    tag: latest@sha256:f7cbafac28063dce99b443037547b4fe40ae270b7bc5e47efea9bb5d6751ca9d
+    tag: latest@sha256:0fc5282ef0b94741192e2d4f616a982552d41691caeb615ebe786e0aa45e6426
   env:
     TZ: America/New_York
     PUID: 1000
