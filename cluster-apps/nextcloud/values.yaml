@@ -2,8 +2,10 @@ nextcloud:
   controller:
     labels:
       nfs: "true"
+
   image:
     tag: latest
+
   persistence:
     config:
       enabled: true
@@ -18,11 +20,13 @@ nextcloud:
         nfs:
           server: 192.168.1.91
           path: /mnt/storage/docker/nextcloud/data
+
   service:
     main:
       ports:
         http:
           protocol: HTTPS
+
   ingress:
     main:
       enabled: true
@@ -34,11 +38,13 @@ nextcloud:
         paths:
         - path: /
           pathType: Prefix
+
   additionalContainers:
     redis:
       image: redis:alpine
       ports:
         - containerPort: 6379
+
   initContainers:
     config-link:
       image: busybox
@@ -46,10 +52,12 @@ nextcloud:
       volumeMounts:
       - name: config
         mountPath: /config
+
 onlyoffice-documentserver:
   env:
     JWT_ENABLED: 'true'
     JWT_SECRET: errWbW6vttFFSczLo329X2omeKrvX5qLdahCGB8yVU
+
   ingress:
     main:
       enabled: true

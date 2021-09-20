@@ -2,8 +2,10 @@ invoiceninja:
   image:
     repository: ghcr.io/linuxserver-labs/invoiceninja
     tag: 5.3.16
+
   env:
     PDF_GENERATOR: snappdf
+
   persistence:
     config:
       enabled: true
@@ -11,6 +13,7 @@ invoiceninja:
       size: 1Gi
       accessMode: ReadWriteOnce
       storageClass: longhorn
+
   ingress:
     main:
       enabled: true
@@ -22,6 +25,7 @@ invoiceninja:
         paths:
         - path: /
           pathType: Prefix
+
   initContainers:
     duplicacy-init:
       image: alexphillips/duplicacy-init
@@ -43,6 +47,7 @@ invoiceninja:
       volumeMounts:
         - mountPath: /data
           name: config
+
   additionalContainers:
     redis:
       image: redis:alpine

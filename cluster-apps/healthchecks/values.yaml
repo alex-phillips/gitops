@@ -2,12 +2,14 @@ healthchecks:
   image:
     repository: ghcr.io/linuxserver/healthchecks
     tag: latest
+
   env:
     PGID: 1000
     PUID: 1000
     TZ: America/New_York
     SITE_NAME: w00t.cloud
     SITE_ROOT: https://hc.w00t.cloud
+
   persistence:
     config:
       enabled: true
@@ -15,6 +17,7 @@ healthchecks:
       size: 1Gi
       accessMode: ReadWriteOnce
       storageClass: longhorn
+
   ingress:
     main:
       enabled: true
@@ -23,6 +26,7 @@ healthchecks:
         paths:
         - path: /
           pathType: Prefix
+
   initContainers:
     duplicacy-init:
       image: alexphillips/duplicacy-init
@@ -44,6 +48,7 @@ healthchecks:
       volumeMounts:
         - mountPath: /data
           name: config
+
   additionalContainers:
     duplicacy-backup:
       image: alexphillips/duplicacy-backup

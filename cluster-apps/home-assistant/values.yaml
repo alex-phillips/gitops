@@ -2,8 +2,10 @@ home-assistant:
   image:
     repository: ghcr.io/home-assistant/home-assistant
     tag: 2021.9.7
+
   env:
     TZ: America/New_York
+
   persistence:
     config:
       enabled: true
@@ -11,6 +13,7 @@ home-assistant:
       size: 50Mi
       accessMode: ReadWriteOnce
       storageClass: longhorn
+
   ingress:
     main:
       enabled: true
@@ -19,6 +22,7 @@ home-assistant:
         paths:
         - path: /
           pathType: Prefix
+
   addons:
     codeserver:
       enabled: true
@@ -32,6 +36,7 @@ home-assistant:
           paths:
           - path: /
             pathType: Prefix
+
   initContainers:
     duplicacy-init:
       image: alexphillips/duplicacy-init
@@ -53,6 +58,7 @@ home-assistant:
       volumeMounts:
         - mountPath: /data
           name: config
+
   additionalContainers:
     duplicacy-backup:
       image: alexphillips/duplicacy-backup

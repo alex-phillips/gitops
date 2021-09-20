@@ -2,8 +2,10 @@ mealie:
   image:
     repository: hkotel/mealie
     tag: v0.5.2
+
   env:
     TZ: America/New_York
+
   persistence:
     config:
       enabled: true
@@ -11,6 +13,7 @@ mealie:
       size: 1Gi
       accessMode: ReadWriteOnce
       storageClass: longhorn
+
   ingress:
     main:
       enabled: true
@@ -19,6 +22,7 @@ mealie:
         paths:
         - path: /
           pathType: Prefix
+
   initContainers:
     duplicacy-init:
       image: alexphillips/duplicacy-init
@@ -40,6 +44,7 @@ mealie:
       volumeMounts:
         - mountPath: /data
           name: config
+
   additionalContainers:
     duplicacy-backup:
       image: alexphillips/duplicacy-backup

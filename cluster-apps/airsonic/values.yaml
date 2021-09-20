@@ -2,14 +2,18 @@ airsonic:
   controller:
     labels:
       nfs: "true"
+
+
   image:
     repository: airsonicadvanced/airsonic-advanced
     tag: latest@sha256:0fc5282ef0b94741192e2d4f616a982552d41691caeb615ebe786e0aa45e6426
+
   env:
     TZ: America/New_York
     PUID: 1000
     PGID: 1000
     JAVA_OPTS: -Dserver.forward-headers-strategy=native
+
   persistence:
     config:
       enabled: true
@@ -42,6 +46,7 @@ airsonic:
         nfs:
           server: 192.168.1.91
           path: /mnt/storage/podcasts
+
   ingress:
     main:
       enabled: true
@@ -51,6 +56,7 @@ airsonic:
         paths:
         - path: /
           pathType: Prefix
+
   initContainers:
     duplicacy-init:
       image: alexphillips/duplicacy-init
@@ -72,6 +78,7 @@ airsonic:
       volumeMounts:
         - mountPath: /data
           name: config
+
   additionalContainers:
     duplicacy-backup:
       image: alexphillips/duplicacy-backup
