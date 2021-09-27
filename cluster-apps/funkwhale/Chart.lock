@@ -1,6 +1,6 @@
 dependencies:
 - name: funkwhale
   repository: https://ananace.gitlab.io/charts
-  version: 0.3.10
-digest: sha256:de159134b6be3862491affc1eb07a4e7d3f61d4419b572feb63897f495adf33e
-generated: "2021-08-27T17:22:33.187474778Z"
+  version: 0.4.1
+digest: sha256:abf5faccf32f7f182f5c742e0f52a281046a0d18790a5a90a079a3c54b4a669f
+generated: "2021-09-27T05:15:34.44479538Z"
