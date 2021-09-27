@@ -1,6 +1,6 @@
 dependencies:
 - name: argocd-applicationset
   repository: https://argoproj.github.io/argo-helm
-  version: 1.4.0
-digest: sha256:b7dbe63659b55fccfda55d87c3daac7624bfa002f268dad5db18947e44d32ba8
-generated: "2021-08-27T13:27:53.963939732Z"
+  version: 1.5.1
+digest: sha256:993c03abcf30485dc824a32ed6e7a639aeeb21d5ab82c341eeb7fba45bcd9bcd
+generated: "2021-09-27T14:45:53.929464382Z"
