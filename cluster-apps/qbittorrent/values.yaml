@@ -103,26 +103,26 @@ qbittorrent:
         - mountPath: /data
           name: config
 
-  # additionalContainers:
-  #   duplicacy-backup:
-  #     image: alexphillips/duplicacy-backup
-  #     env:
-  #       - name: SCHEDULE
-  #         value: "45 0 * * *"
-  #       - name: HC_API_URL
-  #         value: https://hc.w00t.cloud/ping
-  #       - name: CHECK_UUID
-  #         value: f3888abb-4149-416a-a066-4b451e27eb25
-  #       - name: DUPLICACY_PASSWORD
-  #         valueFrom:
-  #           secretKeyRef:
-  #             name: duplicacy
-  #             key: password
-  #       - name: GCD_TOKEN
-  #         valueFrom:
-  #           secretKeyRef:
-  #             name: duplicacy
-  #             key: gcd_token
-  #     volumeMounts:
-  #       - mountPath: /data
-  #         name: config
+  additionalContainers:
+    duplicacy-backup:
+      image: alexphillips/duplicacy-backup
+      env:
+        - name: SCHEDULE
+          value: "0 12 * * *"
+        - name: HC_API_URL
+          value: https://hc.w00t.cloud/ping
+        - name: CHECK_UUID
+          value: 7af521e1-f296-462d-ba0b-8b228ea728c3
+        - name: DUPLICACY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: password
+        - name: GCD_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: gcd_token
+      volumeMounts:
+        - mountPath: /data
+          name: config
