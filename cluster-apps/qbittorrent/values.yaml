@@ -10,7 +10,7 @@ qbittorrent:
   env:
     TZ: America/New_York
     KILLSWITCH: "true"
-    KILLSWITCH_EXCLUDEDNETWORKS_IPV4: 10.69.0.0/16;10.96.0.0/16
+    KILLSWITCH_EXCLUDEDNETWORKS_IPV4: 10.69.0.0/16;10.96.0.0/16;192.168.1.0/24
 
   persistence:
     config:
