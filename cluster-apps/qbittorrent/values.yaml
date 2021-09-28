@@ -1,0 +1,129 @@
+qbittorrent:
+  image:
+    repository: ghcr.io/k8s-at-home/qbittorrent
+    tag: v4.3.7
+
+  controller:
+    labels:
+      nfs: "true"
+
+  env:
+    TZ: America/New_York
+
+  persistence:
+    config:
+      enabled: true
+      retain: true
+      size: 2Gi
+      accessMode: ReadWriteOnce
+      storageClass: longhorn
+    media:
+      enabled: true
+      type: custom
+      volumeSpec:
+        nfs:
+          server: 192.168.1.91
+          path: /mnt/storage
+      mountPath: /mnt/storage
+    # This should be enabled so that both the qBittorrent and Wireguard container have access to a shared volume mounted to /shared.
+    # It will be used to communicate between the two containers.
+    shared:
+      enabled: true
+      type: emptyDir
+      mountPath: /shared
+
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    fsGroup: 1000
+    fsGroupChangePolicy: "OnRootMismatch"
+
+  ingress:
+    main:
+      enabled: true
+      annotations:
+      hosts:
+      - host: qb.w00t.cloud
+        paths:
+        - path: /
+          pathType: Prefix
+
+  addons:
+    vpn:
+      enabled: true
+      type: wireguard
+
+      # If the podSecurityContext is set to run as a different user, make sure to run the Wireguard container as UID/GID 568.
+      # This is required for it to be able to read certain configuration files.
+      securityContext:
+        runAsUser: 568
+        runAsGroup: 568
+
+      env:
+        KILLSWITCH: "true"
+
+      # The wireguard configuration file provided by your VPN provider goes here.
+      #
+      # Set AllowedIPs to 0.0.0.0/0 to route all traffic through the VPN.
+      #
+      # Pay close attention to the PostUp and PreDown lines. They must be added if you wish to run a script when the connection
+      # is opened / closed.
+      configFileSecret: mullvad
+
+      # The scripts that get run when the VPN connection opens/closes are defined here.
+      # The default scripts will write a string to represent the current connection state to a file.
+      # Our qBittorrent image has a feature that can wait for this file to contain the word 'connected' before actually starting the application.
+      scripts:
+        up: |-
+          #!/bin/bash
+          echo "connected" > /shared/vpnstatus
+
+        down: |-
+          #!/bin/bash
+          echo "disconnected" > /shared/vpnstatus
+
+  initContainers:
+    duplicacy-init:
+      image: alexphillips/duplicacy-init
+      env:
+        - name: BACKUP_NAME
+          value: gcd-qbittorrent
+        - name: BACKUP_LOCATION
+          value: gcd://duplicacy_backup/qbittorrent
+        - name: DUPLICACY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: password
+        - name: GCD_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: gcd_token
+      volumeMounts:
+        - mountPath: /data
+          name: config
+
+  # additionalContainers:
+  #   duplicacy-backup:
+  #     image: alexphillips/duplicacy-backup
+  #     env:
+  #       - name: SCHEDULE
+  #         value: "45 0 * * *"
+  #       - name: HC_API_URL
+  #         value: https://hc.w00t.cloud/ping
+  #       - name: CHECK_UUID
+  #         value: f3888abb-4149-416a-a066-4b451e27eb25
+  #       - name: DUPLICACY_PASSWORD
+  #         valueFrom:
+  #           secretKeyRef:
+  #             name: duplicacy
+  #             key: password
+  #       - name: GCD_TOKEN
+  #         valueFrom:
+  #           secretKeyRef:
+  #             name: duplicacy
+  #             key: gcd_token
+  #     volumeMounts:
+  #       - mountPath: /data
+  #         name: config

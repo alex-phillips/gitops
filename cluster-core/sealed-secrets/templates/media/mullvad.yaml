@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: mullvad
+  namespace: media
+spec:
+  encryptedData:
+    vpnConfigFile: AgCaxRq8M1lhQB6nSM/PQKIfgG5pEkfOC7+9KFKAN/ZNLKOOxkoFdRyQ+Xm39oyQGh0cAyrf1sPA3IEFigtrJ6BCGqQrUD3BsfiYoOnIiLjqZRWIf4PPdeXlmZT+HeD9LV0lBZDf8zwS87x/IECUSA1rs2tYmY72H/evCpI9pX3hb9N12m60A/u0r4EC/RLMyDaBtDBS/uNjvZp3XmwndJmci2wOyXKc65k7qAlJAA5rq2yoF7fIGK8YOGHiq24MvPjtGRCrDgri5g1p7qrei8T5e9cS/s7FYrR+8f0gJDpYzoSLQHIjrkwDM6UeMO8M6sP7uee5AcT32gZFo/pGT8Jwo20eojpZTUxCi0HimJb4SnvEpuLFr/ZNjS/BiZ0Q8yvdP/aOZAnHHH5decLLfKGrcEnVv4sgqhskbI7Sz6p/o9+iqvgzsOoW9QaBdkDNv5+uf6MKuKIiro/h5/90W70lnHQdsbh0HPX645KeAocXF88gq7+9RwZzCZtCQXE+PdHJfUw8Iyo94gpEGoPuxY9mO6US/80hCUMpmkPxdJmvxxskWNUNkRHAW8oJg6VniLUd2Vi1kJjjuHaqoBPWnVO8hF3wQb+kPlCWA1mZL5+yWZvnPRx85Zr/yTRFKHX+HBdzbwojw6cO4t8xGKatr4nhShYGcHn4pYdIxgruSJ5Z+m1a+cxeo5kuc2FGI1IeNCV1STmWNWG7UvlDUxrmglHKJX169lJ6Pc/1vkVMkZEYj8363oM9lr9AIzH1sEe1evDqd/LdPWCmWCVGT+us+MbNOknGqMwXe4EnwQPh4EY4+OlH+mqcu37ASdEh6hmx6SeSBlGT2hLzV4QyM7cgPJ+2TJNnwTtedcsE0A63JvoAEbH/QpYFqzfjKOxBgD3riX5eLgK/BOVuOxrJ9zhA/imiKoCIeTZX3G20XoCCf0cqzwDL72uuHlbK9pb8KOoaL1SvNEcFDTnlMtDiWUK6CKgpPSsQj9d5EQuhfS/+0/ywSgR4wKwXHBk/Lwv0VCtpN9UlcJrwG48ewql/EC5ysR8HbTZibIMxkO6AFri7OORAo6cZKIf3SK3T1DfobPZA2HCOA7+z
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: mullvad
+      namespace: media
+
