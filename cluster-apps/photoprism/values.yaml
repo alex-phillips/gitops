@@ -33,8 +33,8 @@ photoprism:
     PHOTOPRISM_ORIGINALS_LIMIT: 99999
     PHOTOPRISM_DISABLE_CHOWN: 1
     PHOTOPRISM_DISABLE_FFMPEG: "true"
-    UID: 1000
-    GID: 1000
+    PHOTOPRISM_UID: 1000
+    PHOTOPRISM_GID: 1000
   persistence:
     config:
       enabled: true
