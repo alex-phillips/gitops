@@ -10,7 +10,7 @@ nextcloud:
     config:
       enabled: true
       retain: true
-      size: 1Gi
+      size: 5Gi
       accessMode: ReadWriteOnce
       storageClass: longhorn
     data:
@@ -39,19 +39,55 @@ nextcloud:
         - path: /
           pathType: Prefix
 
+  initContainers:
+    duplicacy-init:
+      image: alexphillips/duplicacy-init
+      env:
+        - name: BACKUP_NAME
+          value: gcd-nextcloud-config
+        - name: BACKUP_LOCATION
+          value: gcd://duplicacy_backup/nextcloud-config
+        - name: DUPLICACY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: password
+        - name: GCD_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: gcd_token
+      volumeMounts:
+        - mountPath: /data
+          name: config
+
   additionalContainers:
     redis:
       image: redis:alpine
       ports:
         - containerPort: 6379
-
-  initContainers:
-    config-link:
-      image: busybox
-      command: ["sh", "-c", "mkdir -p /config/www/nextcloud/config; ln -sf /data/config.php /config/www/nextcloud/config/config.php"]
+    duplicacy-backup:
+      image: alexphillips/duplicacy-backup
+      env:
+        - name: SCHEDULE
+          value: "30 05 * * *"
+        - name: HC_API_URL
+          value: https://hc.w00t.cloud/ping
+        - name: CHECK_UUID
+          value: 397442bc-235c-4442-baf4-a1686bbd5220
+        - name: DUPLICACY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: password
+        - name: GCD_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: gcd_token
       volumeMounts:
-      - name: config
-        mountPath: /config
+        - mountPath: /data
+          name: config
 
 onlyoffice-documentserver:
   env:
