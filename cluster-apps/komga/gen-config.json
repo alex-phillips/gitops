@@ -1,0 +1,9 @@
+[
+  {
+    "name": "komga",
+    "cluster": "in-cluster",
+    "namespace": "media",
+    "path": "cluster-apps/komga",
+    "valueFile": ""
+  }
+]

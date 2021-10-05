@@ -1,0 +1,84 @@
+komga:
+  image:
+    repository: gotson/komga
+    tag: 0.99.4
+
+  controller:
+    labels:
+      nfs: "true"
+
+  persistence:
+    config:
+      enabled: true
+      retain: true
+      size: 2Gi
+      accessMode: ReadWriteOnce
+      storageClass: longhorn
+    data:
+      enabled: true
+      type: custom
+      volumeSpec:
+        nfs:
+          server: 192.168.1.91
+          path: /mnt/storage/media/comics
+      mountPath: /mnt/storage/media/comics
+
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+
+  ingress:
+    main:
+      enabled: true
+      annotations:
+      hosts:
+      - host: comics.w00t.cloud
+        paths:
+        - path: /
+          pathType: Prefix
+
+  initContainers:
+    duplicacy-init:
+      image: alexphillips/duplicacy-init
+      env:
+        - name: BACKUP_NAME
+          value: gcd-komga
+        - name: BACKUP_LOCATION
+          value: gcd://duplicacy_backup/komga
+        - name: DUPLICACY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: password
+        - name: GCD_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: gcd_token
+      volumeMounts:
+        - mountPath: /data
+          name: config
+
+  additionalContainers:
+    duplicacy-backup:
+      image: alexphillips/duplicacy-backup
+      env:
+        - name: SCHEDULE
+          value: "0 12 * * *"
+        - name: HC_API_URL
+          value: https://hc.w00t.cloud/ping
+        - name: CHECK_UUID
+          value: d226e67a-9cef-4c03-9e32-db0aa9561acf
+        - name: DUPLICACY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: password
+        - name: GCD_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: duplicacy
+              key: gcd_token
+      volumeMounts:
+        - mountPath: /data
+          name: config
