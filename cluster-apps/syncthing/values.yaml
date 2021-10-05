@@ -1,7 +1,7 @@
 syncthing:
   image:
-    repository: syncthing/syncthing
-    tag: 1.18.3
+    repository: ghcr.io/linuxserver/syncthing
+    tag: latest
   controller:
     labels:
       nfs: "true"
