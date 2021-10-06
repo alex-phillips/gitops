@@ -1,7 +1,7 @@
 frigate:
   image:
     repository: blakeblackshear/frigate
-    tag: 0.8.4-amd64
+    tag: 0.9.1-amd64
 
   config: |
     mqtt:
