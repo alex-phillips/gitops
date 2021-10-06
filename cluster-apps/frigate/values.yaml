@@ -32,9 +32,10 @@ frigate:
               roles:
                 - rtmp
                 - detect
-        width: 1920
-        height: 1080
-        fps: 5
+        detect:
+          width: 1920
+          height: 1080
+          fps: 5
       lucys_room:
         ffmpeg:
           inputs:
@@ -42,9 +43,10 @@ frigate:
               roles:
                 - rtmp
                 - detect
-        width: 1920
-        height: 1080
-        fps: 5
+        detect:
+          width: 1920
+          height: 1080
+          fps: 5
       aris_room:
         ffmpeg:
           inputs:
@@ -52,9 +54,10 @@ frigate:
               roles:
                 - rtmp
                 - detect
-        width: 1920
-        height: 1080
-        fps: 5
+        detect:
+          width: 1920
+          height: 1080
+          fps: 5
 
     detectors:
     #   # coral:
