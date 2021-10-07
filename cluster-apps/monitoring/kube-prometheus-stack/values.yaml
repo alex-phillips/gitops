@@ -9,10 +9,10 @@ kube-prometheus-stack:
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
-        - "alert-manager.${SECRET_DOMAIN}"
+        - "alert-manager.w00t.cloud"
       tls:
         - hosts:
-            - "alert-manager.${SECRET_DOMAIN}"
+            - "alert-manager.w00t.cloud"
     alertmanagerSpec:
       storage:
         volumeClaimTemplate:
