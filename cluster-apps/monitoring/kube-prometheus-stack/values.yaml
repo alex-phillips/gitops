@@ -17,7 +17,7 @@ kube-prometheus-stack:
       storage:
         volumeClaimTemplate:
           spec:
-            storageClassName: "rook-ceph-block"
+            storageClassName: longhorn
             resources:
               requests:
                 storage: 1Gi
