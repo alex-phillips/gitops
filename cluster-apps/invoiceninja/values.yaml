@@ -1,7 +1,7 @@
 invoiceninja:
   image:
     repository: ghcr.io/linuxserver-labs/invoiceninja
-    tag: 5.3.21
+    tag: 5.3.22
 
   env:
     PDF_GENERATOR: snappdf
