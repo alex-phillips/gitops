@@ -1,26 +1,26 @@
 kube-prometheus-stack:
   fullnameOverride: prometheus
-  alertmanager:
-    configSecret: alertmanager
-    ingress:
-      enabled: true
-      pathType: Prefix
-      ingressClassName: "traefik"
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-      hosts:
-        - "alert-manager.w00t.cloud"
-      tls:
-        - hosts:
-            - "alert-manager.w00t.cloud"
-    alertmanagerSpec:
-      storage:
-        volumeClaimTemplate:
-          spec:
-            storageClassName: longhorn
-            resources:
-              requests:
-                storage: 1Gi
+  # alertmanager:
+  #   configSecret: alertmanager
+  #   ingress:
+  #     enabled: true
+  #     pathType: Prefix
+  #     ingressClassName: "traefik"
+  #     annotations:
+  #       traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+  #     hosts:
+  #       - "alert-manager.w00t.cloud"
+  #     tls:
+  #       - hosts:
+  #           - "alert-manager.w00t.cloud"
+  #   alertmanagerSpec:
+  #     storage:
+  #       volumeClaimTemplate:
+  #         spec:
+  #           storageClassName: longhorn
+  #           resources:
+  #             requests:
+  #               storage: 1Gi
   nodeExporter:
     enabled: true
     # serviceMonitor:
