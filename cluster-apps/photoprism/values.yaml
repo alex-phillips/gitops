@@ -4,7 +4,7 @@ photoprism:
       nfs: "true"
   image:
     repository: photoprism/photoprism
-    tag: "20211002"
+    tag: "20211007"
   env:
     TZ: America/New_York
     PHOTOPRISM_SPONSOR: "true"
