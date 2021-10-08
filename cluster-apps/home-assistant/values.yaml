@@ -1,7 +1,7 @@
 home-assistant:
   image:
     repository: ghcr.io/home-assistant/home-assistant
-    tag: 2021.10.0
+    tag: 2021.10.1
 
   env:
     TZ: America/New_York
