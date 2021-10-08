@@ -6,7 +6,7 @@ airsonic:
 
   image:
     repository: airsonicadvanced/airsonic-advanced
-    tag: latest@sha256:7f3674a773b6a3b4665e2cda25be1293c5ee255592eda4bef42b91440899debe
+    tag: latest@sha256:ad3354be35bd32eb7897ed2fdbb42c054186c7c16c804958abaa3107891488aa
 
   env:
     TZ: America/New_York
