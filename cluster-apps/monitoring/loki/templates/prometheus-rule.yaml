@@ -1,0 +1,54 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: loki.rules
+  namespace: monitoring
+spec:
+  groups:
+    - name: loki.rules
+      rules:
+        - alert: Test
+          annotations:
+            message: "This is a test alert"
+          expr: |
+            sum(rate({job="apps/uptime-kuma"} |= "Request failed"[10s])) > 0
+          for: 1s
+          labels:
+            severity: critical
+        - alert: RadarrReadOnly
+          annotations:
+            message: "Radarr's volume appears to be read-only"
+          expr: |
+            sum(rate({app="radarr"} |= "ReadOnly"[10s])) > 0
+          for: 10s
+          labels:
+            severity: critical
+        # - alert: LokiRequestErrors
+        #   annotations:
+        #     message: "{{ $labels.job }} {{ $labels.route }} is experiencing {{ $value | humanizePercentage }} errors."
+        #   expr: |
+        #     100 * sum(rate(loki_request_duration_seconds_count{status_code=~"5.."}[1m])) by (namespace, job, route)
+        #       /
+        #     sum(rate(loki_request_duration_seconds_count[1m])) by (namespace, job, route)
+        #       > 10
+        #   for: 15m
+        #   labels:
+        #     severity: critical
+        # - alert: LokiRequestPanics
+        #   annotations:
+        #     message: "{{ $labels.job }} is experiencing {{ $value | humanizePercentage }} increase of panics."
+        #   expr: |
+        #     sum(increase(loki_panic_total[10m])) by (namespace, job)
+        #       > 0
+        #   labels:
+        #     severity: critical
+        # - alert: LokiRequestLatency
+        #   annotations:
+        #     message: "{{ $labels.job }} {{ $labels.route }} is experiencing {{ $value }}s 99th percentile latency."
+        #   expr: |
+        #     namespace_job_route:loki_request_duration_seconds:99quantile{route!~"(?i).*tail.*"}
+        #       > 1
+        #   for: 15m
+        #   labels:
+        #     severity: critical
