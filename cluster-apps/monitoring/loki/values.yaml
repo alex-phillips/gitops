@@ -1,8 +1,6 @@
 loki:
   image:
     repository: ghcr.io/k8s-at-home/loki
-  extraArgs:
-    log.level: debug
   serviceMonitor:
     enabled: true
   config:
@@ -16,6 +14,7 @@ loki:
         resync_interval: 5s
         shared_store: s3
     ruler:
+      log_leve: debug
       storage:
         type: local
         local:
