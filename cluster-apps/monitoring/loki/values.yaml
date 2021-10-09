@@ -14,7 +14,7 @@ loki:
         resync_interval: 5s
         shared_store: s3
     ruler:
-      log_leve: debug
+      log_level: debug
       storage:
         type: local
         local:
