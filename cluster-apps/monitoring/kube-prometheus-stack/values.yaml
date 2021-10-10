@@ -1,12 +1,13 @@
 kube-prometheus-stack:
   fullnameOverride: prometheus
   alertmanager:
+    enabled: false
     ingress:
       enabled: true
       pathType: Prefix
       ingressClassName: "nginx"
       hosts:
-        - "alert-manager.w00t.cloud"
+        - alert-manager.w00t.cloud
     alertmanagerSpec:
       configSecret: alertmanager-config
       storage:
