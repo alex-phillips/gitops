@@ -8,6 +8,7 @@ kube-prometheus-stack:
       hosts:
         - alert-manager.w00t.cloud
     alertmanagerSpec:
+      tplConfig: true
       config:
         global:
           resolve_timeout: 5m
