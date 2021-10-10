@@ -8,25 +8,24 @@ kube-prometheus-stack:
       ingressClassName: "nginx"
       hosts:
         - alert-manager.w00t.cloud
-    alertmanagerSpec:
-      tplConfig: true
-      config:
-        global:
-          resolve_timeout: 5m
-        route:
-          group_by: ['job']
-          group_wait: 30s
-          group_interval: 5m
-          repeat_interval: 12h
+    config:
+      global:
+        resolve_timeout: 5m
+      route:
+        group_by: ['job']
+        group_wait: 30s
+        group_interval: 5m
+        repeat_interval: 12h
+        receiver: 'null'
+        routes:
+        - match:
+            alertname: Watchdog
           receiver: 'null'
-          routes:
-          - match:
-              alertname: Watchdog
-            receiver: 'null'
-        receivers:
-        - name: 'null'
-        templates:
-        - '/etc/alertmanager/config/*.tmpl'
+      receivers:
+      - name: 'null'
+      templates:
+      - '/etc/alertmanager/config/*.tmpl'
+    alertmanagerSpec:
       configSecret: alertmanager-config
       storage:
         volumeClaimTemplate:
