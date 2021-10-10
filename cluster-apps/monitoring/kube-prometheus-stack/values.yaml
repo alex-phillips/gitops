@@ -1,7 +1,6 @@
 kube-prometheus-stack:
   fullnameOverride: prometheus
   alertmanager:
-    enabled: false
     ingress:
       enabled: true
       pathType: Prefix
