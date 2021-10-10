@@ -9,6 +9,9 @@ kube-prometheus-stack:
         - alert-manager.w00t.cloud
     alertmanagerSpec:
       configSecret: alertmanager-config
+      alertmanagerConfigSelector:
+        matchLabels:
+          alertmanagerConfig: custom
       storage:
         volumeClaimTemplate:
           spec:
