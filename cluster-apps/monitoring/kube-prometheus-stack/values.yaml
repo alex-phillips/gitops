@@ -8,6 +8,7 @@ kube-prometheus-stack:
       hosts:
         - alert-manager.w00t.cloud
     alertmanagerSpec:
+      logLevel: debug
       useExistingSecret: true
       configSecret: alertmanager-config
       storage:
