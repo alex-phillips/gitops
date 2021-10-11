@@ -3,7 +3,8 @@ paperless-ng:
     labels:
       nfs: "true"
   image:
-    tag: latest
+    repository: ghcr.io/linuxserver/paperless-ng
+    tag: 1.5.0
   env:
     PAPERLESS_CONSUMER_RECURSIVE: 'true'
     PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS: 'true'
