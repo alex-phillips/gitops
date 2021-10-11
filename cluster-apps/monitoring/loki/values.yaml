@@ -29,7 +29,7 @@ loki:
       rules:
         - alert: TestAlert
           expr: |
-            sum(count_over_time({job="apps/uptime-kuma"} |= "Request failed"[1m])) > 0
+            1 > 0
           for: 2m
           labels:
             severity: critical
