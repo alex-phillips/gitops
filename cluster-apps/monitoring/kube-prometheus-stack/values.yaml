@@ -1,7 +1,6 @@
 kube-prometheus-stack:
   fullnameOverride: prometheus
   alertmanager:
-    disabled: true
     ingress:
       enabled: true
       pathType: Prefix
@@ -10,6 +9,7 @@ kube-prometheus-stack:
         - alert-manager.w00t.cloud
     alertmanagerSpec:
       useExistingSecret: true
+      configSecret: alertmanager-config
       storage:
         volumeClaimTemplate:
           spec:
