@@ -34,7 +34,7 @@ kube-prometheus-stack:
     fullnameOverride: node-exporter
   grafana:
     enabled: false
-    # forceDeployDashboards: true
+    forceDeployDashboards: true
     sidecar:
       dashboards:
         multicluster:
