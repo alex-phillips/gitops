@@ -34,12 +34,12 @@ kube-prometheus-stack:
     fullnameOverride: node-exporter
   grafana:
     enabled: false
-    forceDeployDashboards: true
-    sidecar:
-      dashboards:
-        multicluster:
-          etcd:
-            enabled: true
+    # forceDeployDashboards: true
+    # sidecar:
+    #   dashboards:
+    #     multicluster:
+    #       etcd:
+    #         enabled: true
   kubelet:
     enabled: true
     # serviceMonitor:
@@ -48,36 +48,36 @@ kube-prometheus-stack:
     #       sourceLabels:
     #         - node
     #       targetLabel: instance
-  kubeApiServer:
-    enabled: true
-  kubeControllerManager:
-    enabled: true
-    endpoints:
-      - 192.168.1.129
-      - 192.168.1.130
-      - 192.168.1.131
-  kubeScheduler:
-    enabled: true
-    endpoints:
-      - 192.168.1.129
-      - 192.168.1.130
-      - 192.168.1.131
-  kubeProxy:
-    enabled: true
-    endpoints:
-      - 192.168.1.129
-      - 192.168.1.130
-      - 192.168.1.131
-  kubeEtcd:
-    enabled: true
-    endpoints:
-      - 192.168.1.129
-      - 192.168.1.130
-      - 192.168.1.131
-    service:
-      enabled: true
-      port: 2381
-      targetPort: 2381
+  # kubeApiServer:
+  #   enabled: true
+  # kubeControllerManager:
+  #   enabled: true
+  #   endpoints:
+  #     - 192.168.1.129
+  #     - 192.168.1.130
+  #     - 192.168.1.131
+  # kubeScheduler:
+  #   enabled: true
+  #   endpoints:
+  #     - 192.168.1.129
+  #     - 192.168.1.130
+  #     - 192.168.1.131
+  # kubeProxy:
+  #   enabled: true
+  #   endpoints:
+  #     - 192.168.1.129
+  #     - 192.168.1.130
+  #     - 192.168.1.131
+  # kubeEtcd:
+  #   enabled: true
+  #   endpoints:
+  #     - 192.168.1.129
+  #     - 192.168.1.130
+  #     - 192.168.1.131
+  #   service:
+  #     enabled: true
+  #     port: 2381
+  #     targetPort: 2381
   # Setting this option to 0 disabled CPU limits
   prometheusOperator:
     configReloaderCpu: 0
