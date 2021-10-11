@@ -2,12 +2,15 @@ xbackbone:
   image:
     repository: pe46dro/xbackbone-docker
     tag: 3.3.3
+
   env:
     TZ: America/New_York
+
   persistence:
     config:
       enabled: true
       type: emptyDir
+
   ingress:
     main:
       enabled: true
@@ -16,6 +19,7 @@ xbackbone:
         paths:
         - path: /
           pathType: Prefix
+
   # initContainers:
   #   duplicacy-init:
   #     image: alexphillips/duplicacy-init
@@ -37,6 +41,7 @@ xbackbone:
   #     volumeMounts:
   #       - mountPath: /data
   #         name: config
+
   # additionalContainers:
   #   duplicacy-backup:
   #     image: alexphillips/duplicacy-backup

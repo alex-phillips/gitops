@@ -2,8 +2,10 @@ tautulli:
   image:
     repository: ghcr.io/k8s-at-home/tautulli
     tag: v2.7.6
+
   env:
     TZ: America/New_York
+
   persistence:
     config:
       enabled: true
@@ -11,6 +13,7 @@ tautulli:
       size: 5Gi
       accessMode: ReadWriteOnce
       storageClass: longhorn
+
   ingress:
     main:
       enabled: true
@@ -20,6 +23,7 @@ tautulli:
         paths:
         - path: /
           pathType: Prefix
+
   initContainers:
     duplicacy-init:
       image: alexphillips/duplicacy-init
@@ -41,6 +45,7 @@ tautulli:
       volumeMounts:
         - mountPath: /data
           name: config
+
   additionalContainers:
     duplicacy-backup:
       image: alexphillips/duplicacy-backup

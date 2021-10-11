@@ -2,8 +2,10 @@ node-red:
   image:
     repository: ghcr.io/k8s-at-home/node-red
     tag: v2.0.6
+
   env:
     TZ: America/New_York
+
   persistence:
     data:
       enabled: true
@@ -11,6 +13,7 @@ node-red:
       size: 50Mi
       accessMode: ReadWriteOnce
       storageClass: longhorn
+
   ingress:
     main:
       enabled: true
@@ -19,6 +22,7 @@ node-red:
         paths:
         - path: /
           pathType: Prefix
+
   initContainers:
     duplicacy-init:
       image: alexphillips/duplicacy-init
@@ -40,6 +44,7 @@ node-red:
       volumeMounts:
         - mountPath: /data
           name: data
+
   additionalContainers:
     duplicacy-backup:
       image: alexphillips/duplicacy-backup

@@ -4,4 +4,4 @@ version: 1.0.0
 dependencies:
   - name: syncthing
     version: 3.1.0
-    repository: https://k8s-at-home.com/charts/
+    repository: https://alex-phillips.github.io/helm-charts

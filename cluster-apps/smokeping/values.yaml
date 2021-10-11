@@ -1,10 +1,12 @@
 smokeping:
   image:
     tag: latest
+
   env:
     PUID: 1000
     PGID: 1000
     TZ: America/New_York
+
   persistence:
     config:
       enabled: true
@@ -28,6 +30,7 @@ smokeping:
           items:
             - key: config
               path: telegraf.conf
+
   service:
     telegraf:
       enabled: true
@@ -35,6 +38,7 @@ smokeping:
         telegraf:
           enabled: true
           port: 9283
+
   ingress:
     main:
       enabled: true
@@ -43,6 +47,7 @@ smokeping:
         paths:
         - path: /
           pathType: Prefix
+
   additionalContainers:
     # telegraf ping / dns metrics for custom smokeping-like grafana dashboard
     telegraf:

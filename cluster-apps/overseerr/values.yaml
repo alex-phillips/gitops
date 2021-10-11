@@ -2,6 +2,7 @@ overseerr:
   image:
     repository: ghcr.io/sct/overseerr
     tag: 1.26.1
+
   persistence:
     config:
       enabled: true
@@ -9,6 +10,7 @@ overseerr:
       size: 1Gi
       accessMode: ReadWriteOnce
       storageClass: longhorn
+
   ingress:
     main:
       enabled: true
@@ -18,6 +20,7 @@ overseerr:
         paths:
         - path: /
           pathType: Prefix
+
   initContainers:
     duplicacy-init:
       image: alexphillips/duplicacy-init
@@ -39,6 +42,7 @@ overseerr:
       volumeMounts:
         - mountPath: /data
           name: config
+
   additionalContainers:
     duplicacy-backup:
       image: alexphillips/duplicacy-backup

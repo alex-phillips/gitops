@@ -1,10 +1,12 @@
 wikijs:
   image:
     tag: latest
+
   env:
     TZ: America/New_York
     PUID: 1000
     PGID: 1000
+
   persistence:
     config:
       enabled: true
@@ -15,6 +17,7 @@ wikijs:
           items:
             - key: config
               path: config.yml
+
   ingress:
     main:
       enabled: true

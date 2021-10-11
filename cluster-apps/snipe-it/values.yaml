@@ -10,6 +10,7 @@ snipe-it:
         secretKeyRef:
           name: snipe-it
           key: mysql_password
+
   persistence:
     config:
       enabled: true
@@ -17,6 +18,7 @@ snipe-it:
       size: 1Gi
       accessMode: ReadWriteOnce
       storageClass: longhorn
+
   ingress:
     main:
       enabled: true
@@ -26,6 +28,7 @@ snipe-it:
         paths:
         - path: /
           pathType: Prefix
+
   initContainers:
     duplicacy-init:
       image: alexphillips/duplicacy-init
@@ -47,6 +50,7 @@ snipe-it:
       volumeMounts:
         - mountPath: /data
           name: config
+
   additionalContainers:
     duplicacy-backup:
       image: alexphillips/duplicacy-backup

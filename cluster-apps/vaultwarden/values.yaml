@@ -2,10 +2,12 @@ vaultwarden:
   image:
     repository: vaultwarden/server
     tag: 1.22.2
+
   env:
     TZ: America/New_York
     DATA_FOLDER: config
     SIGNUPS_ALLOWED: "false"
+
   persistence:
     config:
       enabled: true
@@ -13,6 +15,7 @@ vaultwarden:
       size: 100Mi
       accessMode: ReadWriteOnce
       storageClass: longhorn
+
   ingress:
     main:
       enabled: true
@@ -23,6 +26,7 @@ vaultwarden:
           pathType: Prefix
           service:
             port: 80
+
   initContainers:
     duplicacy-init:
       image: alexphillips/duplicacy-init
@@ -44,6 +48,7 @@ vaultwarden:
       volumeMounts:
         - mountPath: /data
           name: config
+
   additionalContainers:
     duplicacy-backup:
       image: alexphillips/duplicacy-backup
