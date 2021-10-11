@@ -25,31 +25,34 @@ loki:
           store: inmemory
       enable_api: true
   alerting_groups:
-    - name: test
+    #
+    # radarr read-only
+    #
+    - name: radarr-readonly
       rules:
-        - alert: TestAlert
+        - alert: RadarrReadOnly
           expr: |
-            1 + 1
+            sum(count_over_time({app="radarr"} |= "ReadOnly"[1m])) > 0
           for: 1m
           labels:
             severity: critical
             category: logs
           annotations:
-            summary: "Uptime-Kuma detected an outage"
+            summary: "Radarr's volume is read-only"
     #
-    # radarr read-only
+    # *arr applications
     #
-    - name: zigbee2mqtt
+    - name: arr
       rules:
-        - alert: ZigbeeUnableToReachMQTT
+        - alert: ArrDatabaseIsLocked
           expr: |
-            sum(count_over_time({app="radarr"} |= "ReadOnly"[1m])) > 0
+            sum by (app) (count_over_time({app=~".*arr"} |= "database is locked"[2m])) > 0
           for: 10s
           labels:
             severity: critical
             category: logs
           annotations:
-            summary: "Radarr's volume is read-only"
+            summary: "{{$value}} is experiencing locked database issues"
   #   #
   #   # zwavejs2mqtt
   #   #
@@ -78,17 +81,3 @@ loki:
   #           category: logs
   #         annotations:
   #           summary: "Frigate is unable to reach MQTT"
-  #   #
-  #   # *arr applications
-  #   #
-  #   - name: arr
-  #     rules:
-  #       - alert: ArrDatabaseIsLocked
-  #         expr: |
-  #           sum by (app) (count_over_time({app=~".*arr"} |= "database is locked"[2m])) > 0
-  #         for: 10s
-  #         labels:
-  #           severity: critical
-  #           category: logs
-  #         annotations:
-  #           summary: "{{$value}} is experiencing locked database issues"
