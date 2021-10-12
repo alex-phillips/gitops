@@ -1,7 +1,7 @@
 xbackbone:
   image:
-    repository: pe46dro/xbackbone-docker
-    tag: 3.3.3
+    repository: ghcr.io/linuxserver/xbackbone
+    tag: latest
 
   env:
     TZ: America/New_York
