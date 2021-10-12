@@ -44,9 +44,9 @@ spec:
         namespace: '{{ namespace }}'
         name: '{{ cluster }}'
       syncPolicy:
-        # automated:
-        #   prune: false
-        #   selfHeal: false
+        automated:
+          prune: false
+          selfHeal: true
         syncOptions:
           - ApplyOutOfSyncOnly=true
           - PrunePropagationPolicy=orphan
