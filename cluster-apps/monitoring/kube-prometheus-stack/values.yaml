@@ -6,7 +6,7 @@ kube-prometheus-stack:
       pathType: Prefix
       ingressClassName: "nginx"
       hosts:
-        - alert-manager.w00t.cloud
+        - alerts.w00t.cloud
     alertmanagerSpec:
       logLevel: debug
       useExistingSecret: true
