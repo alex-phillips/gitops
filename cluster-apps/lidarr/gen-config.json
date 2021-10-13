@@ -1,9 +1,0 @@
-[
-  {
-    "name": "lidarr",
-    "cluster": "in-cluster",
-    "namespace": "media",
-    "path": "cluster-apps/lidarr",
-    "valueFile": ""
-  }
-]
