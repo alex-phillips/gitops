@@ -8,7 +8,7 @@ syncthing:
       nfs: "true"
 
   persistence:
-    data:
+    config:
       enabled: true
       retain: true
       size: 10Mi
@@ -45,7 +45,7 @@ syncthing:
               key: gcd_token
       volumeMounts:
         - mountPath: /data
-          name: data
+          name: config
 
   # additionalContainers:
   #   duplicacy-backup:
