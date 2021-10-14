@@ -16,6 +16,7 @@ syncthing:
       storageClass: longhorn
     data:
       enabled: true
+      mountPath: /mnt/storage/docker/syncthing/data
       type: custom
       volumeSpec:
         nfs:
