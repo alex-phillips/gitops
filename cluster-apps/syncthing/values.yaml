@@ -14,6 +14,13 @@ syncthing:
       size: 10Mi
       accessMode: ReadWriteOnce
       storageClass: longhorn
+    data:
+      enabled: true
+      type: custom
+      volumeSpec:
+        nfs:
+          server: 192.168.1.91
+          path: /mnt/storage/docker/syncthing/data
 
   ingress:
     main:
