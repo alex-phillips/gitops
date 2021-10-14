@@ -1,8 +1,7 @@
 vaultwarden:
   image:
     repository: vaultwarden/server
-    tag: latest
-    pullPolicy: Always
+    tag: 1.22.2
 
   env:
     TZ: America/New_York
