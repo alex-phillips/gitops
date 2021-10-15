@@ -1,0 +1,9 @@
+[
+  {
+    "name": "apprise-api",
+    "cluster": "in-cluster",
+    "namespace": "apps",
+    "path": "cluster-apps/apprise-api",
+    "valueFile": ""
+  }
+]
