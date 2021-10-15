@@ -1,7 +1,7 @@
 goalert:
   image:
-    repository: kong
-    tag: "2.5"
+    repository: goalert/goalert
+    tag: v0.28.0
 
   env:
     - name: GOALERT_DATA_ENCRYPTION_KEY
