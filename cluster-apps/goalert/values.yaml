@@ -4,13 +4,13 @@ goalert:
     tag: "2.5"
 
   env:
-    GOALERT_DATA_ENCRYPTION_KEY:
-      envFrom:
+    - name: GOALERT_DATA_ENCRYPTION_KEY
+      valueFrom:
         secretKeyRef:
           name: goalert
           key: encryption_key
-    GOALERT_DB_URL:
-      envFrom:
+    - name: GOALERT_DB_URL
+      valueFrom:
         secretKeyRef:
           name: goalert
           key: database_url
