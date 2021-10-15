@@ -1,0 +1,25 @@
+goalert:
+  image:
+    repository: kong
+    tag: "2.5"
+
+  env:
+    GOALERT_DATA_ENCRYPTION_KEY:
+      envFrom:
+        secretKeyRef:
+          name: goalert
+          key: encryption_key
+    GOALERT_DB_URL:
+      envFrom:
+        secretKeyRef:
+          name: goalert
+          key: database_url
+
+  ingress:
+    main:
+      enabled: true
+      hosts:
+      - host: pager.w00t.cloud
+        paths:
+        - path: /
+          pathType: Prefix

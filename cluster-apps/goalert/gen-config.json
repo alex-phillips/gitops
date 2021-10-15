@@ -1,9 +1,9 @@
 [
   {
-    "name": "apprise-api",
+    "name": "goalert",
     "cluster": "in-cluster",
     "namespace": "apps",
-    "path": "cluster-apps/apprise-api",
+    "path": "cluster-apps/goalert",
     "valueFile": ""
   }
 ]
