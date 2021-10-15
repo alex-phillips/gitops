@@ -2,7 +2,7 @@
   {
     "name": "goalert",
     "cluster": "in-cluster",
-    "namespace": "apps",
+    "namespace": "monitoring",
     "path": "cluster-apps/goalert",
     "valueFile": ""
   }
