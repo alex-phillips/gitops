@@ -1,6 +1,6 @@
 apprise-api:
   image:
-    repository: ghcr.io/linuxserver-labs/apprise-api
+    repository: ghcr.io/linuxserver/apprise-api
     tag: latest
 
   persistence:
