@@ -1,0 +1,7 @@
+name: apprise
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: apprise-api
+    version: 1.0.0
+    repository: https://alex-phillips.github.io/helm-charts

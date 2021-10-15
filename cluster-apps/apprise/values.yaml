@@ -1,0 +1,26 @@
+apprise:
+  image:
+    repository: ghcr.io/linuxserver/apprise-api
+    tag: latest
+
+  env:
+    TZ: America/New_York
+    PUID: 1000
+    PGID: 1000
+
+  persistence:
+    config:
+      enabled: true
+      retain: true
+      size: 1Gi
+      accessMode: ReadWriteOnce
+      storageClass: longhorn
+
+  ingress:
+    main:
+      enabled: true
+      hosts:
+      - host: api.w00t.cloud
+        paths:
+        - path: /
+          pathType: Prefix
