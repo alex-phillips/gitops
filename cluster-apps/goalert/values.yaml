@@ -13,7 +13,7 @@ goalert:
       valueFrom:
         secretKeyRef:
           name: goalert
-          key: database_url
+          key: db_url
 
   ingress:
     main:
