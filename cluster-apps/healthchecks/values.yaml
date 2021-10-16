@@ -9,6 +9,7 @@ healthchecks:
     TZ: America/New_York
     SITE_NAME: w00t.cloud
     SITE_ROOT: https://hc.w00t.cloud
+    REGENERATE_SETTINGS: False
 
   persistence:
     config:
