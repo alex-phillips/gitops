@@ -1,4 +1,6 @@
 uptime-kuma:
+  global:
+    fullnameOverride: uptime-kuma-web
   image:
     repository: louislam/uptime-kuma
     tag: 1.9.1
