@@ -1,0 +1,9 @@
+[
+  {
+    "name": "applicationset",
+    "cluster": "in-cluster",
+    "namespace": "argocd",
+    "path": "cluster-core/applicationset",
+    "valueFile": ""
+  }
+]

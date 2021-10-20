@@ -1,0 +1,9 @@
+[
+  {
+    "name": "argocd",
+    "cluster": "in-cluster",
+    "namespace": "argocd",
+    "path": "cluster-core/argocd",
+    "valueFile": ""
+  }
+]

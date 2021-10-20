@@ -1,0 +1,53 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-init
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/alex-phillips/gitops.git
+        revision: HEAD
+        files:
+          - path: "cluster-init/**/gen-config.json"
+        template:
+          metadata: {}
+          spec:
+            destination: {}
+            project: default
+            syncPolicy: {}
+            source:
+              path: '{{ path }}'
+              targetRevision: HEAD
+              repoURL: https://github.com/alex-phillips/gitops.git
+              helm:
+                valueFiles:
+                  - values.yaml
+                  - '{{ valueFile }}'
+    - git:
+        repoURL: https://github.com/alex-phillips/gitops.git
+        revision: HEAD
+        files:
+          - path: "cluster-init/**/kustomize.json"
+  template:
+    metadata:
+      name: '{{ name }}'
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: '/{{ path }}'
+        argocd.argoproj.io/sync-options: Prune=false
+    spec:
+      project: default
+      source:
+        path: '{{ path }}'
+        targetRevision: HEAD
+        repoURL: https://github.com/alex-phillips/gitops.git
+      destination:
+        namespace: '{{ namespace }}'
+        name: '{{ cluster }}'
+      syncPolicy:
+        automated:
+          prune: false
+          selfHeal: true
+        syncOptions:
+          - ApplyOutOfSyncOnly=true
+          - PrunePropagationPolicy=orphan
+          - CreateNamespace=true
