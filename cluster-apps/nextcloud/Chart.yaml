@@ -6,5 +6,5 @@ dependencies:
     version: 1.0.0
     repository: https://alex-phillips.github.io/helm-charts
   - name: onlyoffice-documentserver
-    version: 1.0.0
+    version: 1.0.1
     repository: https://alex-phillips.github.io/helm-charts
