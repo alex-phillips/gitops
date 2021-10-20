@@ -9,3 +9,9 @@ longhorn:
     ## Set to true to enable ingress record generation
     enabled: true
     host: lh.w00t.cloud
+  longhornManager:
+    tolerations:
+      - key: "key"
+        operator: "Equal"
+        value: "value"
+        effect: "NoSchedule"
