@@ -1,0 +1,50 @@
+hajimari:
+  image:
+    repository: ghcr.io/toboshii/hajimari
+    tag: v0.1.0
+
+  env:
+    TZ: America/New_York
+
+  hajimari:
+    # -- Set to true to show all discovered applications by default.
+    defaultEnable: false
+    # -- Namespace selector to use for discovering applications
+    namespaceSelector:
+      matchNames:
+      - media
+    # -- Override the title of the Hajimari pages
+    title: null
+    # -- Default name for welcome message
+    name: "You"
+    # -- Add custom applications to the discovered application list
+    customApps: []
+    # - name: Test
+    #   url: https://example.com
+    #   icon: test-tube
+
+    # -- Set default bookmarks
+    groups: []
+    # - name: Communicate
+    #   links:
+    #   - name: Discord
+    #     url: 'https://discord.com'
+    #   - name: Gmail
+    #     url: 'http://gmail.com'
+    #   - name: Slack
+    #     url: 'https://slack.com/signin'
+
+  ingress:
+    main:
+      enabled: true
+      hosts:
+      - host: dash.w00t.cloud
+        paths:
+        - path: /
+          pathType: Prefix
+
+  # -- Configure persistence settings for the chart under this key.
+  # @default -- See values.yaml
+  persistence:
+    data:
+      enabled: false

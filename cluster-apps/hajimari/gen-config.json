@@ -1,0 +1,9 @@
+[
+  {
+    "name": "hajimari",
+    "cluster": "in-cluster",
+    "namespace": "apps",
+    "path": "cluster-apps/hajimari",
+    "valueFile": ""
+  }
+]
