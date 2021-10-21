@@ -8,7 +8,7 @@ hajimari:
 
   hajimari:
     # -- Set to true to show all discovered applications by default.
-    defaultEnable: false
+    defaultEnable: true
     # -- Namespace selector to use for discovering applications
     namespaceSelector:
       matchNames:
