@@ -1,7 +1,7 @@
 healthchecks:
   image:
     repository: ghcr.io/linuxserver/healthchecks
-    tag: latest
+    tag: 1.23.1
 
   env:
     PGID: 1000
@@ -9,7 +9,7 @@ healthchecks:
     TZ: America/New_York
     SITE_NAME: w00t.cloud
     SITE_ROOT: https://hc.w00t.cloud
-    REGENERATE_SETTINGS: False
+    REGENERATE_SETTINGS: 'False'
 
   persistence:
     config:
