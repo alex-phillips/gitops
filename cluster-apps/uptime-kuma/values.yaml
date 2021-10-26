@@ -58,7 +58,7 @@ uptime-kuma:
         - name: SCHEDULE
           value: "00 15 * * *"
         - name: HC_API_URL
-          value: https://hc.w00t.cloud/ping
+          value: https://hc.w00t.cloud
         - name: CHECK_UUID
           value: 705dbe72-8898-4737-b3a4-aabd52099de1
         - name: DUPLICACY_PASSWORD

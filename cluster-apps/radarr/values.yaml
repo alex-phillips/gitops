@@ -69,7 +69,7 @@ radarr:
         - name: SCHEDULE
           value: "45 0 * * *"
         - name: HC_API_URL
-          value: https://hc.w00t.cloud/ping
+          value: https://hc.w00t.cloud
         - name: CHECK_UUID
           value: f3888abb-4149-416a-a066-4b451e27eb25
         - name: DUPLICACY_PASSWORD

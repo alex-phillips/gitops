@@ -59,7 +59,7 @@ invoiceninja:
         - name: SCHEDULE
           value: "45 23 * * *"
         - name: HC_API_URL
-          value: https://hc.w00t.cloud/ping
+          value: https://hc.w00t.cloud
         - name: CHECK_UUID
           value: e28d1ffa-e0a5-4fb5-afa9-f3e3d3fb6a34
         - name: DUPLICACY_PASSWORD

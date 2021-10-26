@@ -56,7 +56,7 @@ vaultwarden:
         - name: SCHEDULE
           value: "00 11 * * *"
         - name: HC_API_URL
-          value: https://hc.w00t.cloud/ping
+          value: https://hc.w00t.cloud
         - name: CHECK_UUID
           value: f7a54103-fbeb-4747-be31-c1e1ef3b83a1
         - name: DUPLICACY_PASSWORD

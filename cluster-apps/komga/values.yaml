@@ -66,7 +66,7 @@ komga:
         - name: SCHEDULE
           value: "0 12 * * *"
         - name: HC_API_URL
-          value: https://hc.w00t.cloud/ping
+          value: https://hc.w00t.cloud
         - name: CHECK_UUID
           value: d226e67a-9cef-4c03-9e32-db0aa9561acf
         - name: DUPLICACY_PASSWORD

@@ -57,7 +57,7 @@ healthchecks:
         - name: SCHEDULE
           value: "30 01 * * *"
         - name: HC_API_URL
-          value: https://hc.w00t.cloud/ping
+          value: https://hc.w00t.cloud
         - name: CHECK_UUID
           value: 233b56e0-a601-41ab-b8c7-54d6694ba973
         - name: DUPLICACY_PASSWORD

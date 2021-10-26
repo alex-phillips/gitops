@@ -58,7 +58,7 @@ snipe-it:
         - name: SCHEDULE
           value: "15 3 * * *"
         - name: HC_API_URL
-          value: https://hc.w00t.cloud/ping
+          value: https://hc.w00t.cloud
         - name: CHECK_UUID
           value: 0ee715f6-f491-41a6-a2f6-a57421e34dde
         - name: DUPLICACY_PASSWORD

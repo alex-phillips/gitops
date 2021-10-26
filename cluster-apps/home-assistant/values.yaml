@@ -66,7 +66,7 @@ home-assistant:
         - name: SCHEDULE
           value: "30 0 * * *"
         - name: HC_API_URL
-          value: https://hc.w00t.cloud/ping
+          value: https://hc.w00t.cloud
         - name: CHECK_UUID
           value: 7213e9b6-c993-4a58-a747-57022c45ce92
         - name: DUPLICACY_PASSWORD

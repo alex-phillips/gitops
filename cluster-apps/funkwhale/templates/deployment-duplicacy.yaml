@@ -42,7 +42,7 @@ spec:
             - name: BACKUP_LOCATION
               value: gcd://duplicacy_backup/funkwhale
             - name: HC_API_URL
-              value: https://hc.w00t.cloud/ping
+              value: https://hc.w00t.cloud
             - name: CHECK_UUID
               value: 15b27693-4e79-42be-9c89-eb9e7a172562
             - name: DUPLICACY_PASSWORD

@@ -49,7 +49,7 @@ xbackbone:
   #       - name: SCHEDULE
   #         value: "00 03 * * *"
   #       - name: HC_API_URL
-  #         value: https://hc.w00t.cloud/ping
+  #         value: https://hc.w00t.cloud
   #       - name: CHECK_UUID
   #         value: 8c0919c9-6db3-46e2-b532-dab567177f16
   #       - name: DUPLICACY_PASSWORD

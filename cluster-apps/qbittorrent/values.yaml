@@ -110,7 +110,7 @@ qbittorrent:
         - name: SCHEDULE
           value: "0 12 * * *"
         - name: HC_API_URL
-          value: https://hc.w00t.cloud/ping
+          value: https://hc.w00t.cloud
         - name: CHECK_UUID
           value: 7af521e1-f296-462d-ba0b-8b228ea728c3
         - name: DUPLICACY_PASSWORD

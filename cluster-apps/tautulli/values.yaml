@@ -53,7 +53,7 @@ tautulli:
         - name: SCHEDULE
           value: "45 0 * * *"
         - name: HC_API_URL
-          value: https://hc.w00t.cloud/ping
+          value: https://hc.w00t.cloud
         - name: CHECK_UUID
           value: 91105625-60df-42da-a496-a6ed877e39dc
         - name: DUPLICACY_PASSWORD
