@@ -55,7 +55,7 @@ bookstack:
         - name: SCHEDULE
           value: "15 3 * * *"
         - name: HC_API_URL
-          value: https://hc.w00t.cloud
+          value: https://hc.w00t.cloud/ping
         - name: CHECK_UUID
           value: d986e8fc-cf32-4e27-a674-90fb549c6ef6
         - name: DUPLICACY_PASSWORD

@@ -52,7 +52,7 @@ thelounge:
         - name: SCHEDULE
           value: "0 8 * * *"
         - name: HC_API_URL
-          value: https://hc.w00t.cloud
+          value: https://hc.w00t.cloud/ping
         - name: CHECK_UUID
           value: df625b66-f4f1-4e7d-96e4-79ded0074943
         - name: DUPLICACY_PASSWORD

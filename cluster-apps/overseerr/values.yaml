@@ -50,7 +50,7 @@ overseerr:
         - name: SCHEDULE
           value: "45 9 * * *"
         - name: HC_API_URL
-          value: https://hc.w00t.cloud
+          value: https://hc.w00t.cloud/ping
         - name: CHECK_UUID
           value: 5cf3fd58-255d-4079-acbf-34eea2719a7b
         - name: DUPLICACY_PASSWORD

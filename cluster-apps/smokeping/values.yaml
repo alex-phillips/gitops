@@ -67,7 +67,7 @@ smokeping:
         - name: BACKUP_LOCATION
           value: gcd://duplicacy_backup/smokeping
         - name: HC_API_URL
-          value: https://hc.w00t.cloud
+          value: https://hc.w00t.cloud/ping
         - name: CHECK_UUID
           value: 1b4c1bb1-5172-4a3a-ab66-c1c15a76cb5b
         - name: DUPLICACY_PASSWORD

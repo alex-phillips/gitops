@@ -52,7 +52,7 @@ node-red:
         - name: SCHEDULE
           value: "30 03 * * *"
         - name: HC_API_URL
-          value: https://hc.w00t.cloud
+          value: https://hc.w00t.cloud/ping
         - name: CHECK_UUID
           value: dc718e37-926f-4f73-846d-0b918b051fe4
         - name: DUPLICACY_PASSWORD

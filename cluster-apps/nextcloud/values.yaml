@@ -72,7 +72,7 @@ nextcloud:
         - name: SCHEDULE
           value: "30 05 * * *"
         - name: HC_API_URL
-          value: https://hc.w00t.cloud
+          value: https://hc.w00t.cloud/ping
         - name: CHECK_UUID
           value: 397442bc-235c-4442-baf4-a1686bbd5220
         - name: DUPLICACY_PASSWORD
