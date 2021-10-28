@@ -20,6 +20,15 @@ nextcloud:
         nfs:
           server: 192.168.1.91
           path: /mnt/storage/docker/nextcloud/data
+    nas:
+      enabled: true
+      mountPath: /mnt/storage
+      type: custom
+      readOnly: true
+      volumeSpec:
+        nfs:
+          server: 192.168.1.91
+          path: /mnt/storage
 
   service:
     main:
