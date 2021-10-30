@@ -3,7 +3,7 @@ uptime-kuma:
     fullnameOverride: uptime-kuma-web
   image:
     repository: louislam/uptime-kuma
-    tag: 1.9.1
+    tag: 1.9.2
 
   persistence:
     data:
