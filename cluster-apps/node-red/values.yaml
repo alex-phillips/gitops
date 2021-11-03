@@ -24,30 +24,29 @@ node-red:
           pathType: Prefix
 
   initContainers:
-    duplicacy-init:
-      image: alexphillips/duplicacy-init
+    restic-init:
+      image: alexphillips/restic
+      command: ["/scripts/restic-init.sh"]
       env:
-        - name: BACKUP_NAME
-          value: gcd-node-red
-        - name: BACKUP_LOCATION
-          value: gcd://duplicacy_backup/node-red
-        - name: DUPLICACY_PASSWORD
+        - name: RESTIC_REPOSITORY
+          value: rclone:gdrive:restic/node-red
+        - name: RESTIC_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: duplicacy
+              name: restic
               key: password
-        - name: GCD_TOKEN
+        - name: RCLONE_CONFIG
           valueFrom:
             secretKeyRef:
-              name: duplicacy
-              key: gcd_token
+              name: rclone
+              key: config
       volumeMounts:
         - mountPath: /data
           name: data
 
   additionalContainers:
-    duplicacy-backup:
-      image: alexphillips/duplicacy-backup
+    restic-backup:
+      image: alexphillips/restic
       env:
         - name: SCHEDULE
           value: "30 03 * * *"
@@ -55,16 +54,18 @@ node-red:
           value: https://hc.w00t.cloud/ping
         - name: CHECK_UUID
           value: dc718e37-926f-4f73-846d-0b918b051fe4
-        - name: DUPLICACY_PASSWORD
+        - name: RESTIC_REPOSITORY
+          value: rclone:gdrive:restic/node-red
+        - name: RESTIC_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: duplicacy
+              name: restic
               key: password
-        - name: GCD_TOKEN
+        - name: RCLONE_CONFIG
           valueFrom:
             secretKeyRef:
-              name: duplicacy
-              key: gcd_token
+              name: rclone
+              key: config
       volumeMounts:
         - mountPath: /data
           name: data

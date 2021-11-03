@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: restic
+  namespace: media
+spec:
+  encryptedData:
+    password: AgAqzeA7rV9Bj6aR48/XEDex3uVokX2bPI1AtqMx9+TbRH81v+j5xFXG2FiX1a4XWf663rdwG4yV6BqKMFNlTHZjMELpuycsn0yk2CU/Gf+UOr5JbV3W/BdfQIMfFZRzwLJezjImVz2JlqiyB3JCj1HcFi3NXUK8Hu44B2abu7D1yCGtpAvKqwCfzMcpVdk1Hf8pYbNXBgQLW4E0akJZkAT8gjdSr+T2th4OIRKaniqGKv9VMN7KKkDg7/4YDD7R10bFjBEV9jR/jmpx14tVkwwEBruJcDnAKSbkc+oKFtSNtqzCoQJCqg83k2Pd3Bk5U0U+2JKNgYe4ux7cw/Pre9KemVSeAAFjPc2jxq9kfupZePcTlmSY2bOaDBCXNw1guVwLX0tukdb+z8BTKiiUCGAnaND/xNltG3ztj0xepm6sSjMoFKjFKmZkLo7bhJlS7Xcbo51Qji4n4a5M2iahgQ+slNvGcMd5zBug3OTEQ86eQ9n+tpg69N/gyGDQXrBYxVmAJEmD495trAcNoUk5/RtYFRoOVbKS8hS2yZ6SbiTDx3wRjVC6X206P6DdGFq6nl+9ZthuXuz/JSeKFcv2gZJLtDzLxqmGDgFaH0ObpNRQYzz3j5UsnwNHFyPPw4J5OSRToLgzXxCTTsxAuEtPTdMt11vyb6lySi7vKJ6lYf7WWUFK5oxkJMTissvSNPUh3aW6Ik8RzRJI3aYqjbumEsvl2vSwlUOOi+XDUclrsZakyAH9GAQpys/zaHiKTSk5sjE=
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: restic
+      namespace: media
+

@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: restic
+  namespace: apps
+spec:
+  encryptedData:
+    password: AgDcYo49FH91fyPbv8ULpHcV3AwtSb9SpJFPs85mEQ2GxdYqDzc/uiH2X7tQrRhfzfiUJQbDFLaEF3wfhFG/5+qrmKY7Je68o89WwmqOLIKWMWlyBkJp2vdgt4onifuRrUlaSxycQGot4NAgr8XzKhTRueu3LsQrp0NAfgxj7VbnGBJW5H8EEkxXvIBwKqyMsBojmlZ1LbaaHVHWxEok7830UV7WFQG05xlRv0N7ypJrI+wVAl4d6xQ8sQcea3yMDwGXjCi045GvlFnkqtaizW4WQz2KqD2f+ezK36n9ZETLkFkoZI7FJkNPaf4OKItiJymidTMAOJOFHaickoijupyf1cZYgV/sqFpdknDxf4RkXMPGYSw5tgYYLaodB/NOhk2wYhJOFkd9Vp32oQ19VOveRRO0FDe1rCCKeO1jpKV8WIB4RnIiAu2NYCw44Lr335lRUadRMnnspFfcBso1TsXfMb+g9q9YyseFNDKyj+eiil62fFHe3Mb0983fV4rKt6Bxdcz0OFtqBj7bhsqrvvZKsmv5OzIt7qQri7EjjTAONeyZBpf/Os4pmkhJMWYkWKMkc9kwOUo+YHTbWa9kQcG2xCNO86xoph/53UsiYQM+X4/MvRewABxFghegcgT+pLZf+/ZBD14IsQf2gwjl0gGfaEtHPVS9Ynf1y+iBWIFbfC84H1oN3j/7/IW22vW+hDSa0tbEWDKwXs1jI/bYQgslo5gK97+ECwfbr+LR0kLhWRbzZTXJLQLl1aBMDodDeE4=
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: restic
+      namespace: apps
+
