@@ -13,6 +13,16 @@ node-red:
       size: 50Mi
       accessMode: ReadWriteOnce
       storageClass: longhorn
+    rclone-config:
+      enabled: true
+      mountPath: "-"
+      type: custom
+      volumeSpec:
+        secret:
+          secretName: rclone
+          items:
+            - key: config
+              path: rclone.conf
 
   ingress:
     main:
@@ -35,14 +45,11 @@ node-red:
             secretKeyRef:
               name: restic
               key: password
-        - name: RCLONE_CONFIG
-          valueFrom:
-            secretKeyRef:
-              name: rclone
-              key: config
       volumeMounts:
         - mountPath: /data
           name: data
+        - mountPath: /root/.config/rclone
+          name: rclone-config
 
   additionalContainers:
     restic-backup:
@@ -61,11 +68,8 @@ node-red:
             secretKeyRef:
               name: restic
               key: password
-        - name: RCLONE_CONFIG
-          valueFrom:
-            secretKeyRef:
-              name: rclone
-              key: config
       volumeMounts:
         - mountPath: /data
           name: data
+        - mountPath: /root/.config/rclone
+          name: rclone-config
