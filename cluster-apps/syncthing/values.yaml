@@ -34,30 +34,29 @@ syncthing:
           pathType: Prefix
 
   initContainers:
-    duplicacy-init:
-      image: alexphillips/duplicacy-init
+    restic-init:
+      image: alexphillips/restic
+      command: ["/scripts/restic-init.sh"]
       env:
-        - name: BACKUP_NAME
-          value: gcd-syncthing
-        - name: BACKUP_LOCATION
-          value: gcd://duplicacy_backup/syncthing
-        - name: DUPLICACY_PASSWORD
+        - name: RESTIC_REPOSITORY
+          value: rclone:gdrive:restic/syncthing
+        - name: RESTIC_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: duplicacy
+              name: restic
               key: password
-        - name: GCD_TOKEN
+        - name: RCLONE_CONF
           valueFrom:
             secretKeyRef:
-              name: duplicacy
-              key: gcd_token
+              name: rclone
+              key: config
       volumeMounts:
         - mountPath: /data
           name: config
 
   # additionalContainers:
-  #   duplicacy-backup:
-  #     image: alexphillips/duplicacy-backup
+  #   restic-backup:
+  #     image: alexphillips/restic
   #     env:
   #       - name: SCHEDULE
   #         value: "30 03 * * *"

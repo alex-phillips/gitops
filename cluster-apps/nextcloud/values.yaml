@@ -49,23 +49,22 @@ nextcloud:
           pathType: Prefix
 
   initContainers:
-    duplicacy-init:
-      image: alexphillips/duplicacy-init
+    restic-init:
+      image: alexphillips/restic
+      command: ["/scripts/restic-init.sh"]
       env:
-        - name: BACKUP_NAME
-          value: gcd-nextcloud-config
-        - name: BACKUP_LOCATION
-          value: gcd://duplicacy_backup/nextcloud-config
-        - name: DUPLICACY_PASSWORD
+        - name: RESTIC_REPOSITORY
+          value: rclone:gdrive:restic/nextcloud-config
+        - name: RESTIC_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: duplicacy
+              name: restic
               key: password
-        - name: GCD_TOKEN
+        - name: RCLONE_CONF
           valueFrom:
             secretKeyRef:
-              name: duplicacy
-              key: gcd_token
+              name: rclone
+              key: config
       volumeMounts:
         - mountPath: /data
           name: config
@@ -75,8 +74,8 @@ nextcloud:
       image: redis:alpine
       ports:
         - containerPort: 6379
-    duplicacy-backup:
-      image: alexphillips/duplicacy-backup
+    restic-backup:
+      image: alexphillips/restic
       env:
         - name: SCHEDULE
           value: "30 05 * * *"
@@ -84,16 +83,18 @@ nextcloud:
           value: https://hc.w00t.cloud/ping
         - name: CHECK_UUID
           value: 397442bc-235c-4442-baf4-a1686bbd5220
-        - name: DUPLICACY_PASSWORD
+        - name: RESTIC_REPOSITORY
+          value: rclone:gdrive:restic/nextcloud-config
+        - name: RESTIC_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: duplicacy
+              name: restic
               key: password
-        - name: GCD_TOKEN
+        - name: RCLONE_CONF
           valueFrom:
             secretKeyRef:
-              name: duplicacy
-              key: gcd_token
+              name: rclone
+              key: config
       volumeMounts:
         - mountPath: /data
           name: config

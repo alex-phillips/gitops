@@ -27,30 +27,29 @@ bookstack:
           pathType: Prefix
 
   initContainers:
-    duplicacy-init:
-      image: alexphillips/duplicacy-init
+    restic-init:
+      image: alexphillips/restic
+      command: ["/scripts/restic-init.sh"]
       env:
-        - name: BACKUP_NAME
-          value: gcd-bookstack
-        - name: BACKUP_LOCATION
-          value: gcd://duplicacy_backup/bookstack
-        - name: DUPLICACY_PASSWORD
+        - name: RESTIC_REPOSITORY
+          value: rclone:gdrive:restic/bookstack
+        - name: RESTIC_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: duplicacy
+              name: restic
               key: password
-        - name: GCD_TOKEN
+        - name: RCLONE_CONF
           valueFrom:
             secretKeyRef:
-              name: duplicacy
-              key: gcd_token
+              name: rclone
+              key: config
       volumeMounts:
         - mountPath: /data
           name: config
 
   additionalContainers:
-    duplicacy-backup:
-      image: alexphillips/duplicacy-backup
+    restic-backup:
+      image: alexphillips/restic
       env:
         - name: SCHEDULE
           value: "15 3 * * *"
@@ -58,16 +57,18 @@ bookstack:
           value: https://hc.w00t.cloud/ping
         - name: CHECK_UUID
           value: d986e8fc-cf32-4e27-a674-90fb549c6ef6
-        - name: DUPLICACY_PASSWORD
+        - name: RESTIC_REPOSITORY
+          value: rclone:gdrive:restic/bookstack
+        - name: RESTIC_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: duplicacy
+              name: restic
               key: password
-        - name: GCD_TOKEN
+        - name: RCLONE_CONF
           valueFrom:
             secretKeyRef:
-              name: duplicacy
-              key: gcd_token
+              name: rclone
+              key: config
       volumeMounts:
         - mountPath: /data
           name: config

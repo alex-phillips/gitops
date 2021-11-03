@@ -24,30 +24,29 @@ mealie:
           pathType: Prefix
 
   initContainers:
-    duplicacy-init:
-      image: alexphillips/duplicacy-init
+    restic-init:
+      image: alexphillips/restic
+      command: ["/scripts/restic-init.sh"]
       env:
-        - name: BACKUP_NAME
-          value: gcd-mealie
-        - name: BACKUP_LOCATION
-          value: gcd://duplicacy_backup/mealie
-        - name: DUPLICACY_PASSWORD
+        - name: RESTIC_REPOSITORY
+          value: rclone:gdrive:restic/mealie
+        - name: RESTIC_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: duplicacy
+              name: restic
               key: password
-        - name: GCD_TOKEN
+        - name: RCLONE_CONF
           valueFrom:
             secretKeyRef:
-              name: duplicacy
-              key: gcd_token
+              name: rclone
+              key: config
       volumeMounts:
         - mountPath: /data
           name: config
 
   additionalContainers:
-    duplicacy-backup:
-      image: alexphillips/duplicacy-backup
+    restic-backup:
+      image: alexphillips/restic
       env:
         - name: SCHEDULE
           value: "30 22 * * *"
@@ -55,16 +54,18 @@ mealie:
           value: https://hc.w00t.cloud/ping
         - name: CHECK_UUID
           value: c6d457e5-08c3-4b87-b502-839771eb5183
-        - name: DUPLICACY_PASSWORD
+        - name: RESTIC_REPOSITORY
+          value: rclone:gdrive:restic/mealie
+        - name: RESTIC_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: duplicacy
+              name: restic
               key: password
-        - name: GCD_TOKEN
+        - name: RCLONE_CONF
           valueFrom:
             secretKeyRef:
-              name: duplicacy
-              key: gcd_token
+              name: rclone
+              key: config
       volumeMounts:
         - mountPath: /data
           name: config

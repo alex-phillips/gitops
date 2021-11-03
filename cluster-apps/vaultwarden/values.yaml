@@ -28,30 +28,29 @@ vaultwarden:
             port: 80
 
   initContainers:
-    duplicacy-init:
-      image: alexphillips/duplicacy-init
+    restic-init:
+      image: alexphillips/restic
+      command: ["/scripts/restic-init.sh"]
       env:
-        - name: BACKUP_NAME
-          value: gcd-vaultwarden
-        - name: BACKUP_LOCATION
-          value: gcd://duplicacy_backup/vaultwarden
-        - name: DUPLICACY_PASSWORD
+        - name: RESTIC_REPOSITORY
+          value: rclone:gdrive:restic/vaultwarden
+        - name: RESTIC_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: duplicacy
+              name: restic
               key: password
-        - name: GCD_TOKEN
+        - name: RCLONE_CONF
           valueFrom:
             secretKeyRef:
-              name: duplicacy
-              key: gcd_token
+              name: rclone
+              key: config
       volumeMounts:
         - mountPath: /data
           name: config
 
   additionalContainers:
-    duplicacy-backup:
-      image: alexphillips/duplicacy-backup
+    restic-backup:
+      image: alexphillips/restic
       env:
         - name: SCHEDULE
           value: "00 11 * * *"
@@ -59,16 +58,18 @@ vaultwarden:
           value: https://hc.w00t.cloud/ping
         - name: CHECK_UUID
           value: f7a54103-fbeb-4747-be31-c1e1ef3b83a1
-        - name: DUPLICACY_PASSWORD
+        - name: RESTIC_REPOSITORY
+          value: rclone:gdrive:restic/vaultwarden
+        - name: RESTIC_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: duplicacy
+              name: restic
               key: password
-        - name: GCD_TOKEN
+        - name: RCLONE_CONF
           valueFrom:
             secretKeyRef:
-              name: duplicacy
-              key: gcd_token
+              name: rclone
+              key: config
       volumeMounts:
         - mountPath: /data
           name: config
