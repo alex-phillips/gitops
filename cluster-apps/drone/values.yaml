@@ -33,9 +33,6 @@ drone:
   ingress:
     main:
       enabled: true
-      annotations:
-        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-        ingress.kubernetes.io/protocol: https
       hosts:
       - host: ci.w00t.cloud
         paths:
