@@ -56,6 +56,6 @@ drone:
               name: drone
               key: rpc_secret
         - name: DRONE_RUNNER_CAPACITY
-          value: 2
+          value: "2"
         - name: DRONE_RUNNER_NAME
           value: runner
