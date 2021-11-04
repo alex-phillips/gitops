@@ -1,0 +1,42 @@
+drone:
+  image:
+    repository: drone/drone
+    tag: 2.4.0
+
+  env:
+    DRONE_GITEA_SERVER: https://git.w00t.cloud
+    DRONE_GIT_ALWAYS_AUTH: true
+    DRONE_GITEA_CLIENT_ID:
+      valueFrom:
+        secretKeyRef:
+          name: gitea
+          key: client_id
+    DRONE_GITEA_CLIENT_SECRET:
+      valueFrom:
+        secretKeyRef:
+          name: gitea
+          key: client_secret
+    DRONE_SERVER_HOST: ci.w00t.cloud
+    DRONE_SERVER_PROTO: https
+    DRONE_RPC_SECRET:
+      valueFrom:
+        secretKeyRef:
+          name: drone
+          key: rpc_secret
+    DRONE_USER_CREATE: username:alex,admin:true
+
+  ingress:
+    main:
+      enabled: true
+      annotations:
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+        ingress.kubernetes.io/protocol: https
+      hosts:
+      - host: ci.w00t.cloud
+        paths:
+        - path: /
+          pathType: Prefix
+
+  additionalContainers:
+    drone-runner:
+      image: drone/drone-docker-runner:latest

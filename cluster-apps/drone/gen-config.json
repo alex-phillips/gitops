@@ -1,0 +1,9 @@
+[
+  {
+    "name": "drone",
+    "cluster": "in-cluster",
+    "namespace": "apps",
+    "path": "cluster-apps/drone",
+    "valueFile": ""
+  }
+]
