@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: drone
+  namespace: apps
+spec:
+  encryptedData:
+    rpc_secret: AgCrl4z4E6s1J0UKDMdC2jBzqNPG1vPk3BfsGcUPSDq4Ygoa2NcFx0dLlxTsxAke1DDVqZWvRGaexbs8h35cLrLmNW4uadq45gNFa8JHrlhFAcOi+krqWxwTt9HYChVfIE6x14GWV07lc3m1zOqOE2J4hjGzFak0e5WeuGz01xsWh89ed/rs/O1qDYDU1EMsEpAghlfF8ikp6s9+Hz8zqJI69BQMECJE/2xwFYJzpDfYMNOqYJMjBCXaNts2KQBh6Xz+VTGbm4dgdgH7CTyORtk0Jijv1CGH8IcbxFoMMywk+w4AuZXf+9FN1OsL51zM4WKfi5ZkkAYUwi+vffxMoJsRY1DwwLXbeBX6HvRdSb1lUEXP0Pdh+TVRlRiIdBdzn2Ek2YCJmR2FDmBWnam6u/Mvu0adVvzADtQFiExHiKLkNt0vkXb/DAHthut+e/Ij/kP5U3CcSYQOBvIzMDYEukIIB75baOYUk8K759q+c8Jj2njiV7iiJBqUhFW6h+hAIvw3GrMIO9shscpg0BwDMly3wqA9mtatOFWtptWPFuDkXnmMMLXGepBQXqeTavYd6vAoo19L/ICPCvPaUZczUaIRtlhWdNqhev1B3G1JjO6mjC9ke41UD/XNb6onzuHNDPCfb7UH87P4fKLwkkR3ZylvA06XZcAC220LCic2wr1XagxM7WNWMHTR0NK4FXAvk8v/StShq6qYksIaEcxS5HyfWv5pEZ06fvWQOTjp6aA8GUCcSwL1Jr1o9CqggiKLjdDfWMvezYKx6pt2P0twFWFV
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: drone
+      namespace: apps
+
