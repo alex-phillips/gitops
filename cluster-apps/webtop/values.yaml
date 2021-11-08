@@ -1,0 +1,32 @@
+webtop:
+  image:
+    repository: ghcr.io/linuxserver/webtop:ubuntu-xfce
+    tag: 2021.11.07
+
+  persistence:
+    config:
+      enabled: true
+      retain: true
+      size: 2Gi
+      accessMode: ReadWriteOnce
+      storageClass: longhorn
+    shm:
+      enabled: true
+    downloads:
+      enabled: true
+      mountPath: /config/Downloads
+      type: custom
+      volumeSpec:
+        nfs:
+          server: 192.168.1.91
+          path: /mnt/storage/docker/webtop/Downloads
+
+  ingress:
+    main:
+      enabled: true
+      annotations:
+      hosts:
+      - host: wt.w00t.cloud
+        paths:
+        - path: /
+          pathType: Prefix

@@ -1,0 +1,7 @@
+name: syncthing
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: webtop
+    version: 1.0.0
+    repository: https://alex-phillips.github.io/helm-charts

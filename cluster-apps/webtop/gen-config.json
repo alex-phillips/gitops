@@ -1,0 +1,9 @@
+[
+  {
+    "name": "webtop",
+    "cluster": "in-cluster",
+    "namespace": "apps",
+    "path": "cluster-apps/webtop",
+    "valueFile": ""
+  }
+]
