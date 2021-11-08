@@ -20,6 +20,10 @@ webtop:
         nfs:
           server: 192.168.1.91
           path: /mnt/storage/docker/webtop/Downloads
+    shared:
+      enabled: true
+      type: emptyDir
+      mountPath: /shared
 
   ingress:
     main:
@@ -57,11 +61,11 @@ webtop:
       # The scripts that get run when the VPN connection opens/closes are defined here.
       # The default scripts will write a string to represent the current connection state to a file.
       # Our qBittorrent image has a feature that can wait for this file to contain the word 'connected' before actually starting the application.
-      scripts:
-        up: |-
-          #!/bin/bash
-          echo "connected" > /shared/vpnstatus
+      # scripts:
+      #   up: |-
+      #     #!/bin/bash
+      #     echo "connected" > /shared/vpnstatus
 
-        down: |-
-          #!/bin/bash
-          echo "disconnected" > /shared/vpnstatus
+      #   down: |-
+      #     #!/bin/bash
+      #     echo "disconnected" > /shared/vpnstatus
