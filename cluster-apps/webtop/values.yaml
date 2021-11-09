@@ -37,7 +37,7 @@ webtop:
 
   addons:
     vpn:
-      enabled: true
+      enabled: false
       type: wireguard
 
       # If the podSecurityContext is set to run as a different user, make sure to run the Wireguard container as UID/GID 568.
