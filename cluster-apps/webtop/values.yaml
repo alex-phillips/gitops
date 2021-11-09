@@ -1,7 +1,7 @@
 webtop:
   image:
-    repository: ghcr.io/linuxserver/webtop:ubuntu-xfce
-    tag: 2021.11.07
+    repository: ghcr.io/linuxserver/webtop
+    tag: ubuntu-xfce
 
   persistence:
     config:
