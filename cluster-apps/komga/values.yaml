@@ -1,7 +1,7 @@
 komga:
   image:
     repository: gotson/komga
-    tag: 0.132.1
+    tag: 0.132.2
 
   controller:
     labels:
