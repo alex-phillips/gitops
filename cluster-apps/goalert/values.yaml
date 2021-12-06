@@ -1,7 +1,7 @@
 goalert:
   image:
     repository: goalert/goalert
-    tag: v0.28.0
+    tag: v0.29.0
 
   env:
     - name: GOALERT_DATA_ENCRYPTION_KEY
