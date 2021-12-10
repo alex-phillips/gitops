@@ -9,7 +9,7 @@ uptime-kuma:
     data:
       enabled: true
       retain: true
-      size: 512Mi
+      size: 5Gi
       accessMode: ReadWriteOnce
       storageClass: longhorn
 
