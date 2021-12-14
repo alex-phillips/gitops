@@ -53,6 +53,28 @@ loki:
             category: logs
           annotations:
             summary: "{{$value}} is experiencing locked database issues"
+    - name: uptime-db-locked
+      rules:
+        - alert: UptimeDBIsLocked
+          expr: |
+            sum by (app) (count_over_time({app="uptime-kuma"} |= "Read-only file system"[2m])) > 0
+          for: 10s
+          labels:
+            severity: critical
+            category: logs
+          annotations:
+            summary: "uptime-kuma is experiencing locked database issues"
+    - name: tautulli-db-locked
+      rules:
+        - alert: TautulliDBIsLocked
+          expr: |
+            sum by (app) (count_over_time({app="tautulli"} |= "Read-only file system"[2m])) > 0
+          for: 10s
+          labels:
+            severity: critical
+            category: logs
+          annotations:
+            summary: "uptime-kuma is experiencing locked database issues"
   #   #
   #   # zwavejs2mqtt
   #   #
