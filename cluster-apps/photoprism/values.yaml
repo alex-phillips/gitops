@@ -1,7 +1,7 @@
 photoprism:
   image:
     repository: photoprism/photoprism
-    tag: "20211203"
+    tag: "20211210"
 
   controller:
     labels:
