@@ -1,7 +1,7 @@
 healthchecks:
   image:
     repository: ghcr.io/linuxserver/healthchecks
-    tag: 1.24.1
+    tag: 1.25.0
 
   env:
     PGID: 1000
