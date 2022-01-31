@@ -1,7 +1,7 @@
 drone:
   image:
     repository: drone/drone
-    tag: 2.6.0
+    tag: 2.9.1
 
   env:
     - name: DRONE_GITEA_SERVER
